@@ -25,8 +25,9 @@ class CookieCheck {
     }
 
     let postsArray = this.existingCookie.split(',');
-
-    if(!postsArray.includes(this.postID)) {
+    //console.log(jQuery.inArray(this.postID, postsArray));
+    // if(!postsArray.includes(this.postID)) { // requires polyfill
+    if(jQuery.inArray(this.postID, postsArray) === -1) {
       return;
     }
 

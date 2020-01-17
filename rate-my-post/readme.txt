@@ -36,7 +36,7 @@ See:
 
 * **[Documentation](https://blazzdev.com/documentation/rate-my-post-documentation/)**
 
-* **[GitHub](https://github.com/blaz-blazer/)**
+* **[GitHub](https://github.com/blaz-blazer/rate-my-post)**
 
 = Shortcodes =
 
