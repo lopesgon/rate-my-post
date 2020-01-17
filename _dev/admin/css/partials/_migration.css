@@ -1,0 +1,43 @@
+.rmp-migration {
+  text-align: center;
+
+  &__title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    margin: .5rem 0;
+  }
+
+  &__container {
+    max-width: 400px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__subtitle {
+    text-align: center;
+    background-color: $green;
+    padding: .1rem .5rem;
+    font-size: 1rem;
+    color: white;
+    border: 1px solid $lightGreen;
+    border-radius: 5px;
+    margin: .2rem 0;
+
+    &--not-found {
+      background-color: $orange;
+      border: 1px solid $lightOrange;
+    }
+  }
+
+  &__notice {
+    text-align: center;
+    text-decoration: underline;
+  }
+
+  &__action-msg {
+    font-weight: bold;
+  }
+
+}

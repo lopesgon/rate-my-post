@@ -1,0 +1,41 @@
+.rmp-tooltip {
+  display: inline;
+  position: relative;
+
+  &__title {
+    &:after {
+      content: "?";
+      display: inline-block;
+      background-color: $blue;
+      height: 1.1rem;
+      width: 1.1rem;
+      color: white;
+      border-radius: 50%;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+  }
+
+  &__text {
+    display: none;
+  }
+
+  &:hover {
+    .rmp-tooltip__text {
+      display: block;
+      height: auto;
+      position: absolute;
+      background-color: $black;
+      color: white;
+      padding: .5rem;
+      z-index: 1;
+      text-align: center;
+      width: 200px;
+      bottom: 1.2rem;
+      border-radius: 6px;
+    }
+  }
+}

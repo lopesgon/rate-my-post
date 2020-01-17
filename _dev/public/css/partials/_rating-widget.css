@@ -1,0 +1,63 @@
+/* We bend BEM methodology for better targeting - necessary for compatibility with various themes */
+.rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-rating-widget {
+
+  &--hidden {
+    display: none;
+  }
+
+  &__icons {
+    margin: 0 0 .4rem 0;
+  }
+
+  &__icons-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+    &::before {
+      content: "";
+    }
+
+    &__icon {
+      display: inline-block;
+      margin: 0;
+    }
+
+  }
+
+  &__hover-text {
+    margin: 0 0 .4rem 0;
+  }
+
+  &__submit-btn {
+    display: none;
+    &--visible {
+      display: inline-block;
+    }
+  }
+
+  &__results {
+    margin: 0 0 .4rem 0;
+    &--hidden {
+      display: none;
+      margin: 0;
+    }
+  }
+
+  &__not-rated {
+    margin: 0 0 .4rem 0;
+    &--hidden {
+      display: none;
+      margin: 0;
+    }
+  }
+
+  &__msg {
+    margin: .4rem 0;
+
+    &--alert {
+      color: $alert;
+    }
+  }
+
+}

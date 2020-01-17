@@ -1,0 +1,14 @@
+.rmp-results-widget {
+
+  &__visual-rating {
+    display: inline-block;
+    position: relative;
+    margin-right: .3rem;
+  }
+  &__avg-rating {
+    display: inline-block;
+  }
+  &__vote-count {
+    display: inline-block;
+  }
+}

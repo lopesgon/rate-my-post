@@ -1,0 +1,41 @@
+.rmp-about {
+
+  &__text {
+    max-width: 600px;
+    border: 1px solid $darkGrey;
+    padding: 1rem;
+    font-size: .9rem;
+  }
+
+  &__links {
+    text-align: center;
+    max-width: 600px;
+    padding: 0 1rem;
+    border: 1px solid transparent;
+
+    &__text {
+      margin: .2rem 0 .5rem 0;
+      text-decoration: underline;
+    }
+  }
+
+  &__plugin-details {
+    text-align: center;
+    max-width: 600px;
+    padding: 0 1rem;
+    border: 1px solid transparent;
+
+    &__version {
+      display: inline-block;
+      padding: .2rem .5rem;
+      background-color: $green;
+      border: 1px solid $lightGreen;
+      color: white;
+      font-weight: bold;
+      border-radius: 3px;
+    }
+  }
+
+
+
+}

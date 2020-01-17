@@ -1,0 +1,29 @@
+.rmp-btn {
+  background-color: $darkGold;
+  border: none;
+  color: white;
+  padding: .5rem;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-bottom: .4rem;
+
+  &:hover, &:focus {
+    background: initial;
+    background-color: $semiDarkGold;
+    border: none;
+    color: white;
+    padding: .5rem;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-bottom: .4rem;
+    cursor: pointer;
+  }
+
+  &--large {
+    padding: .8rem;
+    &:hover, &:focus {
+      padding: .8rem;
+    }
+  }
+
+}

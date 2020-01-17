@@ -1,0 +1,23 @@
+.rmp-pro {
+  &__subtitle {
+    font-size: 1.1rem;
+    text-decoration: underline;
+  }
+
+  &__feature {
+    font-weight: 500;
+    font-size: .9rem;
+    &:before {
+      content: '\2713';
+      display: inline-block;
+      color: $green;
+      padding:0 .2rem 0 0;
+      font-weight: bold;
+    }
+  }
+
+  &__link {
+    
+  }
+
+}

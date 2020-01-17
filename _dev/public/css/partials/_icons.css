@@ -1,0 +1,167 @@
+.rmp-icon {
+
+  &--star {
+    &:before {
+      content: "\f005";
+    }
+  }
+  &--heart {
+    &:before {
+      content: "\f004";
+    }
+  }
+  &--trophy {
+    &:before {
+      content: "\f091";
+    }
+  }
+  &--smile-o {
+    &:before {
+      content: "\f118";
+    }
+  }
+  &--thumbs-up {
+    &:before {
+      content: "\f164";
+    }
+  }
+  &--twitter {
+    background: #55ACEE;
+    color: white;
+    &:before {
+      content: "\f099";
+    }
+  }
+  &--facebook {
+    background: #3B5998;
+    color: white;
+    &:before {
+      content: "\f09a";
+    }
+  }
+  &--facebook-f {
+    &:before {
+      content: "\f09a";
+    }
+  }
+  &--pinterest {
+    background: #cb2027;
+    color: white;
+    &:before {
+      content: "\f0d2";
+    }
+  }
+  &--linkedin {
+    background: #007bb5;
+    color: white;
+    &:before {
+      content: "\f0e1";
+    }
+  }
+  &--youtube-square {
+    background: #bb0000;
+    color: white;
+    &:before {
+      content: "\f166";
+    }
+  }
+  &--instagram {
+    background: #125688;
+    color: white;
+    &:before {
+      content: "\f16d";
+    }
+  }
+  &--flickr {
+    background: #f40083;
+    color: white;
+    &:before {
+      content: "\f16e";
+    }
+  }
+  &--reddit {
+    background: #ff5700;
+    color: white;
+    &:before {
+      content: "\f1a1";
+    }
+  }
+
+  &--ratings {
+    color: $grey;
+    font-size: 1rem;
+
+    .rmp-rating-widget & {
+      font-size: 2.5rem;
+    }
+
+  }
+
+  &--full-highlight {
+    color: $darkerGold;
+
+    .rmp-rating-widget & {
+      color: $gold;
+    }
+
+  }
+
+  &--half-highlight {
+    background: linear-gradient(to right, $darkerGold 50%, $grey 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    .rmp-rating-widget & {
+      background: linear-gradient(to right, $gold 50%, $grey 50%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+  }
+
+  &--hovered {
+    @mixin supportsHover {
+      .rmp-rating-widget & {
+        color: $darkGold;
+        -webkit-background-clip: initial;
+        -webkit-text-fill-color: initial;
+        background: transparent;
+        transition: .1s color ease-in; 
+      }
+    }
+  }
+
+  &--processing-rating {
+    .rmp-rating-widget & {
+      color: $darkerGold;
+      -webkit-background-clip: initial;
+      -webkit-text-fill-color: initial;
+      background: transparent;
+    }
+  }
+
+  &--social {
+    .rmp-social-widget & {
+      padding: 20px;
+      font-size: 30px;
+      width: 70px;
+      text-align: center;
+      text-decoration: none;
+      margin: 5px 2px;
+      border-radius: 50%;
+      transition-property: none;
+   	  box-shadow: none;
+      font-family: ratemypost;
+      display: inline-block;
+      &:hover {
+        filter: contrast(140%);
+        color: white;
+        transition-property: none;
+    	  box-shadow: none;
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
+
+}

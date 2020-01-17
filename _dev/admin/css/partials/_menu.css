@@ -1,0 +1,41 @@
+.rmp-menu {
+  margin-right: 1rem;
+  
+  &__title {
+    margin-top: 2rem;
+
+  }
+
+  &__tabs {
+    @mixin clearfix;
+    border: 1px solid $darkGrey;
+    border-bottom: 0;
+
+    &__tab {
+      float: left;
+      padding: .8rem 1rem;
+      background-color: $grey;
+      border-right: 1px solid $darkGrey;
+      color: $black;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: background-color .2s ease-in;
+
+      &--selected {
+        background-color: $darkerGrey;
+      }
+
+      &:hover {
+        color: $black;
+        background-color: $darkGrey;
+        cursor: pointer;
+      }
+
+      &:visited, &:focus, &:active {
+        outline: none!important;
+      }
+
+    }
+
+  }
+}

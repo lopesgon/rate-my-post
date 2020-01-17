@@ -1,0 +1,13 @@
+.rmp-heading {
+  margin: 0 0 .4rem 0;
+
+  &--title {
+    font-size: 1.625rem;
+    font-weight: 400;
+  }
+
+  .rmp-widgets-container.rmp-wp-plugin.rmp-main-container & {
+    margin: 0 0 .4rem 0;
+  }
+
+}

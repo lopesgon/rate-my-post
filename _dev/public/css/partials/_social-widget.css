@@ -1,0 +1,12 @@
+/* We bend BEM methodology for better targeting - necessary for compatibility with various themes */
+.rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-social-widget {
+  display: none;
+
+  &--visible {
+    display: block;
+  }
+
+  a {
+    color: white; 
+  }
+}

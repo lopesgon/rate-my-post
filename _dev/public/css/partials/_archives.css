@@ -1,0 +1,11 @@
+.rmp-archive-results-widget {
+  display: inline-block;
+  position: relative;
+  margin-left: .4rem;
+  vertical-align: top;
+  font-size: .9rem;
+
+  .rmp-icon {
+    font-size: .9rem;
+  }
+}

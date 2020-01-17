@@ -1,0 +1,33 @@
+.rmp-data-table.dataTable  {
+  border-collapse: collapse;
+
+  td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;;
+    border-right: 1px solid #b1b1b1;
+  }
+
+  th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;;
+    border-bottom: 1px solid #656464;
+    border-right: 1px solid #b1b1b1;
+  }
+
+  tr {
+    &:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    &:nth-child(odd) {
+      background-color: #eaeaea;
+    }
+  }
+
+}
+
+.dataTables_filter {
+  margin-bottom: .5rem;
+}

@@ -1,0 +1,10 @@
+@keyframes rmp-feedback-widget__loader  {
+  0% {
+    top: 4px;
+    height: 32px;
+  }
+  50%, 100% {
+    top: 12px;
+    height: 16px;
+  }
+}

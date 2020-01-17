@@ -1,0 +1,84 @@
+.rmp-btn {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: $green;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  border: 0px;
+  font-size: 1.1rem;
+  margin: 0 5px;
+  margin-left: 0;
+  display: inline-block;
+  margin-bottom: 5px;
+  transition: background-color .1s ease-in;
+
+  &:visited {
+    color: #ffffff;
+  }
+
+  &--small {
+    font-size: .9rem;
+    padding: .5rem .8rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: $lightGreen;
+    color: #ffffff;
+  }
+
+  &--danger {
+    background-color: $red;
+
+    &:hover {
+      background-color: $lightRed;
+      color: #ffffff;
+    }
+  }
+
+  &--info {
+    background-color: $blue;
+
+    &:hover {
+      background-color: $lightBlue;
+      color: #ffffff;
+    }
+  }
+
+  &--warning {
+    background-color: $orange;
+
+    &:hover {
+      background-color: $lightOrange;
+      color: #ffffff;
+    }
+  }
+
+  &--processing {
+    &:after {
+      content: '...';
+      display: inline-block;
+      margin-left: .5rem;
+      font-weight: bold;
+    }
+  }
+
+  &--success {
+    &:after {
+      content: '\2713';
+      display: inline-block;
+      margin-left: .5rem;
+      font-weight: bold;
+    }
+  }
+
+  &--alert {
+    &:after {
+      content: 'X';
+      display: inline-block;
+      margin-left: .5rem;
+      font-weight: bold;
+    }
+  }
+
+}
