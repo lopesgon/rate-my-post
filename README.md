@@ -11,16 +11,15 @@ While the documentation for the Rate my Post plugin can be found on [blazzdev.co
 ## Installation
 
 1. Unzip downloaded archive
-2.Upload rate-my-post folder (which is in rate-my-post-master folder) in your /wp-content/plugins/ directory
-2. Navigate to Dashboard -> Plugins
-3. Click Activate
-4. Click Rate my Post -> Settings in the main menu and configure the plugin
-5. Add shortcode [ratemypost] to your posts or embed rating widgets automatically in the Settings
+2. Upload rate-my-post folder (which is in rate-my-post-master folder) in your /wp-content/plugins/ directory
+3. Navigate to Dashboard -> Plugins
+4. Click Activate
+5. Click Rate my Post -> Settings in the main menu and configure the plugin
+6. Add shortcode [ratemypost] to your posts or embed rating widgets automatically in the Settings
 
 If you are upgrading the plugin, first delete the old version. **Make sure that "Delete all plugin data on uninstall" is disabled in the settings**.
 
 ## Want to contribute to Rate my Post?
-___
 
 ### Prerequisites
 
