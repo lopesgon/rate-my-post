@@ -64,6 +64,13 @@ Build production version of the plugin (copies files to rate-my-post directory, 
 gulp build
 ```
 
+## Known Limitations
+
+* The plugin uses CSS at-rule: @media: hover to highlight rating icons on hover. Hence rating icons will not get highlighted on [older browsers](https://caniuse.com/#feat=mdn-css_at-rules_media_hover). The at-rule is used because otherwise double tap was required on iOS devices to submit the rating.
+* If ajax load results is enabled, only one rating/results widget on page will get initialized because otherwise we would cause too many script executions.
+* It is not possible to have more than one rating widget for the same post on a single web page.
+* The plugin requires jQuery 
+
 ## Support
 
 This is a developer's portal for Rate my Post and should not be used for support. For support, please use the [support forum](https://wordpress.org/support/plugin/rate-my-post/).
@@ -75,7 +82,7 @@ This is a developer's portal for Rate my Post and should not be used for support
 
 ## Author
 
-* **Blaz Krapez** - [Blazzdev](blazzdev.com)
+* **Blaz Krapez** - [BlazzDev](https://blazzdev.com/)
 
 ## License
 

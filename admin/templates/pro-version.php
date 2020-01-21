@@ -28,16 +28,16 @@
     </p>
     <div class="rmp-pro__features">
       <p class="rmp-pro__feature">
-        <?php echo ( esc_html__( 'Structured data types for rich snippets with not only the required fields but also the optional fields.', 'rate-my-post' ) ); ?>
+        <?php echo ( esc_html__( 'Add structured data for rich snippets with not only the required fields but also the optional fields.', 'rate-my-post' ) ); ?>
       </p>
       <p class="rmp-pro__feature">
-        <?php echo ( esc_html__( 'Create custom rating widgets that can be used anywhere (posts, pages, archives etc.). ', 'rate-my-post' ) ); ?>
+        <?php echo ( esc_html__( 'Create custom rating widgets which work independently of posts. ', 'rate-my-post' ) ); ?>
       </p>
       <p class="rmp-pro__feature">
-        <?php echo ( esc_html__( 'Each widget is completely customizable, including structured data for rich snippets.', 'rate-my-post' ) ); ?>
+        <?php echo ( esc_html__( 'Each custom widget is completely customizable, including structured data for rich snippets.', 'rate-my-post' ) ); ?>
       </p>
       <p class="rmp-pro__feature">
-        <?php echo ( esc_html__( 'Support for more than one rating widget on a single web page.', 'rate-my-post' ) ); ?>
+        <?php echo ( esc_html__( 'Add rating widgets to archives, taxonomies etc.', 'rate-my-post' ) ); ?>
       </p>
       <p class="rmp-pro__feature">
         <?php echo ( esc_html__( 'Shortcode generator.', 'rate-my-post' ) ); ?>

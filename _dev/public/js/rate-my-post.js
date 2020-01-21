@@ -19,9 +19,6 @@ $(document).ready(() => {
   let postsIDs = [];
 
   $(ratingWidgetContainers).each((index, item) => {
-    if(index > 0) {
-      return;
-    }
     let postID = $(item).attr('data-post-id');
     postsIDs.push(postID);
   });

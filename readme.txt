@@ -250,12 +250,16 @@ You can see the feedback for each post in the post editor at the bottom (meta bo
 
 = 3.0.0 =
 * [READ BEFORE UPDATING!!!](https://blazzdev.com/rate-my-post-version-3/)
+* Renamed to Rate my Post - WP Rating System
 * Code refactor, many parts have been rewritten
-* Better performance
-* New hooks
+* Shortcode accepts post id parameter
+* Average rating is now stored in post meta
+* Allows multiple rating/results widgets on a single web page
+* Possible to change max rating - for example to 10-star rating system
 * Allows overriding templates for complete customization
 * AMP Compatibility is now stable
-* Shortcode accepts post id parameter
+* New hooks
+* Better performance
 * Simplified settings
 * Some features have been discontinued (read above)
 
