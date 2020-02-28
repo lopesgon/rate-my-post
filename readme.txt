@@ -212,7 +212,7 @@ The plugin allows visitors to rate posts, pages and custom post types. It is not
 = The rating widget is displayed multiple times =
 This typically happens with various "page builder" themes. In such cases it's best to include the rating widget with the shortcode [ratemypost] instead of using the automatic option. If that's too much work, you can add it directly to the template of your theme. See the procedure in the [documentation](https://blazzdev.com/documentation/rate-my-post-documentation/) under Troubleshooting -> The “Add rating widget to all posts” feature is not working.
 = Can I have more than one rating widget on a single web page? =
-This feature is unfortunately reserved for the PRO version of the plugin which is under development. If you are interested in the PRO version read more [here](https://blazzdev.com/rate-my-post-pro/)
+Yes, it's possible to have multiple rating widgets on a single web page (posts, pages etc.). Nevertheless, this feature only works if ajax load results is disabled.
 = Where do I find the documentation =
 The documentation is available [here](https://blazzdev.com/documentation/rate-my-post-documentation/).
 = The vote count and average rating are not correct on page load =
@@ -226,7 +226,7 @@ Yes, the plugin is fully compatible with multilingual websites. If you are using
 = Do I have to translate the plugin if my website uses language other than English? =
 Not necessarily because the plugin allows you to customize all frontend strings in the settings. However, backend strings can only be translated with translation files.
 = Does this plugin show rich snippets? =
-The plugin adds structured data for rich snippets, if you choose structured data type in the settings. Note that since September 2019 Google Shows rich snippets only for the following structured data types: Product, Book, Course, CreativeWorkSeason, CreativeWorkSeries, Episode, Game, LocalBusiness, MediaObject, Movie, MusicPlaylist, MusicRecording, Organization, Recipe, HowTo, SoftwareApplication and Event. The plugin supports all these structured data types except HowTo, SoftwareApplication and Event. HowTo, SoftwareApplication and Event structured data types are only available in the PRO version.
+The plugin adds structured data for rich snippets, if you choose structured data type in the settings. Note that since September 2019 Google Shows rich snippets only for the following structured data types: Product, Book, Course, CreativeWorkSeason, CreativeWorkSeries, Episode, Game, LocalBusiness, MediaObject, Movie, MusicPlaylist, MusicRecording, Organization, Recipe, HowTo, SoftwareApplication and Event. The plugin supports all these structured data types except HowTo, SoftwareApplication and Event. HowTo, SoftwareApplication and Event structured data types are only available in the PRO version. If you are interested in the PRO version read more [here](https://blazzdev.com/rate-my-post-pro/)
 = Which structured data type should I choose? =
 You should choose structured data type that fits your blog posts. If your blog posts are recipes than choose Recipe; if they are courses select Course etc. In case your blog posts don't fit any structured data type, than you are according to Google Guidelines not eligible for rich snippets. Learn more about this [here](https://webmasters.googleblog.com/2019/09/making-review-rich-results-more-helpful.html).
 = Optional fields for rich snippets are missing =

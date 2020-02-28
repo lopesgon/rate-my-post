@@ -250,13 +250,15 @@ class Rate_My_Post_Public {
 			$ip_check = $this->is_not_ip_double_vote( $security_options, $custom_strings, $post_id );
 			$required_data = $this->all_rating_data_submitted( $post_id, $submitted_rating );
 			$nonce_check = $this->has_valid_nonce( $nonce );
+			$user_id_check = $this->is_not_user_id_double_vote( $security_options, $custom_strings, $post_id );
 
 			$security_checks = array(
 				$recaptcha,
 				$privilege,
 				$ip_check,
 				$required_data,
-				$nonce_check
+				$nonce_check,
+				$user_id_check
 			);
 
 			foreach ( $security_checks as $security_check ) {
@@ -346,12 +348,14 @@ class Rate_My_Post_Public {
 			$ip_check = $this->is_not_ip_double_vote( $security_options, $custom_strings, $post_id );
 			$required_data = $this->all_rating_data_submitted( $post_id, $submitted_rating );
 			$nonce_check = $this->has_valid_nonce( $nonce );
+			$user_id_check = $this->is_not_user_id_double_vote( $security_options, $custom_strings, $post_id );
 
 			$security_checks = array(
 				$privilege,
 				$ip_check,
 				$required_data,
-				$nonce_check
+				$nonce_check,
+				$user_id_check
 			);
 
 			foreach ($security_checks as $security_check) {
@@ -886,7 +890,8 @@ class Rate_My_Post_Public {
 			$db_token = $row_object->token;
 			$acceptableTime = strtotime( $row_object->time ) + 300; // rater has 5 min to leave feedback
 			$currentTime = time();
-			if( ( $token === $db_token ) && ( $db_token != '-1' ) && ( $acceptableTime > $currentTime ) ) { // tokens match, time window is ok and rater is eligible to give feedback
+			// if( ( $token === $db_token ) && ( $db_token != '-1' ) && ( $acceptableTime > $currentTime ) ) { on certain server configurations times don't match - to be investigated
+			if( ( $token === $db_token ) && ( $db_token != '-1' ) ) {
 				$data['valid'] = true;
 			} else {
 				$data['valid'] = false;
@@ -965,6 +970,46 @@ class Rate_My_Post_Public {
 			$data['valid'] = false;
 		}
 		return $data;
+	}
+
+	// check if user has permission to interact with this post
+	private function is_not_user_id_double_vote( $security_options, $custom_strings, $post_id ) {
+		$data = array(
+			'valid' => true,
+			'error' => false,
+		);
+
+		if( $security_options['userTracking'] == 1 || ! get_current_user_id() ) { // no need for verification - either disabled or user is not logged in
+			return $data;
+		}
+
+		if( $this->is_user_id_double_vote( $post_id ) ) { // is double vote
+			$data['error'] = $custom_strings['cookieNotice'];
+			$data['valid'] = false;
+		}
+		return $data;
+	}
+
+	//check if logged in user already rated certain post
+	private function is_user_id_double_vote( $post_id ) {
+		// get the voter user id
+		$user_id = get_current_user_id();
+		// check for post and id match
+		global $wpdb;
+		$analytics_table = $wpdb->prefix . "rmp_analytics";
+		$match = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $analytics_table WHERE post = %d AND user = %d", array( $post_id, $user_id ) ) );
+
+		// filter allows us to disable id check
+		if( has_filter('rmp_double_vote_by_id') ) {
+			$match = apply_filters( 'rmp_double_vote_by_id', $match, $post_id );
+		}
+		// disable id check for admins
+		$is_admin = current_user_can( 'manage_options' );
+
+		if ( count( $match ) && ! $is_admin ) { //this is a double vote
+			return true;
+		}
+		return false;
 	}
 
 	// check public nonce

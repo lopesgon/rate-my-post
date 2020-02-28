@@ -733,8 +733,13 @@ class Rate_My_Post_Admin {
 			if( $row->user == -1 ) {
 				$analytics_row['user'] = esc_html__( 'Tracking Disabled', 'rate-my-post' );
 			} elseif ( $row->user ) {
-				$userInfo = get_userdata( $row->user );
-				$analytics_row['user'] = $userInfo->user_login;
+				$user_info = get_userdata( $row->user );
+				$username = $user_info->user_login;
+				// allow hiding username in admin panel
+				if( has_filter('rmp_rater_username') ) {
+					$username = apply_filters( 'rmp_rater_username', $username );
+				}
+				$analytics_row['user'] = $username;
 			} else {
 				$analytics_row['user'] = esc_html__( 'Not logged in', 'rate-my-post' );
 			}
@@ -977,7 +982,12 @@ class Rate_My_Post_Admin {
 	private function feedback_user( $user_id ) {
 		if ( $user_id ) {
 			$user = get_userdata( $user_id );
-			return $user->user_login;
+			$username = $user->user_login;
+			// allow hiding username in admin panel
+			if( has_filter('rmp_rater_username') ) {
+				$username = apply_filters( 'rmp_rater_username', $username );
+			}
+			return $username;
 		}
 		return false;
 	}
