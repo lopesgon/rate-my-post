@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Rating System, Rate Post, Rate Page, Star Rating, Post Rating, Post Feedback, Page Feedback, Responsive Star Rating, Lightweight Post Rating, Ajax Post Rating, Post Rating Analytics, Post Rating, Rich Snippet
 Requires at least: 4.7.0
 Tested up to: 5.3
-Stable tag: 3.0.0
+Stable tag: 3.1.0
 Requires PHP: 5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -247,6 +247,10 @@ You can see the feedback for each post in the post editor at the bottom (meta bo
 7. Manipulate Votes
 
 == Changelog ==
+
+= 3.1.0 =
+* Fixed issues with feedback token on some server configurations
+* Added double vote protection via user id (applies to logged in users but not admins)
 
 = 3.0.0 =
 * [READ BEFORE UPDATING!!!](https://blazzdev.com/rate-my-post-version-3/)
