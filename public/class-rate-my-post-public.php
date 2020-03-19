@@ -888,10 +888,13 @@ class Rate_My_Post_Public {
 		if( count( $results ) === 1 ) { // matching row found
 			$row_object = $results[0];
 			$db_token = $row_object->token;
-			$acceptableTime = strtotime( $row_object->time ) + 300; // rater has 5 min to leave feedback
-			$currentTime = time();
+
+			// $acceptableTime = strtotime( $row_object->time ) + 300; // rater has 5 min to leave feedback
+			// $currentTime = time();
 			// if( ( $token === $db_token ) && ( $db_token != '-1' ) && ( $acceptableTime > $currentTime ) ) { on certain server configurations times don't match - to be investigated
+
 			if( ( $token === $db_token ) && ( $db_token != '-1' ) ) {
+				$this->dump_feedback_token( $token, $id );
 				$data['valid'] = true;
 			} else {
 				$data['valid'] = false;
@@ -907,6 +910,31 @@ class Rate_My_Post_Public {
 			$data = apply_filters( 'rmp_verify_feedback', $data );
 		}
 		return $data;
+	}
+
+	// Dump token - each token can be used only once
+	private function dump_feedback_token( $token, $id ) {
+		global $wpdb;
+		$analytics_table = $wpdb->prefix . "rmp_analytics";
+
+		$data = array (
+			'token' 		=> '-1'
+		);
+
+		$where = array (
+			'id' => $id
+		);
+
+		$format = array(
+			'%s',
+		);
+
+		$where_format = array(
+			'%d'
+		);
+
+		$update = $wpdb->update( $analytics_table, $data, $where, $format, $where_format );
+
 	}
 
 	// check whether interaction is by a human according to google recaptcha
