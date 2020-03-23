@@ -2,9 +2,10 @@ import $ from 'jquery';
 import InitWidget from './modules/InitWidget';
 import AjaxLoad from './modules/AjaxLoad';
 import BrowserSupport from './modules/BrowserSupport';
+import DestroyWidgets from './modules/DestroyWidgets';
 import rmp_frontend from 'rmp_frontend';
 
-$(document).ready(() => {
+function init_rate_my_post() {
   // deal with half-highlighted icons for older browsers
   let browserSupport = new BrowserSupport();
   // check if rating or results widget is present
@@ -38,5 +39,15 @@ $(document).ready(() => {
   uniquePostIDs.forEach((postID) => {
     let initWidget = new InitWidget(postID);
   });
+};
 
+// Init
+$(document).ready(() => {
+  init_rate_my_post();
 });
+
+export function re_init() {
+  console.log('re-init running');
+  let destroyWidgets = new DestroyWidgets();
+  init_rate_my_post();
+}
