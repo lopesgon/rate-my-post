@@ -8,12 +8,14 @@ import OrderlyTables from './modules/OrderlyTables';
 import AjaxRatings from './modules/AjaxRatings';
 import AjaxFeedback from './modules/AjaxFeedback';
 import WaypointsHandler from './modules/WaypointsHandler';
+import ShortcodeHandler from './modules/ShortcodeHandler';
 
 $(document).ready(() => {
 
   let settingsPage = $('.js-rmp-menu').length;
   let orderlyTablesPage = $('.js-rmp-orderly-tables').length;
   let metaboxPage = $('.js-rmp-meta-box').length;
+  let crw = $('.column-crw_shortcode').length;
 
   if(settingsPage) {
     let tabs = new Tabs();
@@ -35,6 +37,10 @@ $(document).ready(() => {
   if(metaboxPage) {
     let ajaxRating = new AjaxRatings();
     let ajaxFeedback = new AjaxFeedback();
+  }
+
+  if(crw) {
+    let shortcodeHandler = new ShortcodeHandler();
   }
 
 });

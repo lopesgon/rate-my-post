@@ -17,6 +17,13 @@
       cursor: pointer;
     }
 
+    &--no-symbol {
+      &:after {
+        content: "";
+        display: none;
+      }
+    }
+
   }
 
   &__text {
@@ -38,4 +45,21 @@
       border-radius: 6px;
     }
   }
+
+  &--auto-width {
+    &:hover {
+      .rmp-tooltip__text {
+        width: auto;
+      }
+    }
+  }
+
+  &--small-padding {
+    &:hover {
+      .rmp-tooltip__text {
+        padding: .2rem; 
+      }
+    }
+  }
+
 }

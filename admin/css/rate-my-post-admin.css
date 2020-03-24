@@ -817,6 +817,7 @@ table.dataTable td {
 .rmp-tooltip {
   display: inline;
   position: relative;
+
 }
 .rmp-tooltip__title:after {
       content: "?";
@@ -830,6 +831,10 @@ table.dataTable td {
 .rmp-tooltip__title:hover {
       cursor: pointer;
     }
+.rmp-tooltip__title--no-symbol:after {
+        content: "";
+        display: none;
+      }
 .rmp-tooltip__text {
     display: none;
   }
@@ -846,6 +851,12 @@ table.dataTable td {
       bottom: 1.2rem;
       border-radius: 6px;
     }
+.rmp-tooltip--auto-width:hover .rmp-tooltip__text {
+        width: auto;
+      }
+.rmp-tooltip--small-padding:hover .rmp-tooltip__text {
+        padding: .2rem; 
+      }
 .rmp-meta-box__vote-count {
     margin-bottom: .5rem;
 
@@ -961,4 +972,12 @@ table.dataTable td {
     }
 .dataTables_filter {
   margin-bottom: .5rem;
+}
+.rmp-crw-shortcode {
+  background-color: #d9d9d9;
+  padding: .3rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #cccccc;
 }

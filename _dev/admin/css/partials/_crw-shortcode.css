@@ -1,0 +1,8 @@
+.rmp-crw-shortcode {
+  background-color: $grey;
+  padding: .3rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid $darkGrey;
+}
