@@ -75,7 +75,7 @@
 
   <?php if ( $this->schema_type() && $vote_count ): ?>
     <!--Structured data -->
-    <?php echo $this->structured_data(); ?>
+    <?php echo $this->structured_data( $post_id ); ?>
   <?php endif; ?>
 
   <?php if ( $rmp_options['social'] === 2 ): ?>

@@ -1163,7 +1163,7 @@ class Rate_My_Post_Public {
 	}
 
 	// outputs the complete structured data
-	private function structured_data() {
+	private function structured_data( $post_id ) {
 		ob_start();
 		include plugin_dir_path( __FILE__ ) . 'templates/structured-data.php';
 		$structured_data = ob_get_clean();
