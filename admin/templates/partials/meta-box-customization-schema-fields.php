@@ -24,22 +24,22 @@
 <?php include_once plugin_dir_path( __FILE__ ) . 'schema-fields-product.php'; ?>
 
 <!-- Book Fields -->
-<?php include_once plugin_dir_path( __FILE__ ) . 'schema-fields-book.php'; ?>
+<?php //include_once plugin_dir_path( __FILE__ ) . 'schema-fields-book.php'; ?>
 
 <!-- Course Fields -->
-<?php include_once plugin_dir_path( __FILE__ ) . 'schema-fields-course.php'; ?>
+<?php //include_once plugin_dir_path( __FILE__ ) . 'schema-fields-course.php'; ?>
 
 <!-- LocalBusiness Fields -->
-<?php include_once plugin_dir_path( __FILE__ ) . 'schema-fields-localbusiness.php'; ?>
+<?php //include_once plugin_dir_path( __FILE__ ) . 'schema-fields-localbusiness.php'; ?>
 
 <!-- Movie Fields -->
-<?php include_once plugin_dir_path( __FILE__ ) . 'schema-fields-movie.php'; ?>
+<?php //include_once plugin_dir_path( __FILE__ ) . 'schema-fields-movie.php'; ?>
 
 <!-- Recipe Fields -->
-<?php include_once plugin_dir_path( __FILE__ ) . 'schema-fields-recipe.php'; ?>
+<?php //include_once plugin_dir_path( __FILE__ ) . 'schema-fields-recipe.php'; ?>
 
 <!-- SoftwareApplication Fields -->
-<?php include_once plugin_dir_path( __FILE__ ) . 'schema-fields-softwareapplication.php'; ?>
+<?php //include_once plugin_dir_path( __FILE__ ) . 'schema-fields-softwareapplication.php'; ?>
 
 <!-- Event Fields -->
-<?php include_once plugin_dir_path( __FILE__ ) . 'schema-fields-event.php'; ?>
+<?php //include_once plugin_dir_path( __FILE__ ) . 'schema-fields-event.php'; ?>

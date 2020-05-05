@@ -51,8 +51,8 @@
     </div>
   </div>
 
-  <div class="rmp-schema-input rmp-schema-input--series js-rmp-schema-repeater" data-schema-key-repeater="offers">
-    <div class="rmp-schema-input__single-repeater js-rmp-single-from-repeater">
+  <div class="rmp-schema-multiple-container js-rmp-schema-complex" data-schema-key-has-children="offers">
+    <div class="rmp-schema-multiple-container__series js-rmp-single-from-complex">
       <div class="rmp-schema-input rmp-schema-input--child js-rmp-schema-field" data-schema-key="availability" data-schema-key-parent="offers">
         <label class="rmp-schema-input__label" for="rmp-schema-availability">
           <?php echo ( esc_html__( 'Offers - Availability', 'rate-my-post' ) ); ?>
@@ -127,13 +127,17 @@
           </p>
         </div>
       </div>
+      <div class="rmp-schema-multiple-container__remove">
+        <span class="rmp-schema-multiple-container__remove__btn js-rmp-schema-field-remove-repeater">
+          <?php echo esc_html__( 'Remove', 'ratemypost' ) ?>
+        </span>
+      </div>
+
     </div>
-    <div class="rmp-schema-input__repeat">
-      <span class="rmp-schema-input__repeat__add js-rmp-schema-field-add-repeater">
+
+    <div class="rmp-schema-multiple-container__add-new">
+      <span class="rmp-schema-multiple-container__add-new__btn js-rmp-schema-field-add-repeater">
         <?php echo esc_html__( 'Add New', 'ratemypost' ) ?>
-      </span>
-      <span class="rmp-schema-input__repeat__remove js-rmp-schema-field-remove-repeater">
-        <?php echo esc_html__( 'Remove', 'ratemypost' ) ?>
       </span>
     </div>
   </div>

@@ -25,8 +25,37 @@ class AjaxSchema {
     this.updateBtn.addClass('rmp-btn--processing');
     this.data['action'] = this.updateAction;
     this.data['postID'] = rmp_options.postID;
-    // Get schema details
+
     let schemaType = this.schemaSelect.find(':selected').val();
+
+    if(schemaType === 'inherit') {
+      return; 
+    }
+
+    let schemaData = this.getSchemaData(schemaType);
+
+    let schemaInfo = {};
+
+    schemaInfo['type'] = schemaType;
+
+    schemaInfo['details'] = schemaData;
+
+    console.log(schemaInfo);
+
+    this.data['schema'] = schemaInfo;
+
+    // $.ajax({
+    //   type: 'POST',
+    //   url: this.ajaxUrl,
+    //   data: this.data,
+    //   dataType: 'JSON',
+    //   success: (response) => {
+    //     this.afterUpdate(response, this.voteCount.val(), this.avgRating.val());
+    //   }
+    // });
+  }
+
+  getSchemaData(schemaType) {
     let schemaContainerClass = '.js-rmp-schema-' + schemaType.toLowerCase();
     let schemaContainer = $(schemaContainerClass);
 
@@ -35,7 +64,7 @@ class AjaxSchema {
       // process all schema inputs
       let schemaInputs = $(schemaContainerClass + ' .js-rmp-schema-field');
 
-      // deal with all, but repeaters
+      // deal with all, but complex schema
       schemaInputs.each((index, element) => {
         let parentSchemaFieldName = $(element).attr('data-schema-key-parent');
         let schemaFieldName = $(element).attr('data-schema-key');
@@ -47,20 +76,20 @@ class AjaxSchema {
         }
       });
 
-      // deal with repeaters
-      let schemaRepeaters = $(schemaContainerClass + ' .js-rmp-schema-repeater');
+      // deal with complex schema
+      let schemaComplex = $(schemaContainerClass + ' .js-rmp-schema-complex');
 
-      if(schemaRepeaters.length) {
+      if(schemaComplex.length) {
 
-        schemaRepeaters.each((index, element) => {
+        schemaComplex.each((index, element) => {
 
-          let schemaFieldNameTopLevel = $(element).attr('data-schema-key-repeater');
+          let schemaFieldNameTopLevel = $(element).attr('data-schema-key-has-children');
 
-          let schemaSingleFromRepeater = $(element).children('.js-rmp-single-from-repeater');
+          let schemaSingleFromComplex = $(element).children('.js-rmp-single-from-complex');
 
-          let repeatersData = [];
+          let complexData = [];
 
-          schemaSingleFromRepeater.each((index, element) => {
+          schemaSingleFromComplex.each((index, element) => {
 
             let childData = {};
 
@@ -74,7 +103,6 @@ class AjaxSchema {
 
             children.each((index, element) => {
               let schemaFieldName = $(element).attr('data-schema-key');
-              console.log(schemaFieldName);
               let schemaFieldValue = $(element).children('input').val();
 
               if(!Array.isArray(childData)) {
@@ -85,29 +113,22 @@ class AjaxSchema {
             });
 
             // push to array
-            repeatersData.push(childData);
+            complexData.push(childData);
 
-          }); // end of schemaSingleFromRepeater.each
+          }); // end of schemaSingleFromComplex.each
 
 
-          schemaFields[schemaFieldNameTopLevel] = repeatersData;
+          schemaFields[schemaFieldNameTopLevel] = complexData;
 
-        }); // end of schemaRepeaters.each
-      } // end of schemaRepeaters.length
+        }); // end of schemaComplex.each
+      } // end of schemaComplex.length
 
-      console.log(schemaFields);
+      return schemaFields;
 
     } // end of schemaContainer.length
 
-    // $.ajax({
-    //   type: 'POST',
-    //   url: this.ajaxUrl,
-    //   data: this.data,
-    //   dataType: 'JSON',
-    //   success: (response) => {
-    //     this.afterUpdate(response, this.voteCount.val(), this.avgRating.val());
-    //   }
-    // });
+    return false;
+
   }
 
   afterUpdate(response, newVoteCount, newAvgRating) {

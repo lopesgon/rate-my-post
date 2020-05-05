@@ -4,11 +4,6 @@
   margin-right: 1%;
   vertical-align: top;
 
-  &__single-repeater {
-    border-bottom: 3px solid $orange;
-    padding-bottom: .5rem;
-  }
-
   &__label {
     display: block;
     font-weight: 500;
@@ -27,26 +22,15 @@
     }
   }
 
-  &__repeat {
-    margin-top: 1rem;
-    font-weight: 500;
-
-    &__add {
-      color: $blue;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    &__remove {
-      color: $red;
-      &:hover {
-        cursor: pointer;
-      }
-    }
+  &--child {
+    display: block;
+    width: 100%;
   }
 
-  &--series {
+}
+
+.rmp-schema-multiple-container {
+  &__series {
     display: block;
     width: 70%;
     margin-left: 10px;
@@ -56,18 +40,48 @@
     border: 1px solid $grey;
   }
 
-  &--child {
-    display: block;
-    width: 100%;
+  &__remove {
+    margin-top: 1rem;
+    text-align: right;
+    &__btn {
+      background-color: $red;
+      color: white;
+      font-weight: 500;
+      padding: .3rem .5rem;
+      border-radius: 3px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $lightRed;
+      }
+
+      &--disabled {
+        background-color: $lightRed;
+
+        &:hover {
+          cursor: auto;
+        }
+      }
+
+    }
   }
 
-  &--single-repeater {
-    display: block;
-    width: 70%;
-    padding: .5rem;
-    margin-top: .5rem;
+  &__add-new {
+    margin-top: 1rem;
     margin-bottom: 1rem;
-    border: 1px solid $grey;
+    margin-left: .5rem;
+    &__btn {
+      background-color: $blue;
+      color: white;
+      font-weight: 500;
+      padding: .3rem .5rem;
+      border-radius: 3px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $lightBlue;
+      }
+    }
   }
 
 }

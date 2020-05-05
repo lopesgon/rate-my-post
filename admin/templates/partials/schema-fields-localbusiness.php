@@ -46,8 +46,8 @@
     >
   </div>
 
-  <div class="rmp-schema-input rmp-schema-input--series js-rmp-schema-repeater" data-schema-key-repeater="address">
-    <div class="rmp-schema-input__single-repeater js-rmp-single-from-repeater">
+  <div class="rmp-schema-multiple-container js-rmp-schema-complex" data-schema-key-has-children="address">
+    <div class="rmp-schema-multiple-container__series js-rmp-single-from-complex">
       <div class="rmp-schema-input rmp-schema-input--child js-rmp-schema-field" data-schema-key="addressLocality" data-schema-key-parent="address">
         <label class="rmp-schema-input__label" for="rmp-schema-addressLocality">
           <?php echo ( esc_html__( 'Address - Locality', 'rate-my-post' ) ); ?>

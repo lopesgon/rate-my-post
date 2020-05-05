@@ -1036,10 +1036,6 @@ table.dataTable td {
   vertical-align: top;
 
 }
-.rmp-schema-input__single-repeater {
-    border-bottom: 3px solid #ffc107;
-    padding-bottom: .5rem;
-  }
 .rmp-schema-input__label {
     display: block;
     font-weight: 500;
@@ -1053,23 +1049,11 @@ table.dataTable td {
       font-style: italic;
       margin: 0;
     }
-.rmp-schema-input__repeat {
-    margin-top: 1rem;
-    font-weight: 500;
+.rmp-schema-input--child {
+    display: block;
+    width: 100%;
   }
-.rmp-schema-input__repeat__add {
-      color: #3399ff;
-    }
-.rmp-schema-input__repeat__add:hover {
-        cursor: pointer;
-      }
-.rmp-schema-input__repeat__remove {
-      color: #dc3545;
-    }
-.rmp-schema-input__repeat__remove:hover {
-        cursor: pointer;
-      }
-.rmp-schema-input--series {
+.rmp-schema-multiple-container__series {
     display: block;
     width: 70%;
     margin-left: 10px;
@@ -1078,15 +1062,41 @@ table.dataTable td {
     margin-bottom: 1rem;
     border: 1px solid #d9d9d9;
   }
-.rmp-schema-input--child {
-    display: block;
-    width: 100%;
+.rmp-schema-multiple-container__remove {
+    margin-top: 1rem;
+    text-align: right;
   }
-.rmp-schema-input--single-repeater {
-    display: block;
-    width: 70%;
-    padding: .5rem;
-    margin-top: .5rem;
+.rmp-schema-multiple-container__remove__btn {
+      background-color: #dc3545;
+      color: white;
+      font-weight: 500;
+      padding: .3rem .5rem;
+      border-radius: 3px;
+
+    }
+.rmp-schema-multiple-container__remove__btn:hover {
+        cursor: pointer;
+        background-color: #e05260;
+      }
+.rmp-schema-multiple-container__remove__btn--disabled {
+        background-color: #e05260;
+      }
+.rmp-schema-multiple-container__remove__btn--disabled:hover {
+          cursor: auto;
+        }
+.rmp-schema-multiple-container__add-new {
+    margin-top: 1rem;
     margin-bottom: 1rem;
-    border: 1px solid #d9d9d9;
+    margin-left: .5rem;
   }
+.rmp-schema-multiple-container__add-new__btn {
+      background-color: #3399ff;
+      color: white;
+      font-weight: 500;
+      padding: .3rem .5rem;
+      border-radius: 3px;
+    }
+.rmp-schema-multiple-container__add-new__btn:hover {
+        cursor: pointer;
+        background-color: #4da6ff;
+      }
