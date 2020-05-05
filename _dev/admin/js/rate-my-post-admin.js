@@ -9,6 +9,8 @@ import AjaxRatings from './modules/AjaxRatings';
 import AjaxFeedback from './modules/AjaxFeedback';
 import WaypointsHandler from './modules/WaypointsHandler';
 import ShortcodeHandler from './modules/ShortcodeHandler';
+import AjaxSchema from './modules/AjaxSchema';
+import SchemaRepeater from './modules/SchemaRepeater';
 
 $(document).ready(() => {
 
@@ -37,6 +39,8 @@ $(document).ready(() => {
   if(metaboxPage) {
     let ajaxRating = new AjaxRatings();
     let ajaxFeedback = new AjaxFeedback();
+    let ajaxSchema = new AjaxSchema();
+    let schemaRepeater = new SchemaRepeater();
   }
 
   if(crw) {

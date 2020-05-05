@@ -981,3 +981,112 @@ table.dataTable td {
   cursor: pointer;
   border: 1px solid #cccccc;
 }
+.rmp-customize-mb__notice__text {
+      text-decoration: underline;
+    }
+.rmp-customize-mb__strings__input-container {
+      display: inline-block;
+      width: 48%;
+      margin-right: 1%;
+    }
+.rmp-customize-mb__strings__label {
+      display: block;
+      font-weight: 500;
+      margin-top: 5px;
+    }
+.rmp-customize-mb__strings__input {
+      display: block;
+      width: 100%;
+    }
+.rmp-customize-mb__style__input-container {
+      display: inline-block;
+      width: 48%;
+      margin-right: 1%;
+    }
+.rmp-customize-mb__style__label {
+      display: block;
+      font-weight: 500;
+      margin-top: 5px;
+    }
+.rmp-customize-mb__style__input {
+      display: block;
+      width: 100%;
+    }
+.rmp-customize-mb__schema__select-container {
+      width: 50%;
+      margin: 0 auto;
+    }
+.rmp-customize-mb__schema__label {
+      display: block;
+      text-align: center;
+      font-weight: 500;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+.rmp-customize-mb__schema__select {
+      width: 70%;
+      font-weight: 500;
+      display: block;
+      margin: 0 auto;
+    }
+.rmp-schema-input {
+  display: inline-block;
+  width: 48%;
+  margin-right: 1%;
+  vertical-align: top;
+
+}
+.rmp-schema-input__single-repeater {
+    border-bottom: 3px solid #ffc107;
+    padding-bottom: .5rem;
+  }
+.rmp-schema-input__label {
+    display: block;
+    font-weight: 500;
+    margin-top: 5px;
+  }
+.rmp-schema-input__input {
+    width: 100%;
+  }
+.rmp-schema-input__tip__text {
+      font-size: 12px;
+      font-style: italic;
+      margin: 0;
+    }
+.rmp-schema-input__repeat {
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+.rmp-schema-input__repeat__add {
+      color: #3399ff;
+    }
+.rmp-schema-input__repeat__add:hover {
+        cursor: pointer;
+      }
+.rmp-schema-input__repeat__remove {
+      color: #dc3545;
+    }
+.rmp-schema-input__repeat__remove:hover {
+        cursor: pointer;
+      }
+.rmp-schema-input--series {
+    display: block;
+    width: 70%;
+    margin-left: 10px;
+    padding: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d9d9d9;
+  }
+.rmp-schema-input--child {
+    display: block;
+    width: 100%;
+  }
+.rmp-schema-input--single-repeater {
+    display: block;
+    width: 70%;
+    padding: .5rem;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d9d9d9;
+  }

@@ -113,12 +113,19 @@ class Rate_My_Post_Admin {
 		if ( ! $this->has_required_capability() ) {
 			return;
 		}
-		add_meta_box( 'rmp-rate-id', 'Rate my Post', array( $this, 'display_metabox' ), $this->define_post_types() );
+		add_meta_box( 'rmp-rate-id', 'Rate my Post Ratings', array( $this, 'display_metabox' ), $this->define_post_types() );
+		add_meta_box( 'rmp-customization', 'Rate my Post Customization', array( $this, 'display_customization_metabox' ), $this->define_post_types() );
 	}
 
 	public function display_metabox() {
 		ob_start();
     include_once plugin_dir_path( __FILE__ ) . 'templates/meta-box.php';
+		echo ob_get_clean();
+	}
+
+	public function display_customization_metabox() {
+		ob_start();
+    include_once plugin_dir_path( __FILE__ ) . 'templates/meta-box-customization.php';
 		echo ob_get_clean();
 	}
 
@@ -325,7 +332,7 @@ class Rate_My_Post_Admin {
 		// analytics item
 		add_submenu_page( 'rate-my-post', 'Rate my Post Analytics', esc_html__( 'Analytics', 'rate-my-post' ), 'edit_others_posts', 'rate-my-post-analytics', array( $this, 'submenu_analytics_display' ) );
 		// custom rating widgets
-		add_submenu_page( 'rate-my-post', esc_html__( 'Custom Rating Widgets', 'rate-my-post' ), esc_html__( 'Custom Rating Widgets', 'rate-my-post' ), 'edit_posts','edit.php?post_type=crw');
+		add_submenu_page( 'rate-my-post', esc_html__( 'Custom Rating Widgets', 'rate-my-post' ), esc_html__( 'Custom Rating Widgets', 'rate-my-post' ), 'edit_others_posts','edit.php?post_type=crw');
   }
 
   public function menu_section_display(){
