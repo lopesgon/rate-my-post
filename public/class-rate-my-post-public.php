@@ -1225,7 +1225,11 @@ class Rate_My_Post_Public {
 	// returns custom results text if inserted
   private function rating_widget_results_text( $options, $avg_rating = false, $vote_count = false, $post_id = false ) {
     $customization = $this->custom_strings( $post_id );
-    $results_text = stripslashes( esc_html( $customization['customResultsText'] ) );
+		$results_text = '';
+		if( array_key_exists( 'customResultsText', $customization ) ) {
+			$results_text = stripslashes( esc_html( $customization['customResultsText'] ) );
+		}
+
 		$max_rating = Rate_My_Post_Common::max_rating();
 
 		if( $options['notShowRating'] == 2 ) {

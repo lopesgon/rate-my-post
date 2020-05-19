@@ -39,12 +39,12 @@
       <p class="rmp-pro__feature">
         <?php echo ( esc_html__( 'Add rating widgets to archives, taxonomies etc.', 'rate-my-post' ) ); ?>
       </p>
-      <p class="rmp-pro__feature">
+      <!-- <p class="rmp-pro__feature">
         <?php echo ( esc_html__( 'Shortcode generator.', 'rate-my-post' ) ); ?>
-      </p>
-      <p class="rmp-pro__feature">
+      </p> -->
+      <!-- <p class="rmp-pro__feature">
         <?php echo ( esc_html__( 'Read-only ratings with structured data for reviews (review rating).', 'rate-my-post' ) ); ?>
-      </p>
+      </p> -->
       <p class="rmp-pro__feature">
         <?php echo ( esc_html__( 'Premium support and more...', 'rate-my-post' ) ); ?>
       </p>
