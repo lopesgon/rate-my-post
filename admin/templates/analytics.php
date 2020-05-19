@@ -87,7 +87,13 @@
           <td><?php echo $row['time']; ?></td>
           <td><?php echo $row['ip']; ?></td>
           <td><?php echo $row['user']; ?></td>
-          <td><a href="<?php echo $row['postLink']; ?>"><?php echo $row['postTitle']; ?></a></td>
+          <td>
+            <?php if( get_post_type( $row['postID'] ) != 'crw' ): ?>
+              <a href="<?php echo $row['postLink']; ?>"><?php echo $row['postTitle']; ?></a>
+            <?php else: ?>
+              <?php echo $row['postTitle']; ?>
+            <?php endif; ?>
+          </td>
           <td><?php echo $row['duration']; ?></td>
           <td><?php echo $row['newRating']; ?></td>
           <td><?php echo $row['newVotes']; ?></td>

@@ -30,7 +30,11 @@ class Rate_My_Post_Admin {
 
 	public function enqueue_styles() {
 		// register style
-		wp_register_style( $this->rate_my_post, plugin_dir_url( __FILE__ ) . 'css/rate-my-post-admin.css', array(), $this->version, 'all' );
+		if( ! is_rtl() ) {
+			wp_register_style( $this->rate_my_post, plugin_dir_url( __FILE__ ) . 'css/rate-my-post-admin.css', array(), $this->version, 'all' );
+		} else {
+			wp_register_style( $this->rate_my_post, plugin_dir_url( __FILE__ ) . 'css/rate-my-post-admin-rtl.css', array(), $this->version, 'all' );
+		}
 		// enqueue style
 		wp_enqueue_style( $this->rate_my_post );
 	}
@@ -59,62 +63,19 @@ class Rate_My_Post_Admin {
 	}
 
 	//---------------------------------------------------
-	// CUSTOM RATING WIDGETS - CPT
-	//---------------------------------------------------
-
-	public function register_custom_rating_widgets() {
-		$crw = new Rate_My_Post_CPT();
-		$crw->register_crw();
-	}
-
-	//---------------------------------------------------
-	// CUSTOM RATING WIDGETS - COLUMNS
-	//---------------------------------------------------
-
-	public function add_columns_to_crw( $columns ) {
-		$mod_columns = array();
-		foreach ( $columns as $key => $title ) {
-			$mod_columns[$key] = $title;
-			if( $key == 'title' ) {
-				$mod_columns['crw_shortcode'] = esc_html__('Shortcode', 'rate-my-post');
-			}
-		}
-
-		return $mod_columns;
-	}
-
-	public function add_content_to_crw_custom_column( $column, $post_id ) {
-		switch ( $column ) {
-			case 'crw_shortcode' :
-				echo '
-				<div class="rmp-tooltip rmp-tooltip--auto-width rmp-tooltip--small-padding">
-					<span class="rmp-tooltip__title rmp-tooltip__title--no-symbol"><span class="rmp-crw-shortcode js-rmp-crw-shortcode">[ratemypost id="' . $post_id . '"]</span></span>
-					<span class="rmp-tooltip__text js-rmp-crw-shortcode-copy">Copy</span>
-				</div>
-				';
-        break;
-    }
-	}
-
-	//---------------------------------------------------
-	// CUSTOM RATING WIDGETS - POST EDITOR CUSTOMIZATIONS
-	//---------------------------------------------------
-
-	public function add_after_title() {
-		if( get_post_type() === 'crw' ) {
-			echo '<span>' .  esc_html__( 'The title is not publicly visible but is used for Schema markup!', 'rate-my-post' ) . '</span>';
-		}
-	}
-
-	//---------------------------------------------------
 	// META BOX - RATINGS UPDATE AND FEEDBACK DISPLAY
 	//---------------------------------------------------
-	public function manipulate_rating_meta_box() {
+	public function meta_boxes() {
 		if ( ! $this->has_required_capability() ) {
 			return;
 		}
+
+		if( class_exists( 'Rate_My_Post_Pro' ) ) { // PRO only
+			add_meta_box( 'rmp-customization', 'Rate my Post Customization', array( $this, 'display_customization_metabox' ), $this->define_post_types() );
+		}
+
 		add_meta_box( 'rmp-rate-id', 'Rate my Post Ratings', array( $this, 'display_metabox' ), $this->define_post_types() );
-		add_meta_box( 'rmp-customization', 'Rate my Post Customization', array( $this, 'display_customization_metabox' ), $this->define_post_types() );
+
 	}
 
 	public function display_metabox() {
@@ -332,7 +293,9 @@ class Rate_My_Post_Admin {
 		// analytics item
 		add_submenu_page( 'rate-my-post', 'Rate my Post Analytics', esc_html__( 'Analytics', 'rate-my-post' ), 'edit_others_posts', 'rate-my-post-analytics', array( $this, 'submenu_analytics_display' ) );
 		// custom rating widgets
-		add_submenu_page( 'rate-my-post', esc_html__( 'Custom Rating Widgets', 'rate-my-post' ), esc_html__( 'Custom Rating Widgets', 'rate-my-post' ), 'edit_others_posts','edit.php?post_type=crw');
+		if( class_exists( 'Rate_My_Post_Pro' ) ) { // PRO only
+			add_submenu_page( 'rate-my-post', esc_html__( 'Custom Rating Widgets', 'rate-my-post' ), esc_html__( 'Custom Rating Widgets', 'rate-my-post' ), 'edit_others_posts','edit.php?post_type=crw');
+		}
   }
 
   public function menu_section_display(){
@@ -625,6 +588,52 @@ class Rate_My_Post_Admin {
 	}
 
 	//---------------------------------------------------
+	// WIPE DATA - AJAX
+	//---------------------------------------------------
+	public function wipe_data() {
+		if ( wp_doing_ajax() ) {
+			$data = array(
+				'valid'     => true,
+				'successMsg' => false,
+				'errorMsg' 	=> array()
+			);
+
+			$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : false;
+
+			if( ! $this->is_administrator() ) {
+				$data['valid'] = false;
+				$data['errorMsg'][] = esc_html__( 'You do not have adequate permissions for this action!', 'rate-my-post' );
+			}
+
+			if( ! $this->has_valid_nonce( $nonce ) ) {
+				$data['valid'] = false;
+				$data['errorMsg'][] = esc_html__( 'Invalid nonce!', 'rate-my-post' );
+			}
+
+			if( ! $data['valid'] ) {
+				echo json_encode( $data );
+				die();
+			}
+
+			// proceed
+			delete_post_meta_by_key( 'rmp_vote_count' );
+			delete_post_meta_by_key( 'rmp_rating_val_sum' );
+			delete_post_meta_by_key( 'rmp_avg_rating' );
+			delete_post_meta_by_key( 'rmp_feedback_val' );
+			delete_post_meta_by_key( 'rmp_feedback_val_new' );
+
+			global $wpdb;
+			$table_name = $wpdb->prefix . 'rmp_analytics';
+			$wpdb->query( "TRUNCATE TABLE $table_name" );
+
+			$data['successMsg'] = esc_html__( 'All data deleted', 'rate-my-post' );
+
+			echo json_encode( $data );
+		}
+		die();
+	}
+
+	//---------------------------------------------------
   // MIGRATION TOOLS - AJAX
   //---------------------------------------------------
 	public function migration_tools() {
@@ -776,6 +785,7 @@ class Rate_My_Post_Admin {
 			$analytics_row['id'] = intval( $row->id );
 			$analytics_row['postTitle'] = get_the_title( $row->post );
 			$analytics_row['postLink'] = get_the_permalink( $row->post );
+			$analytics_row['postID'] = intval( $row->post );
 			$analytics_row['action'] = intval( $row->action );
 			$analytics_row['newRating'] = floatval( $row->average );
 			$analytics_row['newVotes'] = intval( $row->votes );

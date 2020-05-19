@@ -33,7 +33,7 @@
       <?php echo ( esc_html__( 'Security', 'rate-my-post' ) ); ?>
     </div>
     <div class="rmp-menu__tabs__tab js-rmp-tab" data-tab="4">
-      <?php echo ( esc_html__( 'Migration Tools', 'rate-my-post' ) ); ?>
+      <?php echo ( esc_html__( 'Tools', 'rate-my-post' ) ); ?>
     </div>
     <div class="rmp-menu__tabs__tab js-rmp-tab" data-tab="5">
       <?php echo ( esc_html__( 'About', 'rate-my-post' ) ); ?>

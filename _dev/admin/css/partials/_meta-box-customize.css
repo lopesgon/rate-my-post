@@ -6,7 +6,43 @@
     }
   }
 
+  &__tabs {
+    @mixin clearfix;
+    border: 1px solid $darkGrey;
+
+    &__tab {
+      float: left;
+      padding: .4rem 1rem;
+      background-color: $grey;
+      border-right: 1px solid $darkGrey;
+      color: $black;
+      font-size: .9rem;
+      font-weight: 500;
+      transition: background-color .2s ease-in;
+
+      &--selected {
+        background-color: $darkerGrey;
+      }
+
+      &:hover {
+        color: $black;
+        background-color: $darkGrey;
+        cursor: pointer;
+      }
+
+      &:visited, &:focus, &:active {
+        outline: none!important;
+      }
+
+    }
+
+  }
+
   &__strings {
+    display: none;
+    &--visible {
+      display: block;
+    }
 
     &__input-container {
       display: inline-block;
@@ -23,11 +59,33 @@
     &__input {
       display: block;
       width: 100%;
+    }
+
+    &__actions {
+      margin-top: .5rem;
+    }
+
+    &__msg {
+      font-weight: bold;
+      margin: .2rem 0;
+
+      &--success {
+        color: $green;
+      }
+
+      &--alert {
+        color: $red;
+      }
+
     }
 
   }
 
   &__style {
+    display: none;
+    &--visible {
+      display: block;
+    }
 
     &__input-container {
       display: inline-block;
@@ -46,13 +104,43 @@
       width: 100%;
     }
 
+    &__actions {
+      margin-top: .5rem;
+    }
+
+    &__msg {
+      font-weight: bold;
+      margin: .2rem 0;
+
+      &--success {
+        color: $green;
+      }
+
+      &--alert {
+        color: $red;
+      }
+
+    }
+
   }
 
   &__schema {
+    display: none;
+    &--visible {
+      display: block;
+    }
+
+    &__schema-field {
+      display: none;
+      &--selected {
+        display: block;
+      }
+    }
 
     &__select-container {
       width: 50%;
       margin: 0 auto;
+      margin-bottom: 1rem;
     }
 
     &__label {
@@ -68,6 +156,20 @@
       font-weight: 500;
       display: block;
       margin: 0 auto;
+    }
+
+    &__msg {
+      font-weight: bold;
+      margin: .2rem 0;
+
+      &--success {
+        color: $green;
+      }
+
+      &--alert {
+        color: $red;
+      }
+
     }
 
   }

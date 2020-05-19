@@ -28,10 +28,6 @@ class AjaxSchema {
 
     let schemaType = this.schemaSelect.find(':selected').val();
 
-    if(schemaType === 'inherit') {
-      return; 
-    }
-
     let schemaData = this.getSchemaData(schemaType);
 
     let schemaInfo = {};
@@ -40,19 +36,18 @@ class AjaxSchema {
 
     schemaInfo['details'] = schemaData;
 
-    console.log(schemaInfo);
-
     this.data['schema'] = schemaInfo;
 
-    // $.ajax({
-    //   type: 'POST',
-    //   url: this.ajaxUrl,
-    //   data: this.data,
-    //   dataType: 'JSON',
-    //   success: (response) => {
-    //     this.afterUpdate(response, this.voteCount.val(), this.avgRating.val());
-    //   }
-    // });
+    $.ajax({
+      type: 'POST',
+      url: this.ajaxUrl,
+      data: this.data,
+      dataType: 'JSON',
+      success: (response) => {
+        this.afterUpdate(response);
+      }
+    });
+
   }
 
   getSchemaData(schemaType) {
@@ -131,32 +126,28 @@ class AjaxSchema {
 
   }
 
-  afterUpdate(response, newVoteCount, newAvgRating) {
-    // if( response.errorMsg.length ) {
-    //   this.msg.addClass('rmp-meta-box__action-msg--alert');
-    //   this.updateBtn.addClass('rmp-btn--alert');
-    //   this.msg.html(response.errorMsg.join('<br />'));
-    //   this.voteCount.val(this.currentVoteCount);
-    //   this.avgRating.val(this.currentAvgRating);
-    //   setTimeout( () => {
-    //     this.removeStatusIndicators();
-    //   }, 2000 );
-    //   return;
-    // }
-    // this.currentAvgRating = newAvgRating;
-    // this.currentVoteCount = newVoteCount;
-    // this.msg.addClass('rmp-meta-box__action-msg--success');
-    // this.updateBtn.addClass('rmp-btn--success');
-    // this.msg.text(response.successMsg);
-    // setTimeout( () => {
-    //   this.removeStatusIndicators();
-    // }, 2000 );
+  afterUpdate(response) {
+    if( response.errorMsg.length ) {
+      this.msg.addClass('rmp-customize-mb__schema__msg--alert');
+      this.updateBtn.addClass('rmp-btn--alert');
+      this.msg.html(response.errorMsg.join('<br />'));
+      setTimeout( () => {
+        this.removeStatusIndicators();
+      }, 2000 );
+      return;
+    }
+    this.msg.addClass('rmp-customize-mb__schema__msg--success');
+    this.updateBtn.addClass('rmp-btn--success');
+    this.msg.text(response.successMsg);
+    setTimeout( () => {
+      this.removeStatusIndicators();
+    }, 2000 );
   }
 
   removeStatusIndicators() {
-    // this.updateBtn.removeClass('rmp-btn--success rmp-btn--alert rmp-btn--processing');
-    // this.msg.removeClass('rmp-meta-box__action-msg--success rmp-meta-box__action-msg--alert');
-    // this.msg.html('');
+    this.updateBtn.removeClass('rmp-btn--success rmp-btn--alert rmp-btn--processing');
+    this.msg.removeClass('rmp-customize-mb__schema__msg--alert rmp-customize-mb__schema__msg--success');
+    this.msg.html('');
   }
 
   resetDataObject() {

@@ -37,7 +37,7 @@
 
       echo $before_widget;
 
-      if ( ! empty( $title ) ) {
+      if ( ! empty( $title && !empty( $topRatedPosts ) ) ) {
         echo $before_title . $title . $after_title;
       }
 

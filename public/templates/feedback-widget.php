@@ -14,7 +14,7 @@
 <?php
   //retrive necessary data for the template
   $rmp_options = get_option( 'rmp_options' );
-  $rmp_custom_strings = $this->custom_strings();
+  $rmp_custom_strings = $this->custom_strings( $post_id );
 ?>
 
 <div class="rmp-feedback-widget js-rmp-feedback-widget">

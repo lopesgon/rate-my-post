@@ -11,6 +11,11 @@ import WaypointsHandler from './modules/WaypointsHandler';
 import ShortcodeHandler from './modules/ShortcodeHandler';
 import AjaxSchema from './modules/AjaxSchema';
 import SchemaRepeater from './modules/SchemaRepeater';
+import SchemaSelector from './modules/SchemaSelector';
+import AjaxStrings from './modules/AjaxStrings';
+import AjaxClass from './modules/AjaxClass';
+import MetaboxTabs from './modules/MetaboxTabs';
+import AjaxWipe from './modules/AjaxWipe';
 
 $(document).ready(() => {
 
@@ -18,6 +23,7 @@ $(document).ready(() => {
   let orderlyTablesPage = $('.js-rmp-orderly-tables').length;
   let metaboxPage = $('.js-rmp-meta-box').length;
   let crw = $('.column-crw_shortcode').length;
+  let metaboxPagePro = $('.js-rmp-customize-mb').length;
 
   if(settingsPage) {
     let tabs = new Tabs();
@@ -30,6 +36,7 @@ $(document).ready(() => {
     let stickySaveSettings = new WaypointsHandler('js-rmp-options-waypoint', '.js-rmp-options-sticky');
     let stickySaveCustomization = new WaypointsHandler('js-rmp-customization-waypoint', '.js-rmp-customization-sticky');
     let stickySaveSecurity = new WaypointsHandler('js-rmp-security-waypoint', '.js-rmp-security-sticky');
+    let ajaxWipe = new AjaxWipe();
   }
 
   if(orderlyTablesPage) {
@@ -39,8 +46,15 @@ $(document).ready(() => {
   if(metaboxPage) {
     let ajaxRating = new AjaxRatings();
     let ajaxFeedback = new AjaxFeedback();
+  }
+
+  if(metaboxPagePro) {
     let ajaxSchema = new AjaxSchema();
     let schemaRepeater = new SchemaRepeater();
+    let schemaSelector = new SchemaSelector();
+    let ajaxStrings = new AjaxStrings();
+    let ajaxClass = new AjaxClass();
+    let metaboxTabs = new MetaboxTabs();
   }
 
   if(crw) {

@@ -15,18 +15,20 @@
   // variables
   $post_id = ( $post_id ) ? $post_id : get_the_id();
   $rmp_options = get_option( 'rmp_options' );
-  $rmp_custom_strings = $this->custom_strings();
+  $rmp_custom_strings = $this->custom_strings( $post_id );
   $rating_icon_type = self::icon_type();
   $avg_rating = Rate_My_Post_Common::get_average_rating( $post_id );
   $vote_count = Rate_My_Post_Common::get_vote_count( $post_id );
   $icon_classes = self::icons_classes( $post_id, true );
-  $results_text = $this->rating_widget_results_text( $rmp_options, $avg_rating, $vote_count );
+  $results_text = $this->rating_widget_results_text( $rmp_options, $avg_rating, $vote_count, $post_id );
   $max_rating = Rate_My_Post_Common::max_rating();
+  $custom_class = $this->custom_class( $post_id );
+
 ?>
 
 <!-- Rate my Post Plugin -->
 <div
-  class="rmp-widgets-container rmp-wp-plugin rmp-main-container js-rmp-widgets-container js-rmp-widgets-container--<?php echo $post_id; ?>"
+  class="rmp-widgets-container rmp-wp-plugin rmp-main-container js-rmp-widgets-container js-rmp-widgets-container--<?php echo $post_id; ?><?php echo $custom_class; ?>"
   data-post-id="<?php echo $post_id; ?>"
 >
   <?php do_action( 'rmp_before_all_widgets' ); ?>
@@ -73,19 +75,17 @@
 
   </div>
 
-  <?php if ( $this->schema_type() && $vote_count ): ?>
-    <!--Structured data -->
-    <?php echo $this->structured_data( $post_id ); ?>
-  <?php endif; ?>
+  <!--Structured data -->
+  <?php echo $this->structured_data( $post_id, $vote_count ); ?>
 
   <?php if ( $rmp_options['social'] === 2 ): ?>
     <!-- Social widget -->
-    <?php echo $this->social_widget(); ?>
+    <?php echo $this->social_widget( $post_id ); ?>
   <?php endif; ?>
 
   <?php if ( $rmp_options['feedback'] === 2 ): ?>
     <!-- Feedback widget -->
-    <?php echo $this->feedback_widget(); ?>
+    <?php echo $this->feedback_widget( $post_id ); ?>
   <?php endif; ?>
   <?php do_action( 'rmp_after_all_widgets' ); ?>
 </div>

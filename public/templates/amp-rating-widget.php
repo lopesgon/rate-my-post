@@ -15,16 +15,17 @@
   //retrive necessary data for the template
   $post_id = ( $post_id ) ? $post_id : get_the_id();
   $options = get_option( 'rmp_options' );
-  $rmp_custom_strings = $this->custom_strings();
+  $rmp_custom_strings = $this->custom_strings( $post_id );
   $average_rating = Rate_My_Post_Common::get_average_rating( $post_id );
   $vote_count = Rate_My_Post_Common::get_vote_count( $post_id );
-  $results_text = $this->rating_widget_results_text( $options, $average_rating, $vote_count );
+  $results_text = $this->rating_widget_results_text( $options, $average_rating, $vote_count, $post_id );
+  $custom_class = $this->custom_class( $post_id );
 ?>
 
 <!-- Rate my Post Plugin - Rating Widget -->
 <!-- Inspired by AMP by Example - https://ampbyexample.com/advanced/star_rating/ -->
 
-<div class="rmp-amp-rating-widget">
+<div class="rmp-amp-rating-widget<?php echo $custom_class; ?>">
   <?php do_action( 'rmp_before_widget_amp' ); ?>
   <p id="rmp-amp-rating-widget__title">
     <?php echo $rmp_custom_strings['rateTitle']; ?>
@@ -149,9 +150,7 @@
 
   </form>
 
-  <?php if ( $this->schema_type() && $average_rating ): ?>
-    <?php echo $this->structured_data(); ?>
-  <?php endif; ?>
+  <?php echo $this->structured_data( $post_id, $vote_count ); ?>
 
   <?php do_action( 'rmp_after_widget_amp' ); ?>
 </div>

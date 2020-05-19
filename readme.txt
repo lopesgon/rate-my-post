@@ -4,14 +4,14 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Rating System, Rate Post, Rate Page, Star Rating, Post Rating, Post Feedback, Page Feedback, Responsive Star Rating, Lightweight Post Rating, Ajax Post Rating, Post Rating Analytics, Post Rating, Rich Snippet
 Requires at least: 4.7.0
 Tested up to: 5.3
-Stable tag: 3.1.0
+Stable tag: 3.2.0
 Requires PHP: 5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Rate my Post - WP Rating System allows you to easily add rating functionality to your WordPress website. Visitors can rate your posts/pages and send you private feedback after rating. Functionality to create custom rating widgets that work independently of posts and pages is coming soon.
+Rate my Post - WP Rating System allows you to easily add rating functionality to your WordPress website. Visitors can rate your posts/pages and send you private feedback after rating. Functionality to create custom rating widgets that work independently of posts and pages will be available in the PRO version which is coming soon.
 
 What sets Rate my Post apart from other WordPress rating plugins is its simplicity, performance and impact on engagement. It works with any page cache plugin and is probably the most customizable free WordPress rating plugin.
 
@@ -27,6 +27,7 @@ What sets Rate my Post apart from other WordPress rating plugins is its simplici
 * GDPR compliant
 * Top rated posts widget
 * Custom templates for complete customization
+* Works with infinite scroll plugins and popups (implementation requred)
 
 = Developers =
 
@@ -230,11 +231,13 @@ The plugin adds structured data for rich snippets, if you choose structured data
 = Which structured data type should I choose? =
 You should choose structured data type that fits your blog posts. If your blog posts are recipes than choose Recipe; if they are courses select Course etc. In case your blog posts don't fit any structured data type, than you are according to Google Guidelines not eligible for rich snippets. Learn more about this [here](https://webmasters.googleblog.com/2019/09/making-review-rich-results-more-helpful.html).
 = Optional fields for rich snippets are missing =
-Optional fields are not required for rich snippets to show. Hence, the plugin in some structured data types (for example software application) skips the optional fields. The PRO version of the plugin supports optional fields for all structured data types.
+Optional fields are not required for rich snippets to show. Hence, the plugin in some structured data types (for example product) skips the optional fields. The PRO version of the plugin supports optional fields for all structured data types.
 = Rich snippets are not showing =
 If rich snippets are not showing check that the structured data is valid [here](https://search.google.com/structured-data/testing-tool). If it's valid than search engines probably don't trust your website enough to show rich snippets. You can fix that by producing high-quality content.
 = Where can I see the feedback? =
 You can see the feedback for each post in the post editor at the bottom (meta box). There you can also manipulate ratings and see to which rating the feedback belongs. You can find more info about the rating in the analytics section.
+= How to fix invalid nonce error? =
+The invalid nonce error appears if a page is cached for more than 24 hours because WordPress nonces are valid for 24 hours. If you get invalid nonce error after rating a post, decrease page cache expiry. Most caching plugins have page cache expiry set to less than 24 hours. Therefore, this problem typically occurs on websites that use multiple page caching solutions. If that's the case on your website try disabling plugins until the error disappears, so you figure out what is causing the issue.
 
 == Screenshots ==
 
@@ -247,6 +250,16 @@ You can see the feedback for each post in the post editor at the bottom (meta bo
 7. Manipulate Votes
 
 == Changelog ==
+
+= 3.2.0 =
+* Bug Fix: Some rating widget strings could not be translated in the multilingual compatibility mode
+* New feature: Added option to re-init rating widgets for compatibility with infinite scroll plugins, popups etc.
+* New feature: Danger Zone allows deleting all plugin data except the settings
+* Improvement: Social media links now have rel="nofollow noreferrer noopener" attribute
+* Improvement: Added a filter to top rated posts query - it is now possible to only display top rated posts within a category
+* Improvement: RTL compatibility
+* Improvement: Better handling of feedback tokens
+* Updated NPM packages
 
 = 3.1.0 =
 * Fixed issues with feedback token on some server configurations

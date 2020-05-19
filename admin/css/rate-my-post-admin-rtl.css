@@ -41,7 +41,7 @@ table.dataTable thead .sorting_desc_disabled {
   cursor: pointer;
   *cursor: hand;
   background-repeat: no-repeat;
-  background-position: center right;
+  background-position: center left;
 }
 table.dataTable thead .sorting {
   background-image: url("../images/sort_both.png");
@@ -78,11 +78,11 @@ table.dataTable.display tbody tr:first-child td {
 }
 table.dataTable.cell-border tbody th, table.dataTable.cell-border tbody td {
   border-top: 1px solid #ddd;
-  border-right: 1px solid #ddd;
+  border-left: 1px solid #ddd;
 }
 table.dataTable.cell-border tbody tr th:first-child,
 table.dataTable.cell-border tbody tr td:first-child {
-  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 table.dataTable.cell-border tbody tr:first-child th,
 table.dataTable.cell-border tbody tr:first-child td {
@@ -176,7 +176,7 @@ table.dataTable.nowrap th, table.dataTable.nowrap td {
 }
 table.dataTable.compact thead th,
 table.dataTable.compact thead td {
-  padding: 4px 17px 4px 4px;
+  padding: 4px 4px 4px 17px;
 }
 table.dataTable.compact tfoot th,
 table.dataTable.compact tfoot td {
@@ -188,7 +188,7 @@ table.dataTable.compact tbody td {
 }
 table.dataTable th.dt-left,
 table.dataTable td.dt-left {
-  text-align: left;
+  text-align: right;
 }
 table.dataTable th.dt-center,
 table.dataTable td.dt-center,
@@ -197,7 +197,7 @@ table.dataTable td.dataTables_empty {
 }
 table.dataTable th.dt-right,
 table.dataTable td.dt-right {
-  text-align: right;
+  text-align: left;
 }
 table.dataTable th.dt-justify,
 table.dataTable td.dt-justify {
@@ -211,7 +211,7 @@ table.dataTable thead th.dt-head-left,
 table.dataTable thead td.dt-head-left,
 table.dataTable tfoot th.dt-head-left,
 table.dataTable tfoot td.dt-head-left {
-  text-align: left;
+  text-align: right;
 }
 table.dataTable thead th.dt-head-center,
 table.dataTable thead td.dt-head-center,
@@ -223,7 +223,7 @@ table.dataTable thead th.dt-head-right,
 table.dataTable thead td.dt-head-right,
 table.dataTable tfoot th.dt-head-right,
 table.dataTable tfoot td.dt-head-right {
-  text-align: right;
+  text-align: left;
 }
 table.dataTable thead th.dt-head-justify,
 table.dataTable thead td.dt-head-justify,
@@ -239,7 +239,7 @@ table.dataTable tfoot td.dt-head-nowrap {
 }
 table.dataTable tbody th.dt-body-left,
 table.dataTable tbody td.dt-body-left {
-  text-align: left;
+  text-align: right;
 }
 table.dataTable tbody th.dt-body-center,
 table.dataTable tbody td.dt-body-center {
@@ -247,7 +247,7 @@ table.dataTable tbody td.dt-body-center {
 }
 table.dataTable tbody th.dt-body-right,
 table.dataTable tbody td.dt-body-right {
-  text-align: right;
+  text-align: left;
 }
 table.dataTable tbody th.dt-body-justify,
 table.dataTable tbody td.dt-body-justify {
@@ -272,23 +272,23 @@ table.dataTable td {
   zoom: 1;
 }
 .dataTables_wrapper .dataTables_length {
-  float: left;
+  float: right;
 }
 .dataTables_wrapper .dataTables_filter {
-  float: right;
-  text-align: right;
+  float: left;
+  text-align: left;
 }
 .dataTables_wrapper .dataTables_filter input {
-  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 .dataTables_wrapper .dataTables_info {
   clear: both;
-  float: left;
+  float: right;
   padding-top: 0.755em;
 }
 .dataTables_wrapper .dataTables_paginate {
-  float: right;
-  text-align: right;
+  float: left;
+  text-align: left;
   padding-top: 0.25em;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button {
@@ -296,7 +296,7 @@ table.dataTable td {
   display: inline-block;
   min-width: 1.5em;
   padding: 0.5em 1em;
-  margin-left: 2px;
+  margin-right: 2px;
   text-align: center;
   text-decoration: none !important;
   cursor: pointer;
@@ -354,16 +354,16 @@ table.dataTable td {
 .dataTables_wrapper .dataTables_processing {
   position: absolute;
   top: 50%;
-  left: 50%;
+  right: 50%;
   width: 100%;
   height: 40px;
-  margin-left: -50%;
+  margin-right: -50%;
   margin-top: -25px;
   padding-top: 20px;
   text-align: center;
   font-size: 1.2em;
   background-color: white;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 25%, rgba(255, 255, 255, 0.9) 75%, rgba(255, 255, 255, 0) 100%);
 }
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter,
@@ -426,7 +426,7 @@ table.dataTable td {
 }
 /* PARTIALS */
 .rmp-menu {
-  margin-right: 1rem;
+  margin-left: 1rem;
 }
 .rmp-menu__title {
     margin-top: 2rem;
@@ -443,10 +443,10 @@ table.dataTable td {
     display: table;
   }
 .rmp-menu__tabs__tab {
-      float: left;
+      float: right;
       padding: .8rem 1rem;
       background-color: #d9d9d9;
-      border-right: 1px solid #cccccc;
+      border-left: 1px solid #cccccc;
       color: #444444;
       font-size: 1rem;
       font-weight: 500;
@@ -487,15 +487,15 @@ table.dataTable td {
       font-weight: bold;
     }
 .rmp-tab-content__notice {
-    margin: .1rem 0 1rem .2rem;
+    margin: .1rem .2rem 1rem 0;
     font-size: .85rem;
   }
 /* font-style: italic; */
 .rmp-tab-content__notice--top {
-      margin: .1rem 0 .1rem .2rem;
+      margin: .1rem .2rem .1rem 0;
     }
 .rmp-tab-content__notice--small-b-margin {
-      margin: .1rem 0 .2rem .2rem;
+      margin: .1rem .2rem .2rem 0;
     }
 .rmp-tab-content__notice__selectable {
       color: #3399ff;
@@ -506,7 +506,7 @@ table.dataTable td {
       }
 .rmp-tab-content__tip-text {
     font-style: italic;
-    margin: .2rem 0 .2rem 1rem;
+    margin: .2rem 1rem .2rem 0;
   }
 .rmp-tab-content__tip-text:before {
       content: "*";
@@ -515,7 +515,7 @@ table.dataTable td {
     margin: 0;
     font-weight: bold;
     font-size: .9rem;
-    margin-left: .4rem;
+    margin-right: .4rem;
   }
 .rmp-tab-content__action-msg--alert {
       color: #dc3545;
@@ -533,18 +533,18 @@ table.dataTable td {
 .rmp-tab-content__table td {
       width: 50%;
       vertical-align: top;
-      padding-right: .5rem;
+      padding-left: .5rem;
     }
 .rmp-tab-content__table td:nth-child(even) {
-        padding-right: 0;
-        padding-left: .5rem;
+        padding-left: 0;
+        padding-right: .5rem;
       }
 .rmp-tab-content__table--padding td {
-        padding-right: 2rem;
+        padding-left: 2rem;
       }
 .rmp-tab-content__table--padding td:nth-child(even) {
-          padding-right: 0;
-          padding-left: 2rem;
+          padding-left: 0;
+          padding-right: 2rem;
         }
 .rmp-tab-content__table--cell-3 td {
         width: 33%;
@@ -569,17 +569,17 @@ table.dataTable td {
   }
 .rmp-tab-content__input-checkbox[type="checkbox"] {
       position: absolute;
-      margin: 8px 0 0 16px;
+      margin: 8px 16px 0 0;
     }
 .rmp-tab-content__input-checkbox:checked + label:after {
-          margin-left: 16px;
+          margin-right: 16px;
         }
 .rmp-tab-content__input-checkbox:checked + label:before {
           background: #3399ff;
         }
 .rmp-tab-content__input-checkbox + label {
       position: relative;
-      padding: 0 0 0 50px;
+      padding: 0 50px 0 0;
       line-height: 2.0em;
 
     }
@@ -587,7 +587,7 @@ table.dataTable td {
         content: "";
         position: absolute;
         display: block;
-        left: 0;
+        right: 0;
         top: 0;
         width: 40px; /* x*5 */
         height: 24px; /* x*3 */
@@ -600,7 +600,7 @@ table.dataTable td {
         content: "";
         position: absolute;
         display: block;
-        left: 0px;
+        right: 0px;
         top: 0px;
         width: 24px; /* x*3 */
         height: 24px; /* x*3 */
@@ -618,7 +618,7 @@ table.dataTable td {
     position: sticky;
     bottom: 0;
     display: inline-block;
-    left: 100%;
+    right: 100%;
   }
 .rmp-tab-content__sticky-save--hidden {
       position: relative;
@@ -633,7 +633,7 @@ table.dataTable td {
   border: 0px;
   font-size: 1.1rem;
   margin: 0 5px;
-  margin-left: 0;
+  margin-right: 0;
   display: inline-block;
   margin-bottom: 5px;
   transition: background-color .1s ease-in;
@@ -675,19 +675,19 @@ table.dataTable td {
 .rmp-btn--processing:after {
       content: '...';
       display: inline-block;
-      margin-left: .5rem;
+      margin-right: .5rem;
       font-weight: bold;
     }
 .rmp-btn--success:after {
       content: '\2713';
       display: inline-block;
-      margin-left: .5rem;
+      margin-right: .5rem;
       font-weight: bold;
     }
 .rmp-btn--alert:after {
       content: 'X';
       display: inline-block;
-      margin-left: .5rem;
+      margin-right: .5rem;
       font-weight: bold;
     }
 .rmp-migration {
@@ -703,8 +703,8 @@ table.dataTable td {
 .rmp-migration__container {
     max-width: 400px;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 50%;
+    transform: translateX(50%);
   }
 .rmp-migration__subtitle {
     text-align: center;
@@ -770,7 +770,7 @@ table.dataTable td {
       content: '\2713';
       display: inline-block;
       color: #28a745;
-      padding:0 .2rem 0 0;
+      padding:0 0 0 .2rem;
       font-weight: bold;
     }
 .rmp-pro__link {
@@ -778,14 +778,14 @@ table.dataTable td {
   }
 .rmp-stats {
 
-  margin-right: 1rem;
+  margin-left: 1rem;
 
 }
 .rmp-stats__title {
     margin-top: 2rem;
   }
 .rmp-stats__notice {
-    margin: .1rem 0 1rem .2rem;
+    margin: .1rem .2rem 1rem 0;
     font-size: .85rem;
   }
 .rmp-stats__table {
@@ -794,14 +794,14 @@ table.dataTable td {
   }
 .rmp-analytics{
 
-  margin-right: 1rem;
+  margin-left: 1rem;
 
 }
 .rmp-analytics__title {
     margin-top: 2rem;
   }
 .rmp-analytics__notice {
-    margin: .1rem 0 1rem .2rem;
+    margin: .1rem .2rem 1rem 0;
     font-size: .85rem;
   }
 .rmp-analytics__table {
@@ -930,7 +930,7 @@ table.dataTable td {
           color: #ec939c;
         }
 .rmp-alert {
-  margin: .5rem 1rem .5rem 0;
+  margin: .5rem 0 .5rem 1rem;
   padding: .4rem;
   background-color: #dc3545;
   border-radius: 2px;
@@ -947,16 +947,16 @@ table.dataTable td {
 }
 .rmp-data-table.dataTable td {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: right;
     padding: 8px;;
-    border-right: 1px solid #b1b1b1;
+    border-left: 1px solid #b1b1b1;
   }
 .rmp-data-table.dataTable th {
     border: 1px solid #dddddd;
     text-align: center;
     padding: 8px;;
     border-bottom: 1px solid #656464;
-    border-right: 1px solid #b1b1b1;
+    border-left: 1px solid #b1b1b1;
   }
 .rmp-data-table.dataTable tr:nth-child(even) {
       background-color: #dddddd;
@@ -988,10 +988,10 @@ table.dataTable td {
     display: table;
   }
 .rmp-customize-mb__tabs__tab {
-      float: left;
+      float: right;
       padding: .4rem 1rem;
       background-color: #d9d9d9;
-      border-right: 1px solid #cccccc;
+      border-left: 1px solid #cccccc;
       color: #444444;
       font-size: .9rem;
       font-weight: 500;
@@ -1019,7 +1019,7 @@ table.dataTable td {
 .rmp-customize-mb__strings__input-container {
       display: inline-block;
       width: 48%;
-      margin-right: 1%;
+      margin-left: 1%;
     }
 .rmp-customize-mb__strings__label {
       display: block;
@@ -1054,7 +1054,7 @@ table.dataTable td {
 .rmp-customize-mb__style__input-container {
       display: inline-block;
       width: 48%;
-      margin-right: 1%;
+      margin-left: 1%;
     }
 .rmp-customize-mb__style__label {
       display: block;
@@ -1124,7 +1124,7 @@ table.dataTable td {
 .rmp-schema-input {
   display: inline-block;
   width: 48%;
-  margin-right: 1%;
+  margin-left: 1%;
   vertical-align: top;
 
 }
@@ -1148,7 +1148,7 @@ table.dataTable td {
 .rmp-schema-multiple-container__series {
     display: block;
     width: 70%;
-    margin-left: 10px;
+    margin-right: 10px;
     padding: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -1156,7 +1156,7 @@ table.dataTable td {
   }
 .rmp-schema-multiple-container__remove {
     margin-top: 1rem;
-    text-align: right;
+    text-align: left;
   }
 .rmp-schema-multiple-container__remove__btn {
       background-color: #dc3545;
@@ -1179,7 +1179,7 @@ table.dataTable td {
 .rmp-schema-multiple-container__add-new {
     margin-top: 1rem;
     margin-bottom: 1rem;
-    margin-left: .5rem;
+    margin-right: .5rem;
   }
 .rmp-schema-multiple-container__add-new__btn {
       background-color: #3399ff;

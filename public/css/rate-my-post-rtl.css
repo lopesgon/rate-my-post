@@ -96,8 +96,8 @@
   }
 .rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-feedback-widget__input {
     display: block;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
     min-width: 250px;
     max-width: 630px;
     margin-bottom: .4rem;
@@ -110,8 +110,8 @@
     position: relative;
     width: 80px;
     height: 40px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 50%;
+    transform: translateX(50%);
   }
 .rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-feedback-widget__loader--visible {
       display: block;
@@ -119,7 +119,7 @@
 .rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-feedback-widget__loader div {
       display: inline-block;
       position: absolute;
-      left: 8px;
+      right: 8px;
       width: 16px;
       background: #FFCC36;
       -webkit-animation: rmp-feedback-widget__loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
@@ -127,17 +127,17 @@
 
     }
 .rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-feedback-widget__loader div:nth-child(1) {
-        left: 8px;
+        right: 8px;
         -webkit-animation-delay: -0.24s;
                 animation-delay: -0.24s;
       }
 .rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-feedback-widget__loader div:nth-child(2) {
-        left: 32px;
+        right: 32px;
         -webkit-animation-delay: -0.12s;
                 animation-delay: -0.12s;
       }
 .rmp-widgets-container.rmp-wp-plugin.rmp-main-container .rmp-feedback-widget__loader div:nth-child(3) {
-        left: 56px;
+        right: 56px;
         -webkit-animation-delay: 0;
                 animation-delay: 0;
       }
@@ -161,16 +161,16 @@
     height: 150px;
     -o-object-fit: cover;
        object-fit: cover;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
     display: block;
   }
 .rmp-tr-posts-widget__link {
     display: block;
     text-align: center;
     max-width: 200px;
-    margin-left: auto;
     margin-right: auto;
+    margin-left: auto;
     text-decoration: none;
     box-shadow: none;
     text-decoration: none;
@@ -265,13 +265,13 @@
       color: #ffe699;
     }
 .rmp-icon--half-highlight {
-    background: linear-gradient(to right, #FF912C 50%, #ccc 50%);
+    background: linear-gradient(to left, #FF912C 50%, #ccc 50%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
   }
 .rmp-rating-widget .rmp-icon--half-highlight {
-      background: linear-gradient(to right, #ffe699 50%, #ccc 50%);
+      background: linear-gradient(to left, #ffe699 50%, #ccc 50%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -353,7 +353,7 @@
 .rmp-results-widget__visual-rating {
     display: inline-block;
     position: relative;
-    margin-right: .3rem;
+    margin-left: .3rem;
   }
 .rmp-results-widget__avg-rating {
     display: inline-block;
@@ -364,7 +364,7 @@
 .rmp-archive-results-widget {
   display: inline-block;
   position: relative;
-  margin-left: .4rem;
+  margin-right: .4rem;
   vertical-align: top;
   font-size: .9rem;
 }

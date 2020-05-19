@@ -16,6 +16,7 @@ if ( $rmp_options['wipeOnUninstall'] === 2 ) { //delete data on unistall is enab
 	//delete vote count, ratings and feedbacks
 	delete_post_meta_by_key( 'rmp_vote_count' );
 	delete_post_meta_by_key( 'rmp_rating_val_sum' );
+	delete_post_meta_by_key( 'rmp_avg_rating' );
 	delete_post_meta_by_key( 'rmp_feedback_val' );
 	delete_post_meta_by_key( 'rmp_feedback_val_new' );
 	//delete table

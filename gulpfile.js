@@ -13,6 +13,8 @@ var del = require('del');
 var cleanCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify');
 var wpPot = require('gulp-wp-pot');
+var rtlcss = require('gulp-rtlcss');
+var rename = require('gulp-rename');
 
 /* STYLES FUNCTIONS  */
 
@@ -24,6 +26,9 @@ function cssPublicCompile() {
     console.log(errorInfo.toString());
     this.emit('end');
   })
+  .pipe(gulp.dest('./public/css/')) //save to destination
+  .pipe(rtlcss()) // Convert to RTL.
+  .pipe(rename({ suffix: '-rtl' })) // Append "-rtl" to the filename.
   .pipe(gulp.dest('./public/css/')); //save to destination
 }
 
@@ -35,6 +40,9 @@ function cssAdminCompile() {
     console.log(errorInfo.toString());
     this.emit('end');
   })
+  .pipe(gulp.dest('./admin/css/')) //save to destination
+  .pipe(rtlcss()) // Convert to RTL.
+  .pipe(rename({ suffix: '-rtl' })) // Append "-rtl" to the filename.
   .pipe(gulp.dest('./admin/css/')); //save to destination
 }
 
@@ -110,7 +118,7 @@ gulp.task('watch', gulp.parallel(browser_sync, watch_files));
 
 // CREATE A PRODUCTION VERSION
 
-gulp.task('build', gulp.series(clean, copy_files, minify_css, uglify_js, minify_admin_css, uglify_admin_js, create_pot_file));
+gulp.task('build', gulp.series(clean, copy_files, minify_css, minify_css_rtl, uglify_js, minify_admin_css, minify_admin_css_rtl, uglify_admin_js, create_pot_file));
 
 function clean() {
   return del(['./rate-my-post/']);
@@ -133,8 +141,10 @@ function copy_files() {
     '!./LICENSE.md',
     '!./README.md',
     '!./public/css/rate-my-post.css',
+    '!./public/css/rate-my-post-rtl.css',
     '!./public/js/rate-my-post.js',
     '!./admin/css/rate-my-post-admin.css',
+    '!./admin/css/rate-my-post-admin-rtl.css',
     '!./admin/js/rate-my-post-admin.js',
   ]
 
@@ -151,8 +161,26 @@ function minify_css() {
   .pipe(gulp.dest('./rate-my-post/public/css/')); //save to destination
 }
 
+function minify_css_rtl() {
+  return gulp.src('./public/css/rate-my-post-rtl.css') //source
+  .pipe(cleanCSS({compatibility: 'ie8', debug: true}, (details) => {
+      console.log(`${details.name}: ${details.stats.originalSize}`);
+      console.log(`${details.name}: ${details.stats.minifiedSize}`);
+    }))
+  .pipe(gulp.dest('./rate-my-post/public/css/')); //save to destination
+}
+
 function minify_admin_css() {
   return gulp.src('./admin/css/rate-my-post-admin.css') //source
+  .pipe(cleanCSS({compatibility: 'ie8', debug: true}, (details) => {
+      console.log(`${details.name}: ${details.stats.originalSize}`);
+      console.log(`${details.name}: ${details.stats.minifiedSize}`);
+    }))
+  .pipe(gulp.dest('./rate-my-post/admin/css/')); //save to destination
+}
+
+function minify_admin_css_rtl() {
+  return gulp.src('./admin/css/rate-my-post-admin-rtl.css') //source
   .pipe(cleanCSS({compatibility: 'ie8', debug: true}, (details) => {
       console.log(`${details.name}: ${details.stats.originalSize}`);
       console.log(`${details.name}: ${details.stats.minifiedSize}`);

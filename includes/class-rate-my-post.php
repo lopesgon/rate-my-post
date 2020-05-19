@@ -28,7 +28,7 @@ class Rate_My_Post {
 		if ( defined( 'RATE_MY_POST_VERSION' ) ) {
 			$this->version = RATE_MY_POST_VERSION;
 		} else {
-			$this->version = '3.1.0';
+			$this->version = '3.2.0';
 		}
 		$this->rate_my_post = 'rate-my-post';
 
@@ -63,8 +63,8 @@ class Rate_My_Post {
 		// Top Rated Posts Widget
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/rate-my-post-top-rated-widget.php';
 
-		// Custom Rating Widgets - CPT
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'cpt/class-rate-my-post-cpt.php';
+		// PRO VERSION
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'pro/class-rate-my-post-pro.php';
 
     //Fire the loader
 		$this->loader = new Rate_My_Post_Loader();
@@ -85,7 +85,7 @@ class Rate_My_Post {
 		//JS
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		//META BOX
-		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'manipulate_rating_meta_box' );
+		$this->loader->add_action( 'add_meta_boxes', $plugin_admin, 'meta_boxes' );
 		//UPDATE RESULTS AJAX
 		$this->loader->add_action( 'wp_ajax_update_results', $plugin_admin, 'backend_results_update' );
 		//RESET RESULTS AJAX
@@ -112,14 +112,8 @@ class Rate_My_Post {
 		$this->loader->add_action( 'wp_ajax_migrate_data', $plugin_admin, 'migration_tools' );
 		//WIDGETS
 		$this->loader->add_action( 'widgets_init', $plugin_admin, 'register_widgets' );
-		// CPT
-		$this->loader->add_action( 'init', $plugin_admin, 'register_custom_rating_widgets' );
-		// CPT Custom Column
-		$this->loader->add_filter( 'manage_crw_posts_columns', $plugin_admin, 'add_columns_to_crw', 10, 2 );
-		// CPT Custom Column Data
-		$this->loader->add_action( 'manage_crw_posts_custom_column', $plugin_admin, 'add_content_to_crw_custom_column', 10, 2 );
-		// CPT Post Editor Customization
-		$this->loader->add_action( 'edit_form_after_title', $plugin_admin, 'add_after_title' );
+		// WIPE DATA
+		$this->loader->add_action( 'wp_ajax_wipe_data', $plugin_admin, 'wipe_data' );
 	}
 
 	// Register public hooks

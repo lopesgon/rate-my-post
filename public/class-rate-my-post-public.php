@@ -30,7 +30,11 @@ class Rate_My_Post_Public {
 
 	public function enqueue_styles() {
 		// register style
-		wp_register_style( $this->rate_my_post, plugin_dir_url( __FILE__ ) . 'css/rate-my-post.css', array(), $this->version, 'all' );
+		if( ! is_rtl() ) {
+			wp_register_style( $this->rate_my_post, plugin_dir_url( __FILE__ ) . 'css/rate-my-post.css', array(), $this->version, 'all' );
+		} else {
+			wp_register_style( $this->rate_my_post, plugin_dir_url( __FILE__ ) . 'css/rate-my-post-rtl.css', array(), $this->version, 'all' );
+		}
 		// enqueue style
 		wp_enqueue_style( $this->rate_my_post );
 		// internal style for overriding
@@ -45,7 +49,8 @@ class Rate_My_Post_Public {
 		// plugin options
     $options = get_option( 'rmp_options' );
 		$security = get_option( 'rmp_security' );
-		$customization = $this->custom_strings();
+		$post_id = get_the_id();
+		$customization = $this->custom_strings( $post_id );
 		// register scripts
 		wp_register_script( $this->rate_my_post, plugin_dir_url( __FILE__ ) . 'js/rate-my-post.js', array( 'jquery' ), $this->version, true );
 		wp_register_script( 'rmp-recaptcha', 'https://www.google.com/recaptcha/api.js?render=' . $security['siteKey'], array(), null, false );
@@ -237,7 +242,7 @@ class Rate_My_Post_Public {
 			// variables
 			$post_id = intval( $_POST['postID'] );
 			$security_options = get_option( 'rmp_security' );
-			$custom_strings = $this->custom_strings();
+			$custom_strings = $this->custom_strings( $post_id );
 			$submitted_rating = intval( $_POST['star_rating'] );
 			$duration = intval( $_POST['duration'] );
 			$recaptcha_token = isset( $_POST['token'] ) ? $_POST['token'] : false;
@@ -333,7 +338,7 @@ class Rate_My_Post_Public {
 			$options = get_option( 'rmp_options' );
 			$post_id = intval( $_POST['postID'] );
 			$security_options = get_option( 'rmp_security' );
-			$custom_strings = $this->custom_strings();
+			$custom_strings = $this->custom_strings( $post_id );
 			$submitted_rating = intval( $_POST['star_rating'] );
 			$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : false;
 
@@ -419,8 +424,9 @@ class Rate_My_Post_Public {
 
 	public function process_feedback() {
 		if ( wp_doing_ajax() ) {
+			$post_id = intval( $_POST['postID'] );
 			$options = get_option( 'rmp_options' );
-			$customization = $this->custom_strings();
+			$customization = $this->custom_strings( $post_id );
 			// if feedback disabled, die
 			if( $options['feedback'] !== 2 ) {
 				die();
@@ -432,7 +438,6 @@ class Rate_My_Post_Public {
 			);
 
 			// variables
-			$post_id = intval( $_POST['postID'] );
 			$security_options = get_option( 'rmp_security' );
 			$recaptcha_token = isset( $_POST['token'] ) ? $_POST['token'] : false;
 			$rmp_token = isset( $_POST['rating_token'] ) ? $_POST['rating_token'] : false;
@@ -771,14 +776,20 @@ class Rate_My_Post_Public {
 	}
 
 	// outputs the social widget
-	private function social_widget() {
+	private function social_widget( $post_id = false ) {
+		if( $post_id == false ) {
+			$post_id = get_the_id();
+		}
 		ob_start();
 		include plugin_dir_path( __FILE__ ) . 'templates/social-widget.php';
 		return ob_get_clean();
 	}
 
 	// outputs the feedback widget
-	private function feedback_widget() {
+	private function feedback_widget( $post_id = false ) {
+		if( $post_id == false ) {
+			$post_id = get_the_id();
+		}
 		ob_start();
 		include plugin_dir_path( __FILE__ ) . 'templates/feedback-widget.php';
 		return ob_get_clean();
@@ -1163,14 +1174,24 @@ class Rate_My_Post_Public {
 	}
 
 	// outputs the complete structured data
-	private function structured_data( $post_id ) {
-		ob_start();
-		include plugin_dir_path( __FILE__ ) . 'templates/structured-data.php';
-		$structured_data = ob_get_clean();
+	private function structured_data( $post_id = false, $vote_count = false ) {
+		// get the id can't be used for crw
+		if( !$post_id ) {
+			$post_id = get_the_id();
+		}
+
+		if ( $this->schema_type() && $vote_count ) {
+			ob_start();
+			include plugin_dir_path( __FILE__ ) . 'templates/structured-data.php';
+			$structured_data = ob_get_clean();
+		} else {
+			$structured_data = '';
+		}
 
 		if( has_filter('rmp_structured_data') ) {
-			$structured_data = apply_filters( 'rmp_structured_data', $structured_data );
+			$structured_data = apply_filters( 'rmp_structured_data', $structured_data, $post_id );
 		}
+
 		return $structured_data;
 	}
 
@@ -1179,7 +1200,7 @@ class Rate_My_Post_Public {
 	//---------------------------------------------------
 
 	// outputs an array of custom strings for templates - takes internationalization into considerations
-  private function custom_strings() {
+  private function custom_strings( $post_id = false ) {
     $options = get_option( 'rmp_options' );
 
     if ( $options['multiLingual'] != 2 ) { // multilingual website compatibility mode is disabled
@@ -1196,14 +1217,14 @@ class Rate_My_Post_Public {
       }
     }
 		if( has_filter('rmp_custom_strings') ) { // apply filters
-			$custom_strings = apply_filters( 'rmp_custom_strings', $custom_strings );
+			$custom_strings = apply_filters( 'rmp_custom_strings', $custom_strings, $post_id );
 		}
 		return $custom_strings;
   }
 
 	// returns custom results text if inserted
-  private function rating_widget_results_text( $options, $avg_rating = false, $vote_count = false ) {
-    $customization = get_option( 'rmp_customize_strings' );
+  private function rating_widget_results_text( $options, $avg_rating = false, $vote_count = false, $post_id = false ) {
+    $customization = $this->custom_strings( $post_id );
     $results_text = stripslashes( esc_html( $customization['customResultsText'] ) );
 		$max_rating = Rate_My_Post_Common::max_rating();
 
@@ -1221,7 +1242,7 @@ class Rate_My_Post_Public {
       $results_text = str_replace( '{{avgrating}}','<span class="rmp-rating-widget__results__rating js-rmp-avg-rating">' . $avg_rating . '</span>', $results_text );
       }
 			else { // generic results text
-			$results_text = $customization['rateResult'] . ' <span class="rmp-rating-widget__results__rating js-rmp-avg-rating">' . $avg_rating . '</span> / ' . $max_rating . '. ' . $customization['rateResult2'] . ' <span class="rmp-rating-widget__results__votes js-rmp-vote-count">' . $vote_count . '</span>';
+				$results_text = $customization['rateResult'] . ' <span class="rmp-rating-widget__results__rating js-rmp-avg-rating">' . $avg_rating . '</span> / ' . $max_rating . '. ' . $customization['rateResult2'] . ' <span class="rmp-rating-widget__results__votes js-rmp-vote-count">' . $vote_count . '</span>';
 		}
     return $results_text;
   }
@@ -1263,6 +1284,15 @@ class Rate_My_Post_Public {
     }
     return $icon_type;
   }
+
+	private function custom_class( $post_id ) {
+		$custom_class = '';
+		if( has_filter('rmp_custom_class_widgets') ) {
+			$custom_class = apply_filters( 'rmp_custom_class_widgets', $custom_class, $post_id );
+		}
+
+		return $custom_class;
+	}
 
 	//---------------------------------------------------
 	// SOCIAL WIDGET METHODS
@@ -1314,6 +1344,10 @@ class Rate_My_Post_Public {
        'post_type'       => $post_types,
        'posts_per_page'  => -1
     );
+
+		if( has_filter('rmp_top_rated_query') ) {
+			$args = apply_filters( 'rmp_top_rated_query', $args );
+		}
 
     $the_query = new WP_Query( $args );
 

@@ -53,4 +53,21 @@
     <?php endif; ?>
   </div>
 
+  <hr class="rmp-tab-content__divider rmp-tab-content__divider--margin-top" />
+
+  <h2 class="rmp-tab-content__title">
+    <?php echo ( esc_html__( 'Danger Zone', 'rate-my-post' ) ); ?>
+  </h2>
+
+  <p class="rmp-tab-content__tip-text">
+    <?php echo ( esc_html__( 'Here you can delete all votes, feedback and the analytics table with one click. This is useful if you want to delete the data that was submitted while you were testing the plugin.', 'rate-my-post' ) ); ?>
+  </p>
+
+  <div class="rmp-danger-zone">
+    <button type="button" class="rmp-btn rmp-btn--danger js-rmp-delete-data">
+      <?php echo esc_html__( 'Delete Plugin Data', 'rate-my-post' ); ?>
+    </button>
+    <p class="rmp-danger-zone__action-msg js-rmp-delete-data-msg"></p>
+  </div>
+
 </div>
