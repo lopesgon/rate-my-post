@@ -28,7 +28,7 @@ class Rate_My_Post {
 		if ( defined( 'RATE_MY_POST_VERSION' ) ) {
 			$this->version = RATE_MY_POST_VERSION;
 		} else {
-			$this->version = '3.2.0';
+			$this->version = '3.2.1';
 		}
 		$this->rate_my_post = 'rate-my-post';
 
@@ -97,7 +97,7 @@ class Rate_My_Post {
 		//MENU SECTION
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'menu_section' );
 		//OPTIONS UPDATE AJAX
-		$this->loader->add_action( 'wp_ajax_update_options', $plugin_admin, 'options_update' );
+		$this->loader->add_action( 'wp_ajax_rmp_update_options', $plugin_admin, 'options_update' );
 		//OPTIONS RESET AJAX
 		$this->loader->add_action( 'wp_ajax_reset_options', $plugin_admin, 'options_reset' );
 		//CUSTOMIZATION UPDATE AJAX
