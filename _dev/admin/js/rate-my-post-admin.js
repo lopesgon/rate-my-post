@@ -27,7 +27,7 @@ $(document).ready(() => {
 
   if(settingsPage) {
     let tabs = new Tabs();
-    let ajaxSettings = new AjaxOptions('.js-rmp-save-options', '.js-rmp-option', 'update_options', '.js-rmp-options-msg', '.js-rmp-reset-options', 'reset_options');
+    let ajaxSettings = new AjaxOptions('.js-rmp-save-options', '.js-rmp-option', 'rmp_update_options', '.js-rmp-options-msg', '.js-rmp-reset-options', 'reset_options');
     let ajaxCustomization = new AjaxOptions('.js-rmp-save-customization', '.js-rmp-customization', 'update_customization', '.js-rmp-customization-msg', '.js-rmp-reset-customization', 'reset_customization');
     let ajaxSecurity = new AjaxOptions('.js-rmp-save-security', '.js-rmp-security', 'update_security', '.js-rmp-security-msg', '.js-rmp-reset-security', 'reset_security');
     let migration = new MigrateRatings();
