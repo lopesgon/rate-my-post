@@ -69,13 +69,7 @@ class Rate_My_Post_Admin {
 		if ( ! $this->has_required_capability() ) {
 			return;
 		}
-
-		if( class_exists( 'Rate_My_Post_Pro' ) ) { // PRO only
-			add_meta_box( 'rmp-customization', 'Rate my Post Customization', array( $this, 'display_customization_metabox' ), $this->define_post_types() );
-		}
-
 		add_meta_box( 'rmp-rate-id', 'Rate my Post Ratings', array( $this, 'display_metabox' ), $this->define_post_types() );
-
 	}
 
 	public function display_metabox() {
