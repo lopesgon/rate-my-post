@@ -3,7 +3,7 @@
   font-family: 'ratemypost';
   src:  url('fonts/ratemypost.eot?9e18pt');
   src:  url('fonts/ratemypost.eot?9e18pt#iefix') format('embedded-opentype'),
-    url('fonts/ratemypost.ttf?9e18pt') format('truetype'),
+    /* url('fonts/ratemypost.ttf?9e18pt') format('truetype'), */
     url('fonts/ratemypost.woff?9e18pt') format('woff'),
     url('fonts/ratemypost.svg?9e18pt#ratemypost') format('svg');
   font-weight: normal;
