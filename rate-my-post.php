@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Plugin version
-define( 'RATE_MY_POST_VERSION', '3.2.0' );
+define( 'RATE_MY_POST_VERSION', '3.2.1' );
 
 // Plugin activation
 function activate_rate_my_post() {

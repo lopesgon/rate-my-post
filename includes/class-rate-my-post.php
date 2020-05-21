@@ -28,7 +28,7 @@ class Rate_My_Post {
 		if ( defined( 'RATE_MY_POST_VERSION' ) ) {
 			$this->version = RATE_MY_POST_VERSION;
 		} else {
-			$this->version = '3.2.0';
+			$this->version = '3.2.1';
 		}
 		$this->rate_my_post = 'rate-my-post';
 

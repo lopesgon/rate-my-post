@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Rating System, Rate Post, Rate Page, Star Rating, Post Rating, Post Feedback, Page Feedback, Responsive Star Rating, Lightweight Post Rating, Ajax Post Rating, Post Rating Analytics, Post Rating, Rich Snippet
 Requires at least: 4.7.0
 Tested up to: 5.3
-Stable tag: 3.2.0
+Stable tag: 3.2.1
 Requires PHP: 5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -250,6 +250,12 @@ The invalid nonce error appears if a page is cached for more than 24 hours becau
 7. Manipulate Votes
 
 == Changelog ==
+
+= 3.2.1 =
+* Removed several PRO version templates which were added in the latest release (not used by the free version)
+* Updated migration tools - it now works with the latest release of YASR
+* TTF font is no longer used
+* Fixed compatibility with Messenger Customer Chat by Facebook plugin
 
 = 3.2.0 =
 * Bug Fix: Some rating widget strings could not be translated in the multilingual compatibility mode
