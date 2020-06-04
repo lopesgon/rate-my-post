@@ -508,14 +508,25 @@ class Rate_My_Post_Public {
 
 	public function ratings_archive_pages( $title ) {
 		$options = get_option( 'rmp_options' );
+		$excluded_posts = $options['exclude'];
+		$post_id = get_the_id();
 
 		if ( ( $options['archivePages'] === 2 && is_archive() && in_the_loop() ) || ( $options['archivePages'] === 2 && is_home() && in_the_loop() ) ) { // show ratings
 			//variables
 			$vote_count = Rate_My_Post_Common::get_vote_count();
 			$avg_rating = Rate_My_Post_Common::get_average_rating();
 			$visual_rating = self::get_visual_rating();
+			$additional_class = '';
 
-			$html = '<span class="rmp-archive-results-widget">' . $visual_rating . ' <span>' . $avg_rating . ' (' . $vote_count . ')</span></span>';
+			if( ! $vote_count ) { // post not rated append additional class
+				$additional_class .= 'rmp-archive-results-widget--not-rated';
+			}
+
+			if( $excluded_posts && in_array( $post_id, $excluded_posts ) ) {
+				$additional_class .= ' rmp-archive-results-widget--excluded-post';
+			}
+
+			$html = '<span class="rmp-archive-results-widget ' . $additional_class .'">' . $visual_rating . ' <span>' . $avg_rating . ' (' . $vote_count . ')</span></span>';
 
 			// filter to remove complete output
 			if( has_filter('rmp_archive_results') ) {

@@ -368,6 +368,9 @@
   vertical-align: top;
   font-size: .9rem;
 }
+.rmp-archive-results-widget--excluded-post {
+    display: none;
+  }
 .rmp-archive-results-widget .rmp-icon {
     font-size: .9rem;
   }
