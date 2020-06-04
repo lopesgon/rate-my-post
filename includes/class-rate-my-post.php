@@ -148,6 +148,8 @@ class Rate_My_Post {
 		$this->loader->add_action( 'wp_ajax_nopriv_process_rating_amp', $plugin_public, 'process_rating_amp' );
 		//RATINGS ON ARCHIVE PAGES
 		$this->loader->add_filter( 'the_title', $plugin_public, 'ratings_archive_pages', 10, 2 );
+		// STYLE FOR AMP PLUGINS https://wordpress.org/plugins/amp/ and https://wordpress.org/plugins/accelerated-mobile-pages/
+		$this->loader->add_action( 'amp_post_template_css', $plugin_public, 'amp_plugin_style', 1, 1 );
 	}
 
 	// Run the loader to execute all hooks

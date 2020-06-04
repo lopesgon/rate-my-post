@@ -532,6 +532,23 @@ class Rate_My_Post_Public {
 	}
 
 	//---------------------------------------------------
+	// STYLE FOR AMP
+	//---------------------------------------------------
+
+	// STYLE FOR AMP PLUGINS https://wordpress.org/plugins/amp/ and https://wordpress.org/plugins/accelerated-mobile-pages/ both plugins use the same hook
+	public function amp_plugin_style( $amp_template ) {
+		$add_amp_style = true;
+		if( has_filter( 'add_amp_style' ) ) {
+			$add_amp_style = apply_filters( 'add_amp_style', $add_amp_style );
+		}
+		if( $this->is_amp_page() && $this->is_amp_enabled() &&  $add_amp_style ) {
+			ob_start();
+			include plugin_dir_path( __FILE__ ) . 'templates/amp-css.php';
+			echo trim( preg_replace('/\t+/', '', $this->remove_line_breaks( ob_get_clean() ) ) );
+		}
+	}
+
+	//---------------------------------------------------
 	// HELPER METHODS FOR PROCESSING NEW RATINGS AND FEEDBACK
 	//---------------------------------------------------
 

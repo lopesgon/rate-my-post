@@ -217,10 +217,10 @@
             <?php echo ($rmp_options['ampCompatibility'] === 2) ? 'checked':""; ?>
           >
           <label class="rmp-tab-content__label" for="rmp-amp-compatibility">
-            <?php echo ( esc_html__( 'AMP compatibility mode (BETA)', 'rate-my-post' ) ); ?>
+            <?php echo ( esc_html__( 'AMP compatibility mode', 'rate-my-post' ) ); ?>
           </label>
           <p class="rmp-tab-content__notice">
-            <?php echo sprintf( esc_html__('Adds a minimalistic rating and results widget on AMP pages. Check the %sdocumentation%s before enabling', 'rate-my-post'), '<a href="https://blazzdev.com/documentation/rate-my-post-documentation/#amp" target="_blank">', '</a>' ); ?>.
+            <?php echo sprintf( esc_html__('Adds a minimalistic rating and results widget on AMP pages. See the %sdocumentation%s', 'rate-my-post'), '<a href="https://blazzdev.com/documentation/rate-my-post-documentation/#amp" target="_blank">', '</a>' ); ?>.
           </p>
         </td>
         <td>
