@@ -628,6 +628,50 @@ class Rate_My_Post_Admin {
 	}
 
 	//---------------------------------------------------
+	// DISMISS NOTICE - AJAX
+	//---------------------------------------------------
+
+	public function dismiss_notice() {
+		if ( wp_doing_ajax() ) {
+			$data = array(
+				'valid'     => true,
+				'successMsg' => false,
+				'errorMsg' 	=> array()
+			);
+
+			$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : false;
+			$notice = sanitize_text_field( $_POST['noticeKey'] );
+
+			if( ! $this->is_administrator() ) {
+				$data['valid'] = false;
+				$data['errorMsg'][] = esc_html__( 'You do not have adequate permissions for this action!', 'rate-my-post' );
+			}
+
+			if( ! $this->has_valid_nonce( $nonce ) ) {
+				$data['valid'] = false;
+				$data['errorMsg'][] = esc_html__( 'Invalid nonce!', 'rate-my-post' );
+			}
+
+			if( ! $data['valid'] ) {
+				echo json_encode( $data );
+				die();
+			}
+
+			$admin_notices = get_option( 'rmp_admin_notices' );
+
+			if( array_key_exists( $notice, $admin_notices ) ) {
+				$admin_notices[$notice] = true;
+				update_option( 'rmp_admin_notices', $admin_notices );
+			} 
+
+			echo json_encode( $data );;
+
+		}
+		die();
+	}
+
+
+	//---------------------------------------------------
   // MIGRATION TOOLS - AJAX
   //---------------------------------------------------
 	public function migration_tools() {
@@ -746,7 +790,7 @@ class Rate_My_Post_Admin {
 				        update_post_meta( $post_id, 'rmp_rating_val_sum', $ratings_sum );
 				        update_post_meta( $post_id, 'rmp_vote_count', $vote_count );
 				      }
-						}					
+						}
 					}
 
 
@@ -841,6 +885,16 @@ class Rate_My_Post_Admin {
 		}
 
 		return $complete_data;
+	}
+
+	//---------------------------------------------------
+	// ADMIN NOTICES
+	//---------------------------------------------------
+
+	public function admin_notices() {
+		ob_start();
+    include_once plugin_dir_path( __FILE__ ) . 'templates/admin-notices.php';
+		echo ob_get_clean();
 	}
 
 	//---------------------------------------------------

@@ -16,8 +16,11 @@ import AjaxStrings from './modules/AjaxStrings';
 import AjaxClass from './modules/AjaxClass';
 import MetaboxTabs from './modules/MetaboxTabs';
 import AjaxWipe from './modules/AjaxWipe';
+import AjaxNotices from './modules/AjaxNotices';
 
 $(document).ready(() => {
+
+  let ajaxNotices = new AjaxNotices(); 
 
   let settingsPage = $('.js-rmp-menu').length;
   let orderlyTablesPage = $('.js-rmp-orderly-tables').length;

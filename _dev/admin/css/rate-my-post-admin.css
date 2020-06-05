@@ -19,4 +19,5 @@
 @import "partials/_meta-box-customize";
 @import "partials/_rmp-schema-input";
 @import "partials/_rmp-schema-multiple-container";
-@import "partials/_rmp-danger-zone"; 
+@import "partials/_rmp-danger-zone";
+@import "partials/_admin-notice"; 

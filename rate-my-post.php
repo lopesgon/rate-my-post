@@ -9,7 +9,7 @@
  * Plugin Name: 	  	Rate my Post - WP Rating System
  * Plugin URI:        https://wordpress.org/plugins/rate-my-post/
  * Description:       Allows you to easily add rating functionality to your WordPress website.
- * Version:           3.2.1
+ * Version:           3.3.0
  * Author:            Blaz K.
  * Author URI:        https://blazzdev.com
  * License:           GPL-2.0+
@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Plugin version
-define( 'RATE_MY_POST_VERSION', '3.2.1' );
+define( 'RATE_MY_POST_VERSION', '3.3.0' );
 
 // Plugin activation
 function activate_rate_my_post() {
@@ -75,3 +75,5 @@ if( class_exists( 'Rate_My_Post_Pro' ) ) {
 // var_dump(get_option( 'rmp_security' ));
 //VERSION
 // var_dump(get_option( 'rmp_version' ));
+//ADMIN NOTICES
+// var_dump(get_option( 'rmp_admin_notices' ));

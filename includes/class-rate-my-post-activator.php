@@ -19,6 +19,8 @@ class Rate_My_Post_Activator {
     add_option( 'rmp_customize_strings', Rate_My_Post_Settings::default_customization() );
 		//save security option for the plugin
     add_option( 'rmp_security', Rate_My_Post_Settings::security_options() );
+		// save admin notices state for the plugin
+		add_option( 'rmp_admin_notices', Rate_My_Post_Settings::admin_notices() );
 
 		//Version and table are inserted in upgrader - it runs on activation.
 	}
