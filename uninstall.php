@@ -19,6 +19,9 @@ if ( $rmp_options['wipeOnUninstall'] === 2 ) { //delete data on unistall is enab
 	delete_post_meta_by_key( 'rmp_avg_rating' );
 	delete_post_meta_by_key( 'rmp_feedback_val' );
 	delete_post_meta_by_key( 'rmp_feedback_val_new' );
+	delete_post_meta_by_key( '_rmp_schema_details' );
+	delete_post_meta_by_key( '_rmp_post_strings' );
+	delete_post_meta_by_key( '_rmp_post_class' );
 	//delete table
 	global $wpdb;
 	$table_name = $wpdb->prefix . 'rmp_analytics';

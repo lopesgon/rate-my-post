@@ -17,10 +17,11 @@ import AjaxClass from './modules/AjaxClass';
 import MetaboxTabs from './modules/MetaboxTabs';
 import AjaxWipe from './modules/AjaxWipe';
 import AjaxNotices from './modules/AjaxNotices';
+import AjaxLicense from './modules/AjaxLicense';
 
 $(document).ready(() => {
 
-  let ajaxNotices = new AjaxNotices(); 
+  let ajaxNotices = new AjaxNotices();
 
   let settingsPage = $('.js-rmp-menu').length;
   let orderlyTablesPage = $('.js-rmp-orderly-tables').length;
@@ -40,6 +41,7 @@ $(document).ready(() => {
     let stickySaveCustomization = new WaypointsHandler('js-rmp-customization-waypoint', '.js-rmp-customization-sticky');
     let stickySaveSecurity = new WaypointsHandler('js-rmp-security-waypoint', '.js-rmp-security-sticky');
     let ajaxWipe = new AjaxWipe();
+    let ajaxLicense = new AjaxLicense();
   }
 
   if(orderlyTablesPage) {

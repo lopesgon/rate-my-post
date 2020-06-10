@@ -774,7 +774,11 @@ table.dataTable td {
       font-weight: bold;
     }
 .rmp-pro__link {
-    
+
+  }
+.rmp-pro .rmp-tab-content__input {
+    width: 80%;
+    max-width: 600px;
   }
 .rmp-stats {
 
