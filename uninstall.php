@@ -5,6 +5,10 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
+if( class_exists( 'Rate_My_Post_Pro' ) ) {
+	return; 
+}
+
 $rmp_options = get_option( 'rmp_options' );
 
 if ( $rmp_options['wipeOnUninstall'] === 2 ) { //delete data on unistall is enabled

@@ -215,3 +215,38 @@ function create_pot_file() {
   } ))
   .pipe(gulp.dest('./rate-my-post/languages/rate-my-post.pot'));
 }
+
+// CREATE A FILES FOR PRO VERSION
+gulp.task('pro', gulp.series(clean_pro, copy_pro_files));
+
+function clean_pro() {
+  return del(['./rate-my-post-pro/']);
+}
+
+function copy_pro_files() {
+  var pathsToCopyPro = [
+    './**/*',
+    '!./_dev/**',
+    '!./node_modules/**',
+    '!./.git/**',
+    '!./gulpfile.js',
+    '!./webpack.config.js',
+    '!./webpack.production.config.js',
+    '!./webpack.admin.config.js',
+    '!./webpack.production.admin.config.js',
+    '!./package.json',
+    '!./package-lock.json',
+    '!./.gitignore',
+    '!./LICENSE.md',
+    '!./README.md',
+    '!./pro/**',
+    '!./rate-my-post.php',
+    '!./readme.txt',
+    '!./LICENSE.txt',
+    '!./uninstall.php',
+  ]
+
+  return gulp.src(pathsToCopyPro) //source
+  .pipe(gulp.dest('./rate-my-post-pro/')); //save to destination
+
+}
