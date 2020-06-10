@@ -226,7 +226,6 @@ function clean_pro() {
 function copy_pro_files() {
   var pathsToCopyPro = [
     './**/*',
-    '!./_dev/**',
     '!./node_modules/**',
     '!./.git/**',
     '!./gulpfile.js',
