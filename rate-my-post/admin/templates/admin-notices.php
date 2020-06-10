@@ -32,7 +32,7 @@
   </div>
 <?php endif; ?>
 
-<?php if( !$admin_notices['pro'] && ( ( time() - $admin_notices['installed'] ) > 864000 ) ): ?>
+<?php if( ! class_exists( 'Rate_My_Post_Pro' ) && !$admin_notices['pro'] && ( ( time() - $admin_notices['installed'] ) > 864000 ) ): ?>
   <div class="js-rmp-admin-notice rmp-admin-notice notice notice-info is-dismissible" data-admin-notice-key="pro">
     <h2><?php echo sprintf( esc_html__( '%s: Are you ready to boost your SEO with %s?', 'rate-my-post' ), 'Rate my Post', 'Rate my Post PRO' ); ?></h2>
     <p><?php echo sprintf( esc_html__( 'You\'ve been using %s for a while now. Maybe it\'s time to check out the PRO version which comes some neat features such as %sadvanced structured data%s and %scustom rating widgets%s. If not, keep enjoying the free version :)', 'rate-my-post' ), 'Rate my Post', '<b>', '</b>', '<b>', '</b>' ); ?></p>
