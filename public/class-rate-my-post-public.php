@@ -1087,7 +1087,7 @@ class Rate_My_Post_Public {
 		);
 
 		if( ! wp_verify_nonce( $nonce, 'rmp_public_nonce' ) ) {
-			$data['error'] = esc_html__( 'Invalid nonce!', 'rate-my-post' );
+			$data['error'] = esc_html__( 'Invalid WP token!', 'rate-my-post' );
 			$data['valid'] = false;
 		}
 
