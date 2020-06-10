@@ -9,7 +9,7 @@
  * Plugin Name: 	  	Rate my Post - WP Rating System
  * Plugin URI:        https://wordpress.org/plugins/rate-my-post/
  * Description:       Allows you to easily add rating functionality to your WordPress website.
- * Version:           3.2.1
+ * Version:           3.3.0
  * Author:            Blaz K.
  * Author URI:        https://blazzdev.com
  * License:           GPL-2.0+
@@ -23,8 +23,28 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// PRO version is installed
+if( class_exists( 'Rate_My_Post' ) ) {
+	add_action( 'admin_notices', 'rmp_disable_notice' );
+	return;
+}
+
+// Show admin notice if PRO version is detected
+function rmp_disable_notice() {
+	?>
+    <div class="rmp-admin-notice notice notice-error">
+        <h2>
+					Rate my Post <?php echo esc_html__('Notice: Plugin Deactivated', 'rate-my-post'); ?>
+				</h2>
+				<p>
+					<?php echo esc_html__('Plugin has been deactivated because the PRO version was detected.', 'rate-my-post'); ?>
+				</p>
+    </div>
+  <?php
+}
+
 // Plugin version
-define( 'RATE_MY_POST_VERSION', '3.2.1' );
+define( 'RATE_MY_POST_VERSION', '3.3.0' );
 
 // Plugin activation
 function activate_rate_my_post() {
@@ -75,3 +95,7 @@ if( class_exists( 'Rate_My_Post_Pro' ) ) {
 // var_dump(get_option( 'rmp_security' ));
 //VERSION
 // var_dump(get_option( 'rmp_version' ));
+//ADMIN NOTICES
+// var_dump(get_option( 'rmp_admin_notices' ));
+//lICENSE
+// var_dump(get_option( 'rmp_license_key' )); 

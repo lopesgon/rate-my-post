@@ -189,4 +189,14 @@ class Rate_My_Post_Settings {
     'ipDoubleVote',
   );
 
+	public static function admin_notices() {
+		$notices = array(
+			'ls' 				=> false,
+			'ampforwp' 	=> false,
+			'pro'      	=> false,
+			'installed'	=> time(),
+		);
+		return $notices;
+	}
+
 } //end of class

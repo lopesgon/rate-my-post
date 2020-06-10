@@ -774,7 +774,11 @@ table.dataTable td {
       font-weight: bold;
     }
 .rmp-pro__link {
-    
+
+  }
+.rmp-pro .rmp-tab-content__input {
+    width: 80%;
+    max-width: 600px;
   }
 .rmp-stats {
 
@@ -1198,4 +1202,15 @@ table.dataTable td {
 }
 .rmp-danger-zone__action-msg {
     font-weight: bold;
+  }
+.rmp-admin-notice h2 {
+    margin-top: 1rem;
+    margin-bottom: .5rem;
+  }
+.rmp-admin-notice p {
+    font-size: 14px;
+    margin-bottom: 1rem;
+  }
+.rmp-admin-notice .rmp-btn {
+    margin-bottom: 1rem;
   } 

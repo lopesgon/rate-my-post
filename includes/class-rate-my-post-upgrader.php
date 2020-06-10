@@ -67,6 +67,22 @@ class Rate_My_Post_Upgrader {
 				update_option( 'rmp_security', $default_security_options );
 			}
 
+			// ADMIN NOTICES
+			$default_admin_notice = Rate_My_Post_Settings::admin_notices();
+			$database_admin_notices = get_option( 'rmp_admin_notices' );
+
+			if( is_array( $default_admin_notice ) && is_array( $database_admin_notices ) ) {
+        foreach ($default_admin_notice as $key => $value) {
+          if( !array_key_exists( $key,$database_admin_notices ) ) {
+            $database_admin_notices[$key] = $default_admin_notice[$key];
+          }
+        }
+        // add new admin notice
+        update_option( 'rmp_admin_notices', $database_admin_notices );
+      } else { //no admin notices present - adding them for the first time
+				update_option( 'rmp_admin_notices', $default_admin_notice );
+			}
+
 			//DATABASE TABLE FOR ANALYTICS - SINCE 2.8.0
 			//if we are upgrading from version lower than 2.8.0 create the database table
 			//Also runs on update
