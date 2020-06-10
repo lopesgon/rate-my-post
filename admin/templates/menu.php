@@ -15,6 +15,14 @@
   if ( ! defined( 'WPINC' ) ) {
   	die;
   }
+
+  $about = esc_html__( 'About', 'rate-my-post' );
+  $pro = esc_html__( 'Pro Version', 'rate-my-post' );
+
+  if( class_exists( 'Rate_My_Post_Pro' ) ) {
+    $about = esc_html__( 'Support', 'rate-my-post' );
+    $pro = esc_html__( 'License', 'rate-my-post' );
+  }
 ?>
 
 <div class="rmp-menu js-rmp-menu">

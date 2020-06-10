@@ -15,6 +15,12 @@
   if ( ! defined( 'WPINC' ) ) {
   	die;
   }
+
+  if( class_exists( 'Rate_My_Post_Pro' ) ) {
+    do_action( 'rmp_about_section' );
+    return;
+  }
+
 ?>
 
 <div class="rmp-tab-content js-rmp-tab-content js-rmp-tab-content--5">

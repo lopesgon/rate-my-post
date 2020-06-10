@@ -23,6 +23,26 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+// PRO version is installed
+if( class_exists( 'Rate_My_Post' ) ) {
+	add_action( 'admin_notices', 'rmp_disable_notice' );
+	return;
+}
+
+// Show admin notice if PRO version is detected
+function rmp_disable_notice() {
+	?>
+    <div class="rmp-admin-notice notice notice-error">
+        <h2>
+					Rate my Post <?php echo esc_html__('Notice: Plugin Deactivated', 'rate-my-post'); ?>
+				</h2>
+				<p>
+					<?php echo esc_html__('Plugin has been deactivated because the PRO version was detected.', 'rate-my-post'); ?>
+				</p>
+    </div>
+  <?php
+}
+
 // Plugin version
 define( 'RATE_MY_POST_VERSION', '3.3.0' );
 
