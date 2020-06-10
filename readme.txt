@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Rating System, Rate Post, Rate Page, Star Rating, Post Rating, Post Feedback, Page Feedback, Responsive Star Rating, Lightweight Post Rating, Ajax Post Rating, Post Rating Analytics, Post Rating, Rich Snippet
 Requires at least: 4.7.0
 Tested up to: 5.3
-Stable tag: 3.2.1
+Stable tag: 3.3.0
 Requires PHP: 5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -236,8 +236,8 @@ Optional fields are not required for rich snippets to show. Hence, the plugin in
 If rich snippets are not showing check that the structured data is valid [here](https://search.google.com/structured-data/testing-tool). If it's valid than search engines probably don't trust your website enough to show rich snippets. You can fix that by producing high-quality content.
 = Where can I see the feedback? =
 You can see the feedback for each post in the post editor at the bottom (meta box). There you can also manipulate ratings and see to which rating the feedback belongs. You can find more info about the rating in the analytics section.
-= How to fix invalid nonce error? =
-The invalid nonce error appears if a page is cached for more than 24 hours because WordPress nonces are valid for 24 hours. If you get invalid nonce error after rating a post, decrease page cache expiry. Most caching plugins have page cache expiry set to less than 24 hours. Therefore, this problem typically occurs on websites that use multiple page caching solutions. If that's the case on your website try disabling plugins until the error disappears, so you figure out what is causing the issue.
+= How to fix invalid WP token error? =
+The invalid WP token error (refers to WP nonce) appears if a page is cached for more than 24 hours because WordPress nonces are valid for 24 hours. If you get invalid nonce error after rating a post, decrease page cache expiry. Most caching plugins have page cache expiry set to less than 24 hours. Therefore, this problem typically occurs on websites that use multiple page caching solutions. If that's the case on your website try disabling plugins until the error disappears, so you figure out what is causing the issue.
 
 == Screenshots ==
 
@@ -250,6 +250,13 @@ The invalid nonce error appears if a page is cached for more than 24 hours becau
 7. Manipulate Votes
 
 == Changelog ==
+
+= 3.3.0 =
+* Improvement: AMP Compatibility mode is no longer BETA and comes with style
+* Improvement: Ratings on archive pages are no longer shown for excluded posts
+* Improvement: Ratings on archive pages have an additional class if post hasn't been rated yet
+* Improvement: Added admin notices if additional configuration is required
+* Other small improvements 
 
 = 3.2.1 =
 * Removed several PRO version templates which were added in the latest release (not used by the free version)
