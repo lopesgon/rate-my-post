@@ -98,4 +98,4 @@ if( class_exists( 'Rate_My_Post_Pro' ) ) {
 //ADMIN NOTICES
 // var_dump(get_option( 'rmp_admin_notices' ));
 //lICENSE
-// var_dump(get_option( 'rmp_license_key' )); 
+// var_dump(get_option( 'rmp_license_key' ));

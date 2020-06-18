@@ -51,6 +51,10 @@ It is also possible to embed a rating of whichever post by passing the id of the
 
 [ratemypost-result id="1"] - embeds results widget for the post with the id of 1
 
+= PRO Version =
+
+Rate my Post PRO comes with advanced schema selector which allows you to select schema type directly in the post editor for each post and supports custom rating widgets. Read more about [Rate my Post PRO](https://blazzdev.com/products/rate-my-post-pro/).
+
 = Components =
 
 The plugin includes five components; rating widget, results widget, social widget, feedback widget and top rated posts widget.
@@ -227,11 +231,11 @@ Yes, the plugin is fully compatible with multilingual websites. If you are using
 = Do I have to translate the plugin if my website uses language other than English? =
 Not necessarily because the plugin allows you to customize all frontend strings in the settings. However, backend strings can only be translated with translation files.
 = Does this plugin show rich snippets? =
-The plugin adds structured data for rich snippets, if you choose structured data type in the settings. Note that since September 2019 Google Shows rich snippets only for the following structured data types: Product, Book, Course, CreativeWorkSeason, CreativeWorkSeries, Episode, Game, LocalBusiness, MediaObject, Movie, MusicPlaylist, MusicRecording, Organization, Recipe, HowTo, SoftwareApplication and Event. The plugin supports all these structured data types except HowTo, SoftwareApplication and Event. HowTo, SoftwareApplication and Event structured data types are only available in the PRO version. If you are interested in the PRO version read more [here](https://blazzdev.com/rate-my-post-pro/)
+The plugin adds structured data for rich snippets, if you choose structured data type in the settings. Note that since September 2019 Google Shows aggregate rating rich snippets only for the following structured data types: Product, Book, Course, CreativeWorkSeason, CreativeWorkSeries, Episode, Game, LocalBusiness, MediaObject, Movie, MusicPlaylist, MusicRecording, Organization, Recipe, HowTo, SoftwareApplication and Event. The plugin supports all these structured data types except HowTo, SoftwareApplication and Event. SoftwareApplication and Event structured data types are available in the [PRO version](https://blazzdev.com/products/rate-my-post-pro/). HowTO is at the moment not supported.
 = Which structured data type should I choose? =
-You should choose structured data type that fits your blog posts. If your blog posts are recipes than choose Recipe; if they are courses select Course etc. In case your blog posts don't fit any structured data type, than you are according to Google Guidelines not eligible for rich snippets. Learn more about this [here](https://webmasters.googleblog.com/2019/09/making-review-rich-results-more-helpful.html).
+You should choose structured data type that fits your blog posts. If your blog posts are recipes than choose Recipe; if they are courses select Course etc. In case your blog posts don't fit any structured data type, than you are according to Google Guidelines not eligible for rich snippets. Learn more about this [here](https://webmasters.googleblog.com/2019/09/making-review-rich-results-more-helpful.html). If you are in doubt about which structured data type to choose (if any) ask for advice on [Google Help Community](https://blazzdev.com/products/rate-my-post-pro/). They will provide you with better answers than I can.
 = Optional fields for rich snippets are missing =
-Optional fields are not required for rich snippets to show. Hence, the plugin in some structured data types (for example product) skips the optional fields. The PRO version of the plugin supports optional fields for all structured data types.
+Optional fields are not required for rich snippets to show. Hence, the plugin in some structured data types (for example product) skips the optional fields. The [PRO version](https://blazzdev.com/products/rate-my-post-pro/) of the plugin supports optional fields for all structured data types and provides search engines with a more complete information about pages on your website.
 = Rich snippets are not showing =
 If rich snippets are not showing check that the structured data is valid [here](https://search.google.com/structured-data/testing-tool). If it's valid than search engines probably don't trust your website enough to show rich snippets. You can fix that by producing high-quality content.
 = Where can I see the feedback? =
@@ -256,7 +260,7 @@ The invalid WP token error (refers to WP nonce) appears if a page is cached for 
 * Improvement: Ratings on archive pages are no longer shown for excluded posts
 * Improvement: Ratings on archive pages have an additional class if post hasn't been rated yet
 * Improvement: Added admin notices if additional configuration is required
-* Other small improvements 
+* Other small improvements
 
 = 3.2.1 =
 * Removed several PRO version templates which were added in the latest release (not used by the free version)

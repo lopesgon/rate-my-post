@@ -46,6 +46,8 @@ class Rate_My_Post_Public {
 	//---------------------------------------------------
 
 	public function enqueue_scripts() {
+		// Litespeed cache compatibility
+		$this->litespeed_nonce();
 		// plugin options
     $options = get_option( 'rmp_options' );
 		$security = get_option( 'rmp_security' );
@@ -79,7 +81,7 @@ class Rate_My_Post_Public {
 				 'loggedIn'					 		=> is_user_logged_in(),
 				 'positiveThreshold'    => intval( $options['positiveNegative'] ),
 				 'ajaxLoad' 						=> intval( $options['ajaxLoad'] ),
-				 'nonce'       				=> wp_create_nonce( 'rmp_public_nonce' ),
+				 'nonce'       					=> wp_create_nonce( 'rmp_public_nonce' ),
         )
     );
 
@@ -1178,6 +1180,13 @@ class Rate_My_Post_Public {
 		//W3TC
 		if ( function_exists(	'w3tc_flush_post'	)	){
 			w3tc_flush_post( $post_id );
+		}
+	}
+
+	// prevents nonce issues with litespeed cache plugin
+	private function litespeed_nonce() {
+		if ( method_exists( 'LiteSpeed_Cache_API', 'nonce_action' ) ) {
+			LiteSpeed_Cache_API::nonce_action( 'rmp_public_nonce' );
 		}
 	}
 
