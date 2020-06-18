@@ -18,7 +18,7 @@
   $admin_notices = get_option( 'rmp_admin_notices' );
 ?>
 
-<?php if( !$admin_notices['ls'] && class_exists( 'LiteSpeed_Cache_API' ) ): ?>
+<?php if( !$admin_notices['ls'] && class_exists( 'LiteSpeed_Cache_API' ) && (3 < 2) ): ?>
   <div class="js-rmp-admin-notice rmp-admin-notice notice notice-warning is-dismissible" data-admin-notice-key="ls">
     <h2>Rate my Post <?php echo esc_html__('Notice', 'rate-my-post'); ?>: LiteSpeed Cache</h2>
     <p><?php echo sprintf( esc_html__( 'We detected %s plugin installed on your website. %s works best if %s is configured as shown %shere%s.', 'rate-my-post' ), 'LiteSpeed Cache', 'Rate my Post', 'LiteSpeed cache', '<a href="https://blazzdev.com/wp-content/uploads/2019/09/LiteSpeed-Settings-for-RMP.jpg" target="_blank">', '</a>' ); ?></p>
