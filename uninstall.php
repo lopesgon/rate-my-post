@@ -6,7 +6,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 if( class_exists( 'Rate_My_Post_Pro' ) ) {
-	return; 
+	return;
 }
 
 $rmp_options = get_option( 'rmp_options' );
