@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: Rating System, Rate Post, Rate Page, Star Rating, Post Rating, Post Feedback, Page Feedback, Responsive Star Rating, Lightweight Post Rating, Ajax Post Rating, Post Rating Analytics, Post Rating, Rich Snippet
 Requires at least: 4.7.0
 Tested up to: 5.5
-Stable tag: 3.3.0
+Stable tag: 3.3.1
 Requires PHP: 5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -258,7 +258,7 @@ The invalid WP token error (refers to WP nonce) appears if a page is cached for 
 = 3.3.1 =
 * Bug fix: Properly encode social media share links
 * Improvement: Added fallback image for schema
-* Compatibility with WP 5.5  
+* Compatibility with WP 5.5
 
 = 3.3.0 =
 * Improvement: AMP Compatibility mode is no longer BETA and comes with style
