@@ -3,7 +3,7 @@ Contributors: blazk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HJH3AS8TP8FEC&source=url
 Tags: Rating System, Rate Post, Rate Page, Star Rating, Post Rating, Post Feedback, Page Feedback, Responsive Star Rating, Lightweight Post Rating, Ajax Post Rating, Post Rating Analytics, Post Rating, Rich Snippet
 Requires at least: 4.7.0
-Tested up to: 5.3
+Tested up to: 5.5
 Stable tag: 3.3.0
 Requires PHP: 5.3
 License: GPLv3
@@ -11,7 +11,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Rate my Post - WP Rating System allows you to easily add rating functionality to your WordPress website. Visitors can rate your posts/pages and send you private feedback after rating. Functionality to create custom rating widgets that work independently of posts and pages will be available in the PRO version which is coming soon.
+Rate my Post - WP Rating System allows you to easily add rating functionality to your WordPress website. Visitors can rate your posts/pages and send you private feedback after rating. Functionality to create custom rating widgets that work independently of posts and pages is available in the [PRO version](https://blazzdev.com/products/rate-my-post-pro/).
 
 What sets Rate my Post apart from other WordPress rating plugins is its simplicity, performance and impact on engagement. It works with any page cache plugin and is probably the most customizable free WordPress rating plugin.
 
@@ -233,7 +233,7 @@ Not necessarily because the plugin allows you to customize all frontend strings 
 = Does this plugin show rich snippets? =
 The plugin adds structured data for rich snippets, if you choose structured data type in the settings. Note that since September 2019 Google Shows aggregate rating rich snippets only for the following structured data types: Product, Book, Course, CreativeWorkSeason, CreativeWorkSeries, Episode, Game, LocalBusiness, MediaObject, Movie, MusicPlaylist, MusicRecording, Organization, Recipe, HowTo, SoftwareApplication and Event. The plugin supports all these structured data types except HowTo, SoftwareApplication and Event. SoftwareApplication and Event structured data types are available in the [PRO version](https://blazzdev.com/products/rate-my-post-pro/). HowTO is at the moment not supported.
 = Which structured data type should I choose? =
-You should choose structured data type that fits your blog posts. If your blog posts are recipes than choose Recipe; if they are courses select Course etc. In case your blog posts don't fit any structured data type, than you are according to Google Guidelines not eligible for rich snippets. Learn more about this [here](https://webmasters.googleblog.com/2019/09/making-review-rich-results-more-helpful.html). If you are in doubt about which structured data type to choose (if any) ask for advice on [Google Help Community](https://blazzdev.com/products/rate-my-post-pro/). They will provide you with better answers than I can.
+You should choose structured data type that fits your blog posts. If your blog posts are recipes than choose Recipe; if they are courses select Course etc. In case your blog posts don't fit any structured data type, then you are according to Google Guidelines not eligible for rich snippets. Learn more about this [here](https://webmasters.googleblog.com/2019/09/making-review-rich-results-more-helpful.html). If you are in doubt about which structured data type to choose (if any) ask for advice on [Google Help Community](https://support.google.com/websearch/community?hl=en). They will provide you with better answers than I can.
 = Optional fields for rich snippets are missing =
 Optional fields are not required for rich snippets to show. Hence, the plugin in some structured data types (for example product) skips the optional fields. The [PRO version](https://blazzdev.com/products/rate-my-post-pro/) of the plugin supports optional fields for all structured data types and provides search engines with a more complete information about pages on your website.
 = Rich snippets are not showing =
@@ -241,7 +241,7 @@ If rich snippets are not showing check that the structured data is valid [here](
 = Where can I see the feedback? =
 You can see the feedback for each post in the post editor at the bottom (meta box). There you can also manipulate ratings and see to which rating the feedback belongs. You can find more info about the rating in the analytics section.
 = How to fix invalid WP token error? =
-The invalid WP token error (refers to WP nonce) appears if a page is cached for more than 24 hours because WordPress nonces are valid for 24 hours. If you get invalid nonce error after rating a post, decrease page cache expiry. Most caching plugins have page cache expiry set to less than 24 hours. Therefore, this problem typically occurs on websites that use multiple page caching solutions. If that's the case on your website try disabling plugins until the error disappears, so you figure out what is causing the issue.
+The invalid WP token error (refers to WP nonce) appears if a page is cached for more than 24 hours because WordPress nonces are valid for 24 hours. If you get invalid nonce error after rating a post, decrease page cache expiry. Most caching plugins have page cache expiry set to less than 24 hours. Therefore, this problem typically occurs on websites that use multiple page caching solutions. If that's the case on your website try disabling plugins until the error disappears, so you figure out what is causing the issue. You can read more about how to fix this problem [here](https://blazzdev.com/documentation/rate-my-post-documentation/#nonce-info).
 
 == Screenshots ==
 
@@ -254,6 +254,11 @@ The invalid WP token error (refers to WP nonce) appears if a page is cached for 
 7. Manipulate Votes
 
 == Changelog ==
+
+= 3.3.1 =
+* Bug fix: Properly encode social media share links
+* Improvement: Added fallback image for schema
+* Compatibility with WP 5.5  
 
 = 3.3.0 =
 * Improvement: AMP Compatibility mode is no longer BETA and comes with style

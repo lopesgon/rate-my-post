@@ -1232,6 +1232,26 @@ class Rate_My_Post_Public {
 		return $structured_data;
 	}
 
+	// outputs url to the image for schema
+	private function schema_image( $post_id ) {
+		$post_thumb = get_the_post_thumbnail_url( $post_id );
+		// post has thumb
+		if( $post_thumb ) {
+			return $post_thumb;
+		}
+
+		// no post thumb, return logo
+		$custom_logo_id = get_theme_mod( 'custom_logo' );
+		$logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+		if( is_array( $logo ) && !empty( $logo ) ) {
+			return $logo[0];
+		}
+
+		// no image found
+		return '';
+
+	}
+
 	//---------------------------------------------------
 	// CUSTOMIZATION METHODS
 	//---------------------------------------------------
@@ -1346,7 +1366,8 @@ class Rate_My_Post_Public {
     $url = '';
     $image = '';
     // get the necessary data
-    $title = urlencode( get_the_title() );
+		$title = get_post_field('post_title', get_the_id(), 'raw');
+    $title = urlencode( $title );
     $url = urlencode( get_the_permalink() );
     $image = urlencode( get_the_post_thumbnail_url( get_the_id(), 'full' ) );
 
