@@ -977,87 +977,87 @@ msgstr ""
 msgid "Votes"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:110, public/class-rate-my-post-public.php:1564, rate-my-post/common/class-rate-my-post-settings.php:110, rate-my-post/public/class-rate-my-post-public.php:1564
+#: common/class-rate-my-post-settings.php:110, public/class-rate-my-post-public.php:1585, rate-my-post/common/class-rate-my-post-settings.php:110, rate-my-post/public/class-rate-my-post-public.php:1585
 msgid "How useful was this post?"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:111, public/class-rate-my-post-public.php:1565, rate-my-post/common/class-rate-my-post-settings.php:111, rate-my-post/public/class-rate-my-post-public.php:1565
+#: common/class-rate-my-post-settings.php:111, public/class-rate-my-post-public.php:1586, rate-my-post/common/class-rate-my-post-settings.php:111, rate-my-post/public/class-rate-my-post-public.php:1586
 msgid "Click on a star to rate it!"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:112, public/class-rate-my-post-public.php:1566, rate-my-post/common/class-rate-my-post-settings.php:112, rate-my-post/public/class-rate-my-post-public.php:1566
+#: common/class-rate-my-post-settings.php:112, public/class-rate-my-post-public.php:1587, rate-my-post/common/class-rate-my-post-settings.php:112, rate-my-post/public/class-rate-my-post-public.php:1587
 msgid "Average rating"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:113, public/class-rate-my-post-public.php:1567, rate-my-post/common/class-rate-my-post-settings.php:113, rate-my-post/public/class-rate-my-post-public.php:1567
+#: common/class-rate-my-post-settings.php:113, public/class-rate-my-post-public.php:1588, rate-my-post/common/class-rate-my-post-settings.php:113, rate-my-post/public/class-rate-my-post-public.php:1588
 msgid "Vote count:"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:114, public/class-rate-my-post-public.php:1568, rate-my-post/common/class-rate-my-post-settings.php:114, rate-my-post/public/class-rate-my-post-public.php:1568
+#: common/class-rate-my-post-settings.php:114, public/class-rate-my-post-public.php:1589, rate-my-post/common/class-rate-my-post-settings.php:114, rate-my-post/public/class-rate-my-post-public.php:1589
 msgid "You already voted! This vote will not be counted!"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:115, public/class-rate-my-post-public.php:1569, rate-my-post/common/class-rate-my-post-settings.php:115, rate-my-post/public/class-rate-my-post-public.php:1569
+#: common/class-rate-my-post-settings.php:115, public/class-rate-my-post-public.php:1590, rate-my-post/common/class-rate-my-post-settings.php:115, rate-my-post/public/class-rate-my-post-public.php:1590
 msgid "No votes so far! Be the first to rate this post."
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:116, public/class-rate-my-post-public.php:1570, rate-my-post/common/class-rate-my-post-settings.php:116, rate-my-post/public/class-rate-my-post-public.php:1570
+#: common/class-rate-my-post-settings.php:116, public/class-rate-my-post-public.php:1591, rate-my-post/common/class-rate-my-post-settings.php:116, rate-my-post/public/class-rate-my-post-public.php:1591
 msgid "Thank you for rating this post!"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:117, public/class-rate-my-post-public.php:1571, rate-my-post/common/class-rate-my-post-settings.php:117, rate-my-post/public/class-rate-my-post-public.php:1571
+#: common/class-rate-my-post-settings.php:117, public/class-rate-my-post-public.php:1592, rate-my-post/common/class-rate-my-post-settings.php:117, rate-my-post/public/class-rate-my-post-public.php:1592
 msgid "Not at all useful"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:118, public/class-rate-my-post-public.php:1572, rate-my-post/common/class-rate-my-post-settings.php:118, rate-my-post/public/class-rate-my-post-public.php:1572
+#: common/class-rate-my-post-settings.php:118, public/class-rate-my-post-public.php:1593, rate-my-post/common/class-rate-my-post-settings.php:118, rate-my-post/public/class-rate-my-post-public.php:1593
 msgid "Somewhat useful"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:119, public/class-rate-my-post-public.php:1573, rate-my-post/common/class-rate-my-post-settings.php:119, rate-my-post/public/class-rate-my-post-public.php:1573
+#: common/class-rate-my-post-settings.php:119, public/class-rate-my-post-public.php:1594, rate-my-post/common/class-rate-my-post-settings.php:119, rate-my-post/public/class-rate-my-post-public.php:1594
 msgid "Useful"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:120, public/class-rate-my-post-public.php:1574, rate-my-post/common/class-rate-my-post-settings.php:120, rate-my-post/public/class-rate-my-post-public.php:1574
+#: common/class-rate-my-post-settings.php:120, public/class-rate-my-post-public.php:1595, rate-my-post/common/class-rate-my-post-settings.php:120, rate-my-post/public/class-rate-my-post-public.php:1595
 msgid "Fairly useful"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:121, public/class-rate-my-post-public.php:1575, rate-my-post/common/class-rate-my-post-settings.php:121, rate-my-post/public/class-rate-my-post-public.php:1575
+#: common/class-rate-my-post-settings.php:121, public/class-rate-my-post-public.php:1596, rate-my-post/common/class-rate-my-post-settings.php:121, rate-my-post/public/class-rate-my-post-public.php:1596
 msgid "Very useful"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:122, public/class-rate-my-post-public.php:1576, rate-my-post/common/class-rate-my-post-settings.php:122, rate-my-post/public/class-rate-my-post-public.php:1576
+#: common/class-rate-my-post-settings.php:122, public/class-rate-my-post-public.php:1597, rate-my-post/common/class-rate-my-post-settings.php:122, rate-my-post/public/class-rate-my-post-public.php:1597
 msgid "As you found this post useful..."
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:123, public/class-rate-my-post-public.php:1577, rate-my-post/common/class-rate-my-post-settings.php:123, rate-my-post/public/class-rate-my-post-public.php:1577
+#: common/class-rate-my-post-settings.php:123, public/class-rate-my-post-public.php:1598, rate-my-post/common/class-rate-my-post-settings.php:123, rate-my-post/public/class-rate-my-post-public.php:1598
 msgid "Follow us on social media!"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:124, public/class-rate-my-post-public.php:1578, rate-my-post/common/class-rate-my-post-settings.php:124, rate-my-post/public/class-rate-my-post-public.php:1578
+#: common/class-rate-my-post-settings.php:124, public/class-rate-my-post-public.php:1599, rate-my-post/common/class-rate-my-post-settings.php:124, rate-my-post/public/class-rate-my-post-public.php:1599
 msgid "We are sorry that this post was not useful for you!"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:125, public/class-rate-my-post-public.php:1579, rate-my-post/common/class-rate-my-post-settings.php:125, rate-my-post/public/class-rate-my-post-public.php:1579
+#: common/class-rate-my-post-settings.php:125, public/class-rate-my-post-public.php:1600, rate-my-post/common/class-rate-my-post-settings.php:125, rate-my-post/public/class-rate-my-post-public.php:1600
 msgid "Let us improve this post!"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:126, public/class-rate-my-post-public.php:1580, rate-my-post/common/class-rate-my-post-settings.php:126, rate-my-post/public/class-rate-my-post-public.php:1580
+#: common/class-rate-my-post-settings.php:126, public/class-rate-my-post-public.php:1601, rate-my-post/common/class-rate-my-post-settings.php:126, rate-my-post/public/class-rate-my-post-public.php:1601
 msgid "Tell us how we can improve this post?"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:127, public/class-rate-my-post-public.php:1581, rate-my-post/common/class-rate-my-post-settings.php:127, rate-my-post/public/class-rate-my-post-public.php:1581
+#: common/class-rate-my-post-settings.php:127, public/class-rate-my-post-public.php:1602, rate-my-post/common/class-rate-my-post-settings.php:127, rate-my-post/public/class-rate-my-post-public.php:1602
 msgid "Thanks for your feedback!"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:128, public/class-rate-my-post-public.php:1582, rate-my-post/common/class-rate-my-post-settings.php:128, rate-my-post/public/class-rate-my-post-public.php:1582
+#: common/class-rate-my-post-settings.php:128, public/class-rate-my-post-public.php:1603, rate-my-post/common/class-rate-my-post-settings.php:128, rate-my-post/public/class-rate-my-post-public.php:1603
 msgid "Submit Feedback"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:135, public/class-rate-my-post-public.php:1131, public/class-rate-my-post-public.php:1583, rate-my-post/common/class-rate-my-post-settings.php:135, rate-my-post/public/class-rate-my-post-public.php:1131, rate-my-post/public/class-rate-my-post-public.php:1583
+#: common/class-rate-my-post-settings.php:135, public/class-rate-my-post-public.php:1131, public/class-rate-my-post-public.php:1604, rate-my-post/common/class-rate-my-post-settings.php:135, rate-my-post/public/class-rate-my-post-public.php:1131, rate-my-post/public/class-rate-my-post-public.php:1604
 msgid "Please insert your feedback in the box above!"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:147, public/class-rate-my-post-public.php:1584, rate-my-post/common/class-rate-my-post-settings.php:147, rate-my-post/public/class-rate-my-post-public.php:1584
+#: common/class-rate-my-post-settings.php:147, public/class-rate-my-post-public.php:1605, rate-my-post/common/class-rate-my-post-settings.php:147, rate-my-post/public/class-rate-my-post-public.php:1605
 msgid "Submit Rating"
 msgstr ""
 
