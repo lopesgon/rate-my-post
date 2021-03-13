@@ -1,4 +1,4 @@
-# Copyright (C) 2020 rate-my-post
+# Copyright (C) 2021 rate-my-post
 # This file is distributed under the same license as the rate-my-post package.
 msgid ""
 msgstr ""

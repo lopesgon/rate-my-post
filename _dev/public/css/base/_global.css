@@ -1,0 +1,11 @@
+.rmp-widgets-container,
+.rmp-results-widget,
+.widget_rate-my-post-top-rated-widget {
+  p {
+    &:empty {
+      &:before {
+        display: none;
+      }
+    }
+  }
+}
