@@ -42,6 +42,23 @@ class Rate_My_Post_Public {
 	}
 
 	//---------------------------------------------------
+	// PRELOAD FONTS
+	//---------------------------------------------------
+	public function preload_fonts() {
+		$preload = true;
+
+		if( has_filter('rmp_font_preload') ) {
+			$preload = apply_filters( 'rmp_font_preload', $preload );
+		}
+
+		if( !$preload ) {
+			return; 
+		}
+
+		echo '<link rel="preload" href="' . plugin_dir_url( __FILE__ ) . 'css/fonts/ratemypost.ttf" type="font/ttf" as="font" crossorigin="anonymous">';
+	}
+
+	//---------------------------------------------------
 	// PUBLIC JS
 	//---------------------------------------------------
 

@@ -1,11 +1,11 @@
 /* Fonts */
 @font-face {
   font-family: 'ratemypost';
-  src:  url('fonts/ratemypost.eot?9e18pt');
-  src:  url('fonts/ratemypost.eot?9e18pt#iefix') format('embedded-opentype'),
-    /* url('fonts/ratemypost.ttf?9e18pt') format('truetype'), */
-    url('fonts/ratemypost.woff?9e18pt') format('woff'),
-    url('fonts/ratemypost.svg?9e18pt#ratemypost') format('svg');
+  src:  url('fonts/ratemypost.eot');
+  src:  url('fonts/ratemypost.eot#iefix') format('embedded-opentype'),
+    url('fonts/ratemypost.ttf') format('truetype'),
+    url('fonts/ratemypost.woff') format('woff'),
+    url('fonts/ratemypost.svg#ratemypost') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
