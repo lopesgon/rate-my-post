@@ -63,6 +63,9 @@ class Rate_My_Post_Public {
 	//---------------------------------------------------
 
 	public function enqueue_scripts() {
+		if ( $this->is_amp_page() ) {
+			return;
+		}
 		// Litespeed cache compatibility
 		$this->litespeed_nonce();
 		// plugin options
@@ -574,7 +577,18 @@ class Rate_My_Post_Public {
 		if( $this->is_amp_page() && $this->is_amp_enabled() &&  $add_amp_style ) {
 			ob_start();
 			include plugin_dir_path( __FILE__ ) . 'templates/amp-css.php';
-			echo trim( preg_replace('/\t+/', '', $this->remove_line_breaks( ob_get_clean() ) ) );
+			$rmp_amp_css = trim( preg_replace('/\t+/', '', $this->remove_line_breaks( ob_get_clean() ) ) );
+			// AMP Legacy Theme.
+			if ( function_exists( 'amp_is_legacy' ) && amp_is_legacy() || ( function_exists( 'ampforwp_is_amp_endpoint' ) && ampforwp_is_amp_endpoint() ) ) {
+				echo $rmp_amp_css;// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			} else {
+				?>
+				<style type="text/css">
+					<?php echo $rmp_amp_css; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				</style>
+				<?php
+
+			}
 		}
 	}
 

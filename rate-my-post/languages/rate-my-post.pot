@@ -13,6 +13,14 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: rate-my-post.php:37, rate-my-post/rate-my-post.php:37
+msgid "Notice: Plugin Deactivated"
+msgstr ""
+
+#: rate-my-post.php:40, rate-my-post/rate-my-post.php:40
+msgid "Plugin has been deactivated because the PRO version was detected."
+msgstr ""
+
 #: admin/class-rate-my-post-admin.php:58, rate-my-post/admin/class-rate-my-post-admin.php:58
 msgid "Saving"
 msgstr ""
@@ -91,6 +99,174 @@ msgstr ""
 
 #: admin/class-rate-my-post-admin.php:854, admin/class-rate-my-post-admin.php:869, rate-my-post/admin/class-rate-my-post-admin.php:854, rate-my-post/admin/class-rate-my-post-admin.php:869
 msgid "Tracking Disabled"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:110, public/class-rate-my-post-public.php:1616, rate-my-post/common/class-rate-my-post-settings.php:110, rate-my-post/public/class-rate-my-post-public.php:1616
+msgid "How useful was this post?"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:111, public/class-rate-my-post-public.php:1617, rate-my-post/common/class-rate-my-post-settings.php:111, rate-my-post/public/class-rate-my-post-public.php:1617
+msgid "Click on a star to rate it!"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:112, public/class-rate-my-post-public.php:1618, rate-my-post/common/class-rate-my-post-settings.php:112, rate-my-post/public/class-rate-my-post-public.php:1618
+msgid "Average rating"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:113, public/class-rate-my-post-public.php:1619, rate-my-post/common/class-rate-my-post-settings.php:113, rate-my-post/public/class-rate-my-post-public.php:1619
+msgid "Vote count:"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:114, public/class-rate-my-post-public.php:1620, rate-my-post/common/class-rate-my-post-settings.php:114, rate-my-post/public/class-rate-my-post-public.php:1620
+msgid "You already voted! This vote will not be counted!"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:115, public/class-rate-my-post-public.php:1621, rate-my-post/common/class-rate-my-post-settings.php:115, rate-my-post/public/class-rate-my-post-public.php:1621
+msgid "No votes so far! Be the first to rate this post."
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:116, public/class-rate-my-post-public.php:1622, rate-my-post/common/class-rate-my-post-settings.php:116, rate-my-post/public/class-rate-my-post-public.php:1622
+msgid "Thank you for rating this post!"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:117, public/class-rate-my-post-public.php:1623, rate-my-post/common/class-rate-my-post-settings.php:117, rate-my-post/public/class-rate-my-post-public.php:1623
+msgid "Not at all useful"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:118, public/class-rate-my-post-public.php:1624, rate-my-post/common/class-rate-my-post-settings.php:118, rate-my-post/public/class-rate-my-post-public.php:1624
+msgid "Somewhat useful"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:119, public/class-rate-my-post-public.php:1625, rate-my-post/common/class-rate-my-post-settings.php:119, rate-my-post/public/class-rate-my-post-public.php:1625
+msgid "Useful"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:120, public/class-rate-my-post-public.php:1626, rate-my-post/common/class-rate-my-post-settings.php:120, rate-my-post/public/class-rate-my-post-public.php:1626
+msgid "Fairly useful"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:121, public/class-rate-my-post-public.php:1627, rate-my-post/common/class-rate-my-post-settings.php:121, rate-my-post/public/class-rate-my-post-public.php:1627
+msgid "Very useful"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:122, public/class-rate-my-post-public.php:1628, rate-my-post/common/class-rate-my-post-settings.php:122, rate-my-post/public/class-rate-my-post-public.php:1628
+msgid "As you found this post useful..."
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:123, public/class-rate-my-post-public.php:1629, rate-my-post/common/class-rate-my-post-settings.php:123, rate-my-post/public/class-rate-my-post-public.php:1629
+msgid "Follow us on social media!"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:124, public/class-rate-my-post-public.php:1630, rate-my-post/common/class-rate-my-post-settings.php:124, rate-my-post/public/class-rate-my-post-public.php:1630
+msgid "We are sorry that this post was not useful for you!"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:125, public/class-rate-my-post-public.php:1631, rate-my-post/common/class-rate-my-post-settings.php:125, rate-my-post/public/class-rate-my-post-public.php:1631
+msgid "Let us improve this post!"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:126, public/class-rate-my-post-public.php:1632, rate-my-post/common/class-rate-my-post-settings.php:126, rate-my-post/public/class-rate-my-post-public.php:1632
+msgid "Tell us how we can improve this post?"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:127, public/class-rate-my-post-public.php:1633, rate-my-post/common/class-rate-my-post-settings.php:127, rate-my-post/public/class-rate-my-post-public.php:1633
+msgid "Thanks for your feedback!"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:128, public/class-rate-my-post-public.php:1634, rate-my-post/common/class-rate-my-post-settings.php:128, rate-my-post/public/class-rate-my-post-public.php:1634
+msgid "Submit Feedback"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:135, public/class-rate-my-post-public.php:1162, public/class-rate-my-post-public.php:1635, rate-my-post/common/class-rate-my-post-settings.php:135, rate-my-post/public/class-rate-my-post-public.php:1162, rate-my-post/public/class-rate-my-post-public.php:1635
+msgid "Please insert your feedback in the box above!"
+msgstr ""
+
+#: common/class-rate-my-post-settings.php:147, public/class-rate-my-post-public.php:1636, rate-my-post/common/class-rate-my-post-settings.php:147, rate-my-post/public/class-rate-my-post-public.php:1636
+msgid "Submit Rating"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:220, public/class-rate-my-post-public.php:1145, rate-my-post/public/class-rate-my-post-public.php:220, rate-my-post/public/class-rate-my-post-public.php:1145
+msgid "You cannot rate a web page without an id!"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:642, rate-my-post/public/class-rate-my-post-public.php:642
+msgid "Somebody rated"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:644, rate-my-post/public/class-rate-my-post-public.php:644
+msgid "was rated"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:645, rate-my-post/public/class-rate-my-post-public.php:645
+msgid "and now has an average rating of"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:646, rate-my-post/public/class-rate-my-post-public.php:646
+msgid "based on"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:647, rate-my-post/public/class-rate-my-post-public.php:647
+msgid "vote(s)"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:648, rate-my-post/public/class-rate-my-post-public.php:648
+msgid "See the post: "
+msgstr ""
+
+#: public/class-rate-my-post-public.php:677, rate-my-post/public/class-rate-my-post-public.php:677
+msgid "Somebody left feedback on"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:678, rate-my-post/public/class-rate-my-post-public.php:678
+msgid "Feedback on"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:977, public/class-rate-my-post-public.php:973, rate-my-post/public/class-rate-my-post-public.php:977, rate-my-post/public/class-rate-my-post-public.php:973
+msgid "Invalid Token"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:1026, rate-my-post/public/class-rate-my-post-public.php:1026
+msgid "Wrong reCAPTCHA keys"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:1031, rate-my-post/public/class-rate-my-post-public.php:1031
+msgid "Blocked by reCAPTCHA"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:1050, rate-my-post/public/class-rate-my-post-public.php:1050
+msgid "You need to be logged in to rate!"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:1123, rate-my-post/public/class-rate-my-post-public.php:1123
+msgid "Invalid WP token!"
+msgstr ""
+
+#: public/class-rate-my-post-public.php:1149, rate-my-post/public/class-rate-my-post-public.php:1149
+msgid "No rating submitted!"
+msgstr ""
+
+#: widgets/rate-my-post-top-rated-widget.php:19, rate-my-post/widgets/rate-my-post-top-rated-widget.php:19
+msgid "Displays top rated posts from Rate my Post plugin."
+msgstr ""
+
+#: widgets/rate-my-post-top-rated-widget.php:91, rate-my-post/widgets/rate-my-post-top-rated-widget.php:91
+msgid "Number of posts to show:"
+msgstr ""
+
+#: widgets/rate-my-post-top-rated-widget.php:96, rate-my-post/widgets/rate-my-post-top-rated-widget.php:96
+msgid "Minimum average rating required:"
+msgstr ""
+
+#: widgets/rate-my-post-top-rated-widget.php:101, rate-my-post/widgets/rate-my-post-top-rated-widget.php:101
+msgid "Minimum votes required:"
+msgstr ""
+
+#: widgets/rate-my-post-top-rated-widget.php:107, rate-my-post/widgets/rate-my-post-top-rated-widget.php:107
+msgid "Show featured image"
+msgstr ""
+
+#: widgets/rate-my-post-top-rated-widget.php:112, rate-my-post/widgets/rate-my-post-top-rated-widget.php:112
+msgid "Show star rating"
 msgstr ""
 
 #: admin/templates/admin-notices.php:23, admin/templates/admin-notices.php:30, rate-my-post/admin/templates/admin-notices.php:23, rate-my-post/admin/templates/admin-notices.php:30
@@ -977,186 +1153,10 @@ msgstr ""
 msgid "Votes"
 msgstr ""
 
-#: common/class-rate-my-post-settings.php:110, public/class-rate-my-post-public.php:1602, rate-my-post/common/class-rate-my-post-settings.php:110, rate-my-post/public/class-rate-my-post-public.php:1602
-msgid "How useful was this post?"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:111, public/class-rate-my-post-public.php:1603, rate-my-post/common/class-rate-my-post-settings.php:111, rate-my-post/public/class-rate-my-post-public.php:1603
-msgid "Click on a star to rate it!"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:112, public/class-rate-my-post-public.php:1604, rate-my-post/common/class-rate-my-post-settings.php:112, rate-my-post/public/class-rate-my-post-public.php:1604
-msgid "Average rating"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:113, public/class-rate-my-post-public.php:1605, rate-my-post/common/class-rate-my-post-settings.php:113, rate-my-post/public/class-rate-my-post-public.php:1605
-msgid "Vote count:"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:114, public/class-rate-my-post-public.php:1606, rate-my-post/common/class-rate-my-post-settings.php:114, rate-my-post/public/class-rate-my-post-public.php:1606
-msgid "You already voted! This vote will not be counted!"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:115, public/class-rate-my-post-public.php:1607, rate-my-post/common/class-rate-my-post-settings.php:115, rate-my-post/public/class-rate-my-post-public.php:1607
-msgid "No votes so far! Be the first to rate this post."
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:116, public/class-rate-my-post-public.php:1608, rate-my-post/common/class-rate-my-post-settings.php:116, rate-my-post/public/class-rate-my-post-public.php:1608
-msgid "Thank you for rating this post!"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:117, public/class-rate-my-post-public.php:1609, rate-my-post/common/class-rate-my-post-settings.php:117, rate-my-post/public/class-rate-my-post-public.php:1609
-msgid "Not at all useful"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:118, public/class-rate-my-post-public.php:1610, rate-my-post/common/class-rate-my-post-settings.php:118, rate-my-post/public/class-rate-my-post-public.php:1610
-msgid "Somewhat useful"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:119, public/class-rate-my-post-public.php:1611, rate-my-post/common/class-rate-my-post-settings.php:119, rate-my-post/public/class-rate-my-post-public.php:1611
-msgid "Useful"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:120, public/class-rate-my-post-public.php:1612, rate-my-post/common/class-rate-my-post-settings.php:120, rate-my-post/public/class-rate-my-post-public.php:1612
-msgid "Fairly useful"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:121, public/class-rate-my-post-public.php:1613, rate-my-post/common/class-rate-my-post-settings.php:121, rate-my-post/public/class-rate-my-post-public.php:1613
-msgid "Very useful"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:122, public/class-rate-my-post-public.php:1614, rate-my-post/common/class-rate-my-post-settings.php:122, rate-my-post/public/class-rate-my-post-public.php:1614
-msgid "As you found this post useful..."
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:123, public/class-rate-my-post-public.php:1615, rate-my-post/common/class-rate-my-post-settings.php:123, rate-my-post/public/class-rate-my-post-public.php:1615
-msgid "Follow us on social media!"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:124, public/class-rate-my-post-public.php:1616, rate-my-post/common/class-rate-my-post-settings.php:124, rate-my-post/public/class-rate-my-post-public.php:1616
-msgid "We are sorry that this post was not useful for you!"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:125, public/class-rate-my-post-public.php:1617, rate-my-post/common/class-rate-my-post-settings.php:125, rate-my-post/public/class-rate-my-post-public.php:1617
-msgid "Let us improve this post!"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:126, public/class-rate-my-post-public.php:1618, rate-my-post/common/class-rate-my-post-settings.php:126, rate-my-post/public/class-rate-my-post-public.php:1618
-msgid "Tell us how we can improve this post?"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:127, public/class-rate-my-post-public.php:1619, rate-my-post/common/class-rate-my-post-settings.php:127, rate-my-post/public/class-rate-my-post-public.php:1619
-msgid "Thanks for your feedback!"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:128, public/class-rate-my-post-public.php:1620, rate-my-post/common/class-rate-my-post-settings.php:128, rate-my-post/public/class-rate-my-post-public.php:1620
-msgid "Submit Feedback"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:135, public/class-rate-my-post-public.php:1148, public/class-rate-my-post-public.php:1621, rate-my-post/common/class-rate-my-post-settings.php:135, rate-my-post/public/class-rate-my-post-public.php:1148, rate-my-post/public/class-rate-my-post-public.php:1621
-msgid "Please insert your feedback in the box above!"
-msgstr ""
-
-#: common/class-rate-my-post-settings.php:147, public/class-rate-my-post-public.php:1622, rate-my-post/common/class-rate-my-post-settings.php:147, rate-my-post/public/class-rate-my-post-public.php:1622
-msgid "Submit Rating"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:217, public/class-rate-my-post-public.php:1131, rate-my-post/public/class-rate-my-post-public.php:217, rate-my-post/public/class-rate-my-post-public.php:1131
-msgid "You cannot rate a web page without an id!"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:628, rate-my-post/public/class-rate-my-post-public.php:628
-msgid "Somebody rated"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:630, rate-my-post/public/class-rate-my-post-public.php:630
-msgid "was rated"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:631, rate-my-post/public/class-rate-my-post-public.php:631
-msgid "and now has an average rating of"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:632, rate-my-post/public/class-rate-my-post-public.php:632
-msgid "based on"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:633, rate-my-post/public/class-rate-my-post-public.php:633
-msgid "vote(s)"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:634, rate-my-post/public/class-rate-my-post-public.php:634
-msgid "See the post: "
-msgstr ""
-
-#: public/class-rate-my-post-public.php:663, rate-my-post/public/class-rate-my-post-public.php:663
-msgid "Somebody left feedback on"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:664, rate-my-post/public/class-rate-my-post-public.php:664
-msgid "Feedback on"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:963, public/class-rate-my-post-public.php:959, rate-my-post/public/class-rate-my-post-public.php:963, rate-my-post/public/class-rate-my-post-public.php:959
-msgid "Invalid Token"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:1012, rate-my-post/public/class-rate-my-post-public.php:1012
-msgid "Wrong reCAPTCHA keys"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:1017, rate-my-post/public/class-rate-my-post-public.php:1017
-msgid "Blocked by reCAPTCHA"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:1036, rate-my-post/public/class-rate-my-post-public.php:1036
-msgid "You need to be logged in to rate!"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:1109, rate-my-post/public/class-rate-my-post-public.php:1109
-msgid "Invalid WP token!"
-msgstr ""
-
-#: public/class-rate-my-post-public.php:1135, rate-my-post/public/class-rate-my-post-public.php:1135
-msgid "No rating submitted!"
-msgstr ""
-
 #: public/templates/amp-rating-widget.php:115, rate-my-post/public/templates/amp-rating-widget.php:115
 msgid "Processing your rating..."
 msgstr ""
 
 #: public/templates/amp-rating-widget.php:133, rate-my-post/public/templates/amp-rating-widget.php:133
 msgid "There was an error rating this post!"
-msgstr ""
-
-#: rate-my-post.php:37, rate-my-post/rate-my-post.php:37
-msgid "Notice: Plugin Deactivated"
-msgstr ""
-
-#: rate-my-post.php:40, rate-my-post/rate-my-post.php:40
-msgid "Plugin has been deactivated because the PRO version was detected."
-msgstr ""
-
-#: rate-my-post/widgets/rate-my-post-top-rated-widget.php:19, widgets/rate-my-post-top-rated-widget.php:19
-msgid "Displays top rated posts from Rate my Post plugin."
-msgstr ""
-
-#: rate-my-post/widgets/rate-my-post-top-rated-widget.php:91, widgets/rate-my-post-top-rated-widget.php:91
-msgid "Number of posts to show:"
-msgstr ""
-
-#: rate-my-post/widgets/rate-my-post-top-rated-widget.php:96, widgets/rate-my-post-top-rated-widget.php:96
-msgid "Minimum average rating required:"
-msgstr ""
-
-#: rate-my-post/widgets/rate-my-post-top-rated-widget.php:101, widgets/rate-my-post-top-rated-widget.php:101
-msgid "Minimum votes required:"
-msgstr ""
-
-#: rate-my-post/widgets/rate-my-post-top-rated-widget.php:107, widgets/rate-my-post-top-rated-widget.php:107
-msgid "Show featured image"
-msgstr ""
-
-#: rate-my-post/widgets/rate-my-post-top-rated-widget.php:112, widgets/rate-my-post-top-rated-widget.php:112
-msgid "Show star rating"
 msgstr ""
