@@ -156,6 +156,7 @@ class Rate_My_Post {
 		$this->loader->add_action( 'wp_head', $plugin_public, 'preload_fonts', 1 );
 		// STYLE FOR AMP PLUGINS https://wordpress.org/plugins/amp/ and https://wordpress.org/plugins/accelerated-mobile-pages/
 		$this->loader->add_action( 'amp_post_template_css', $plugin_public, 'amp_plugin_style', 1, 1 );
+		$this->loader->add_action( 'wp_head', $plugin_public, 'amp_plugin_style', 1, 1 );
 	}
 
 	// Run the loader to execute all hooks
