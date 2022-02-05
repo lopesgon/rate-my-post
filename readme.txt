@@ -3,8 +3,8 @@ Contributors: blazk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HJH3AS8TP8FEC&source=url
 Tags: Rating System, Rate Post, Rate Page, Star Rating, Post Rating, Post Feedback, Page Feedback, Responsive Star Rating, Lightweight Post Rating, Ajax Post Rating, Post Rating Analytics, Post Rating, Rich Snippet
 Requires at least: 4.7.0
-Tested up to: 5.8
-Stable tag: 3.3.3
+Tested up to: 5.9
+Stable tag: 3.3.4
 Requires PHP: 5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -254,6 +254,11 @@ The invalid WP token error (refers to WP nonce) appears if a page is cached for 
 7. Manipulate Votes
 
 == Changelog ==
+
+= 3.3.4 =
+* Amp style improvements - thanks to [milindmore22](https://github.com/milindmore22)
+* Top rated posts widget now uses smaller image size
+* Added filter for image size in top rated posts widget
 
 = 3.3.3 =
 * Preload fonts
