@@ -52,7 +52,7 @@ class Rate_My_Post_Public {
 		}
 
 		if( !$preload ) {
-			return; 
+			return;
 		}
 
 		echo '<link rel="preload" href="' . plugin_dir_url( __FILE__ ) . 'css/fonts/ratemypost.ttf" type="font/ttf" as="font" crossorigin="anonymous">';
@@ -1119,6 +1119,8 @@ class Rate_My_Post_Public {
 			'error' => false,
 		);
 
+		return $data;
+
 		if( ! wp_verify_nonce( $nonce, 'rmp_public_nonce' ) ) {
 			$data['error'] = esc_html__( 'Invalid WP token!', 'rate-my-post' );
 			$data['valid'] = false;
@@ -1423,6 +1425,11 @@ class Rate_My_Post_Public {
   public static function top_rated_posts( $max_posts = 10, $required_rating = 1,  $required_votes = 1 ) {
     $rated_posts = array();
     $top_rated_posts = array();
+		$defaultImageSize = 'medium';
+
+		if( has_filter('rmp_thumbnail_size') ) {
+      $defaultImageSize = apply_filters( 'rmp_thumbnail_size', $defaultImageSize );
+    }
 
     // get post types for the query
     $registered_post_types = get_post_types( array( 'public' => true ) );
@@ -1467,7 +1474,7 @@ class Rate_My_Post_Public {
         $avg_rating = $value / 10;
         $title = get_the_title( $post_id );
         $link = get_the_permalink( $post_id );
-        $thumb = get_the_post_thumbnail_url( $post_id );
+        $thumb = get_the_post_thumbnail_url( $post_id, $defaultImageSize );
         $votes = Rate_My_Post_Common::get_vote_count( $post_id );
 
         $top_rated_posts[] = array(
