@@ -3,7 +3,7 @@ Contributors: blazk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HJH3AS8TP8FEC&source=url
 Tags: Rating System, Rate Post, Rate Page, Star Rating, Post Rating, Post Feedback, Page Feedback, Responsive Star Rating, Lightweight Post Rating, Ajax Post Rating, Post Rating Analytics, Post Rating, Rich Snippet
 Requires at least: 4.7.0
-Tested up to: 5.9
+Tested up to: 6.0
 Stable tag: 3.3.4
 Requires PHP: 5.3
 License: GPLv3
