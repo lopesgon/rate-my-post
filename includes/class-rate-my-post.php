@@ -60,6 +60,9 @@ class Rate_My_Post {
 		// Plugin default settings
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'common/class-rate-my-post-settings.php';
 
+		// The WP_Lock class
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'common/class-rate-my-post-mutex.php';
+
 		// Top Rated Posts Widget
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'widgets/rate-my-post-top-rated-widget.php';
 

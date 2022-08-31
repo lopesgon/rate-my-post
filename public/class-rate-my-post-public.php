@@ -252,7 +252,11 @@ class Rate_My_Post_Public {
 
 	public function process_rating() {
 		if ( wp_doing_ajax() ) {
-			// array with vote count, ratings, errors, token and post id
+			// mutex
+			$lockName = 'rmp-ajax-rating-' . get_current_user_id() . '-' . intval( $_POST['postID'] );
+			if ( ! Rate_My_Post_Mutex::acquire( $lockName ) ) {
+				return new WP_Error( 'ajax_rating_fail', __( 'Ajax rating fail', 'rate-my-post' ), [ 'status' => 400 ] );
+			}
 			$data = array(
 				'voteCount' => false,
 				'avgRating' => false,
@@ -297,6 +301,7 @@ class Rate_My_Post_Public {
 
 			if ( ! $security_passed ) {
 				echo json_encode( $data );
+				Rate_My_Post_Mutex::release( $lockName );
 				die();
 			}
 
@@ -332,6 +337,8 @@ class Rate_My_Post_Public {
 
 			$this->clear_cache( $post_id, $options );
 			do_action( 'rmp_after_vote', $post_id, $avg_rating, $new_vote_count, $submitted_rating );
+			// $ajax_rating_lock->release();
+			Rate_My_Post_Mutex::release( $lockName );
 		};
 		die();
 	}
@@ -349,6 +356,11 @@ class Rate_My_Post_Public {
     header("AMP-Access-Control-Allow-Source-Origin: " . $domain_url );
 
 		if ( wp_doing_ajax() ) {
+			// mutex
+			$lockName = 'rmp-amp-ajax-rating-' . get_current_user_id() . '-' . intval( $_POST['postID'] );
+			if ( ! Rate_My_Post_Mutex::acquire( $lockName ) ) {
+			  return new WP_Error( 'amp_ajax_rating_fail', __( 'AMP ajax rating fail', 'rate-my-post' ), [ 'status' => 400 ] );
+			}
 			// return data is an array
 			$data = array(
 				'voteCount' => false,
@@ -366,6 +378,7 @@ class Rate_My_Post_Public {
 
 			// if amp not enabled, exit
 			if ( $options['ampCompatibility'] != 2 ) {
+				Rate_My_Post_Mutex::release( $lockName );
 				die();
 			}
 
@@ -405,6 +418,7 @@ class Rate_My_Post_Public {
 				$data['avgRating'] = $avg_rating;
 				$data['successMsg'] = '';
 				echo json_encode( $data );
+				Rate_My_Post_Mutex::release( $lockName );
 				die();
 			}
 
@@ -436,6 +450,7 @@ class Rate_My_Post_Public {
 
 			$this->clear_cache( $post_id, $options );
 			do_action( 'rmp_after_vote_amp', $post_id, $avg_rating, $new_vote_count, $submitted_rating );
+			Rate_My_Post_Mutex::release( $lockName );
 		};
 		die();
 	}
@@ -446,11 +461,16 @@ class Rate_My_Post_Public {
 
 	public function process_feedback() {
 		if ( wp_doing_ajax() ) {
+			$lockName = 'rmp-ajax-feedback-' . get_current_user_id() . '-' . intval( $_POST['postID'] );
+			if ( ! Rate_My_Post_Mutex::acquire( $lockName ) ) {
+			  return new WP_Error( 'ajax_feedback_fail', __( 'Ajax feedback fail', 'rate-my-post' ), [ 'status' => 400 ] );
+			}
 			$post_id = intval( $_POST['postID'] );
 			$options = get_option( 'rmp_options' );
 			$customization = $this->custom_strings( $post_id );
 			// if feedback disabled, die
 			if( $options['feedback'] !== 2 ) {
+				Rate_My_Post_Mutex::release( $lockName );
 				die();
 			}
 
@@ -494,6 +514,7 @@ class Rate_My_Post_Public {
 
 			if ( ! $security_passed ) {
 				echo json_encode( $data );
+				Rate_My_Post_Mutex::release( $lockName );
 				die();
 			}
 			// security checks passed, continue
@@ -520,6 +541,7 @@ class Rate_My_Post_Public {
 			$this->send_email_feedback( $post_id, $feedback, $options );
 			echo json_encode( $data );
 			do_action( 'rmp_after_feedback', $post_id, $feedback );
+			Rate_My_Post_Mutex::release( $lockName );
 		};
 		die();
 	}
@@ -1119,7 +1141,9 @@ class Rate_My_Post_Public {
 			'error' => false,
 		);
 
-		return $data;
+		if( !is_user_logged_in() ) {
+			return $data;
+		}
 
 		if( ! wp_verify_nonce( $nonce, 'rmp_public_nonce' ) ) {
 			$data['error'] = esc_html__( 'Invalid WP token!', 'rate-my-post' );
