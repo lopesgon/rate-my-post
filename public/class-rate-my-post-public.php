@@ -718,7 +718,7 @@ class Rate_My_Post_Public {
 	}
 
 	// save to the analytics table
-	private function save_for_analytics( $post_id, $action, $duration = 0, $avg_rating, $votes, $rating, $options, $security, $amp ) {
+	private function save_for_analytics( $post_id, $action, $duration, $avg_rating, $votes, $rating, $options, $security, $amp ) {
 
 		// declare variables
 		$ip = -1;
