@@ -13,9 +13,9 @@ class Rate_My_Post_Mutex {
 	 * @throws \Exception on failure to acquire lock.
 	 */
 	public static function acquire( $lockName ) {
-		$upload_dir                        = wp_upload_dir();
-		$lockPath                          = $upload_dir['basedir'] . DIRECTORY_SEPARATOR . $lockName . '.lock';
-		$fp                                = fopen( $lockPath, 'w+' );
+        $fileName                          = sprintf( 'wp-rate-my-post.%s.lock', $lockName );
+        $lockPath                          = get_temp_dir() . DIRECTORY_SEPARATOR . $fileName;
+        $fp                                = fopen( $lockPath, 'w+' );
 		self::$openedHandlers[ $lockName ] = [
 			'resource'     => $fp,
 			'fileLocation' => $lockPath
