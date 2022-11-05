@@ -3,7 +3,7 @@ Contributors: blazk
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HJH3AS8TP8FEC&source=url
 Tags: Rating System, Rate Post, Rate Page, Star Rating, Post Rating, Post Feedback, Page Feedback, Responsive Star Rating, Lightweight Post Rating, Ajax Post Rating, Post Rating Analytics, Post Rating, Rich Snippet
 Requires at least: 4.7.0
-Tested up to: 6.0
+Tested up to: 6.1
 Stable tag: 3.3.6
 Requires PHP: 5.3
 License: GPLv3
@@ -256,7 +256,7 @@ The invalid WP token error (refers to WP nonce) appears if a page is cached for 
 == Changelog ==
 
 = 3.3.6 =
-* Fixed PHP 8 deprecated features 
+* Fixed PHP 8 deprecated features
 
 = 3.3.5 =
 * Security improvements
