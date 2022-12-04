@@ -1131,9 +1131,18 @@ class Rate_My_Post_Admin {
 	private function stats_rows() {
 		$rated_posts = array();
 		$args = array(
-			 'fields'          => 'ids',
-			 'post_type'       => $this->define_post_types(),
-			 'posts_per_page'  => -1
+			 'fields'                 => 'ids',
+			 'post_type'              => $this->define_post_types(),
+			 'posts_per_page'         => -1,
+			 'no_found_rows'          => true,
+			 'update_post_term_cache' => false,
+			 'meta_query'             => array(
+				array(
+					'key'     => 'rmp_vote_count',
+					'value'   => 0,
+					'compare' => '>'
+				)
+			 )
 		);
 		$the_query = new WP_Query( $args );
 		// The Loop
