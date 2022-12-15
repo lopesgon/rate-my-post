@@ -101,6 +101,7 @@ class Rate_My_Post_Public {
 				 'loggedIn'					 		=> is_user_logged_in(),
 				 'positiveThreshold'    => intval( $options['positiveNegative'] ),
 				 'ajaxLoad' 						=> intval( $options['ajaxLoad'] ),
+				 'disableClearCache' => intval( $options['disableClearCache'] ),
 				 'nonce'       					=> wp_create_nonce( 'rmp_public_nonce' ),
         )
     );
@@ -1213,6 +1214,12 @@ class Rate_My_Post_Public {
 		if( $options['ajaxLoad'] == 2 ) { // ajax loading, no need to clear cache
 			return;
 		}
+
+		// If disable clear cache option is enable, no need to clear cache
+		if ($options['disableClearCache'] === 2 ) {
+			return;
+		}
+
 		// WP Super Cache
 		if ( function_exists( 'wp_cache_post_change' ) ) {
 			wpsc_delete_post_cache( $post_id );
