@@ -934,7 +934,7 @@ msgid "Disable clear cache"
 msgstr ""
 
 #: admin/templates/menu-options.php:611, rate-my-post/admin/templates/menu-options.php:611
-msgid "If AJAX load results is enabled, this option can be disabled. If you are not using AJAX load results, this option is not recommended. Enable this option if you don't want clear the post cache on every vote submission"
+msgid "If AJAX load results is enabled, this option cannot be disabled. If you are not using AJAX load results, this option is not recommended. Enable this option if you don't want clear the post cache on every vote submission"
 msgstr ""
 
 #: admin/templates/menu-options.php:622, admin/templates/menu-options.php:633, rate-my-post/admin/templates/menu-options.php:622, rate-my-post/admin/templates/menu-options.php:633

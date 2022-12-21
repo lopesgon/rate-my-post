@@ -608,7 +608,7 @@
           <?php echo ( esc_html__( 'Disable clear cache', 'rate-my-post' ) ); ?>
         </label>
         <p class="rmp-tab-content__notice">
-          <?php echo ( esc_html__( 'If AJAX load results is enabled, this option can be disabled. If you are not using AJAX load results, this option is not recommended. Enable this option if you don\'t want clear the post cache on every vote submission', 'rate-my-post' ) ); ?>.
+          <?php echo ( esc_html__( 'If AJAX load results is enabled, this option cannot be disabled. If you are not using AJAX load results, this option is not recommended. Enable this option if you don\'t want clear the post cache on every vote submission', 'rate-my-post' ) ); ?>.
         </p>
       </td>
     </tr>
