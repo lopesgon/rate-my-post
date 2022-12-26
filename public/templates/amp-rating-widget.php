@@ -25,7 +25,7 @@
 <!-- Rate my Post Plugin - Rating Widget -->
 <!-- Inspired by AMP by Example - https://ampbyexample.com/advanced/star_rating/ -->
 
-<div class="rmp-amp-rating-widget<?php echo $custom_class; ?>">
+<div class="<?php echo esc_attr( 'rmp-amp-rating-widget ' . $custom_class ); ?>">
   <?php do_action( 'rmp_before_widget_amp' ); ?>
   <p id="rmp-amp-rating-widget__title">
     <?php echo $rmp_custom_strings['rateTitle']; ?>
@@ -56,7 +56,7 @@
           <span>Post ID:</span>
           <input type="text"
             name="postID"
-            required value="<?php echo $post_id ?>">
+            required value="<?php echo esc_attr( $post_id ); ?>">
         </label>
 
         <label id="rmp-amp-post-nonce" style="display: none;">

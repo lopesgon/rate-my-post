@@ -28,8 +28,8 @@
 
 <!-- Rate my Post Plugin -->
 <div
-  class="rmp-widgets-container rmp-wp-plugin rmp-main-container js-rmp-widgets-container js-rmp-widgets-container--<?php echo $post_id; ?><?php echo $custom_class; ?>"
-  data-post-id="<?php echo $post_id; ?>"
+  class="rmp-widgets-container rmp-wp-plugin rmp-main-container js-rmp-widgets-container <?php echo esc_attr( 'js-rmp-widgets-container--' . $post_id ); ?> <?php echo esc_attr( $custom_class ); ?>"
+  data-post-id="<?php echo esc_attr( $post_id ); ?>"
 >
   <?php do_action( 'rmp_before_all_widgets' ); ?>
   <!-- Rating widget -->
