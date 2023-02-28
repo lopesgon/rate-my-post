@@ -83,7 +83,7 @@
     <?php echo $this->social_widget( $post_id ); ?>
   <?php endif; ?>
 
-  <?php if ( $rmp_options['feedback'] === 2 ): ?>
+  <?php if ( $rmp_options['feedback'] === 2 || $rmp_options['feedback_forced'] === 2 ): ?>
     <!-- Feedback widget -->
     <?php echo $this->feedback_widget( $post_id ); ?>
   <?php endif; ?>
