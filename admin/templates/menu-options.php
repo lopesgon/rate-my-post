@@ -322,6 +322,23 @@
       <td>
         <input
           class="rmp-tab-content__input-checkbox js-rmp-option"
+          id="rmp-feedback-forced"
+          data-key="feedback_forced"
+          type="checkbox"
+          <?php echo ($rmp_options['feedback_forced'] === 2) ? 'checked':""; ?>
+        >
+        <label class="rmp-tab-content__label" for="rmp-feedback-forced">
+          <?php echo ( esc_html__( 'Force feedback widget if rating is negative', 'rate-my-post' ) ); ?>
+        </label>
+        <p class="rmp-tab-content__notice">
+          <?php echo ( esc_html__( 'Feedback is mandatory to submit rating when it is negative.', 'rate-my-post' ) ); ?>.
+        </p>        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input
+          class="rmp-tab-content__input-checkbox js-rmp-option"
           data-key="feedback_email"
           id="rmp-feedback-email"
           type="checkbox"

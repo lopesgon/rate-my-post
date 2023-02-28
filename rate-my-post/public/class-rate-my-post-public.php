@@ -469,7 +469,7 @@ class Rate_My_Post_Public {
 			$options = get_option( 'rmp_options' );
 			$customization = $this->custom_strings( $post_id );
 			// if feedback disabled, die
-			if( $options['feedback'] !== 2 ) {
+			if( $options['feedback'] !== 2 || $options['feedback_forced'] !== 2 ) {
 				Rate_My_Post_Mutex::release( $lockName );
 				die();
 			}
@@ -495,6 +495,7 @@ class Rate_My_Post_Public {
 			$privilege = $this->has_privileges( $security_options );
 			$rmp_token_check = $this->feedback_token_verified( $rmp_token, $rating_id );
 			$feedback_length_check = $this->is_valid_length( $feedback );
+      $feedback_present_when_forced = $this->has_feedback_when_forced( $feedback_length_check );
 			$nonce_check = $this->has_valid_nonce( $nonce );
 
 			$security_checks = array(

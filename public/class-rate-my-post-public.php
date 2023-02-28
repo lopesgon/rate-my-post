@@ -91,6 +91,7 @@ class Rate_My_Post_Public {
 				 'notShowRating'       	=> intval($options['notShowRating'] ),
          'social'          			=> $options['social'],
          'feedback'        			=> $options['feedback'],
+         'forcedFeedback'       => $options['feedback_forced'],
          'cookieDisable'   			=> $options['cookieDisable'],
          'emptyFeedback'   			=> $customization['feedbackAlert'],
 				 'hoverTexts' 					=> intval( $options['hoverTexts'] ),
@@ -1184,6 +1185,22 @@ class Rate_My_Post_Public {
 			'valid' => true,
 			'error' => false,
 		);
+		if( ! str_replace( ' ', '', $feedback ) ) {
+			$data['error'] = esc_html__( 'Please insert your feedback in the box above!', 'rate-my-post' );
+			$data['valid'] = false;
+		}
+		return $data;
+	}
+
+  private function has_feedback_when_forced( $valid_length ) {
+		$data = array(
+			'valid' => true,
+			'error' => false,
+		);
+    $options = get_option( 'rmp_options' );
+    if( $options['feedback_forced'] == 2 ) {
+			return;
+		}
 		if( ! str_replace( ' ', '', $feedback ) ) {
 			$data['error'] = esc_html__( 'Please insert your feedback in the box above!', 'rate-my-post' );
 			$data['valid'] = false;
