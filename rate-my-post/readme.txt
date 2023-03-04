@@ -258,7 +258,7 @@ The invalid WP token error (refers to WP nonce) appears if a page is cached for 
 * Removed jQuery dependency on frontend - thanks to [Alfredo Arena](https://github.com/alfredoct96)
 * Ditching support for IE
 * Improved performance - thanks to [Alfredo Arena](https://github.com/alfredoct96)
-* Added option to disable clear cache - thanks to [Alfredo Arena](https://github.com/alfredoct96)
+* Added option to disable clear post cache - thanks to [Alfredo Arena](https://github.com/alfredoct96)
 
 = 3.3.9 =
 * Security fix (proper escaping and sanitization)
