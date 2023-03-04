@@ -13,7 +13,7 @@ class PrivilegeCheck {
     if(this.requiresLogin == 2 && !this.isLoggedIn ) {
       let freezeWidget = new FreezeWidget('');
       this.ratingWidget.forEach((item) => {
-        // loop required if multiple widgets on one page 
+        // loop required if multiple widgets on one page
         item.classList.add('rmp-rating-widget--no-privilege');
       })
     }

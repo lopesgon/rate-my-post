@@ -44,7 +44,7 @@ function rmp_disable_notice() {
 }
 
 // Plugin version
-define( 'RATE_MY_POST_VERSION', '3.3.9' );
+define( 'RATE_MY_POST_VERSION', '3.4.0' );
 
 // Plugin activation
 function activate_rate_my_post() {
