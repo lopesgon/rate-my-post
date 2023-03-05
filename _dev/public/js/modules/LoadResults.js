@@ -8,6 +8,7 @@ import AnalyticsPush from './AnalyticsPush';
 
 class LoadResults {
   constructor(postID, widgetContainer, response, rating) {
+    console.debug("RMP: LoadResults constructor");
     this.postID = postID;
     this.widgetContainer = widgetContainer;
     this.voteCount = response.voteCount;
@@ -29,7 +30,7 @@ class LoadResults {
   }
 
   events() {
-    if( this.errorMsg.length ) {
+    if( this.errorMsg && this.errorMsg.length > 0 ) {
       this.msgContainer.html(this.errorMsg.join('<br />'));
       this.msgContainer.addClass('rmp-rating-widget__msg--alert');
       this.ratingIcons.removeClass('rmp-icon--processing-rating rmp-icon--hovered');
@@ -44,9 +45,11 @@ class LoadResults {
     this.resultsTextContainer.removeClass('rmp-rating-widget__results--hidden')
     this.msgContainer.text(this.tnxMsg);
     let socialWidget = new SocialWidget(this.widgetContainer, this.rating);
-    let feedbackWidget = new FeedbackWidget(this.widgetContainer, this.postID, this.rating, this.token, this.id );
+    let feedbackWidget = new FeedbackWidget(this.widgetContainer, this.postID, this.rating, this.token, this.id);
     let cookiePush = new CookiePush(this.postID);
     let analyticsPush = new AnalyticsPush(this.rating);
+
+    feedbackWidget.init();
   }
 
   toneDownIcons() {

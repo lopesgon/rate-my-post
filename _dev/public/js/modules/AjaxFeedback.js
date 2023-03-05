@@ -4,6 +4,7 @@ import FeedbackSubmitted from './FeedbackSubmitted';
 
 class AjaxFeedback {
   constructor(widgetContainer, postID, feedback, token, ratingID) {
+    console.debug("AjaxFeedback constructor");
     this.widgetContainer = widgetContainer;
     this.postID = postID;
     this.feedback = feedback;

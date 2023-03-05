@@ -27,7 +27,7 @@ var config = {
 };
 
 var publicScripts = Object.assign({}, config, {
-    entry: "./_dev/public/js/rate-my-post.js",
+    entry: ["regenerator-runtime/runtime.js", "./_dev/public/js/rate-my-post.js"],
     output: {
        path: path.resolve(__dirname, './public/js'),
        filename: "rate-my-post.js",

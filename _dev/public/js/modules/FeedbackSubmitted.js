@@ -1,8 +1,8 @@
 import $ from 'jquery';
-import rmp_frontend from 'rmp_frontend';
 
 class FeedbackSubmitted {
   constructor(widgetContainer, response) {
+    console.debug("FeedbackSubmitted constructor");
     this.widgetContainer = widgetContainer;
     this.successMsg = response.successMsg;
     this.errorMsg = response.errorMsg;

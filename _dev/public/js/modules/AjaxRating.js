@@ -1,56 +1,66 @@
-import $ from 'jquery';
-import rmp_frontend from 'rmp_frontend';
+import { RmpFrontend, Actions } from "./RmpFrontend";
 import LoadResults from './LoadResults';
 
 class AjaxRating {
-  constructor(postID, widgetContainer, rating, startTime) {
+  constructor(postID, widgetContainer, startTime) {
+    console.debug("AjaxRating constructor");
     this.postID = postID;
     this.widgetContainer = widgetContainer;
-    this.rating = rating;
-    this.duration = Math.floor(Date.now() / 1000) - startTime;
-    this.settings = rmp_frontend;
-    this.recaptcha = rmp_frontend.grecaptcha;
-    this.recaptchaKey = rmp_frontend.siteKey;
-    this.data = {
-      action:'process_rating',
-      star_rating : this.rating,
-      postID : this.postID,
-      duration: this.duration,
-      nonce: this.settings.nonce,
-    }
-    this.events();
+    this.startTime = startTime;
   }
 
-  events() {
-    if(this.recaptcha != 2) { // recaptcha disabled
-      this.saveRating();
+  async rate(rating, feedback) {
+    let payload = {
+      action: Actions.PROCESS_RATING,
+      star_rating: rating,
+      postID: this.postID,
+      duration: Math.floor(Date.now() / 1000) - this.startTime,
+      nonce: RmpFrontend.getNonce,
+      token: await this.getCaptchaToken(),
+      feedback: feedback,
+    };
+
+    if (feedback) { // is not null when feedback_forced is enabled
+      payload = {
+        ...payload,
+        // action: Actions.PROCESS_WFEEDBACK,
+      };
+    }
+
+    await this.saveRating(payload, rating);
+  }
+
+  async getCaptchaToken() {
+    if (!RmpFrontend.isRecaptchaEnabled) { // recaptcha disabled
       return;
     }
-    import('grecaptcha')
-    .then((grecaptcha) => {
-       grecaptcha.ready( () => {
-         grecaptcha.execute(
-           this.recaptchaKey,
-           {action: 'RMPrating'}
-         )
-         .then((token) => {
-           this.data.token = token;
-           this.saveRating();
-         })
-       })
-    })
+
+    const token = await import('grecaptcha')
+      .then((grecaptcha) => {
+        grecaptcha.ready(() => {
+          return grecaptcha.execute(
+            RmpFrontend.getRecaptchaKey(),
+            { action: Actions.RMP_RATING }
+          )
+            .then((token) => token);
+        });
+      });
+
+    return token;
   }
 
-  saveRating() {
-    $.ajax({
-      type: 'POST',
-      url: this.settings.admin_ajax,
-      data: this.data,
-      dataType: 'JSON',
-      success: (response) => {
-        let loadResults = new LoadResults(this.postID, this.widgetContainer, response, this.rating);
-      }
-    });
+  async saveRating(payload, rating) {
+    const formData = new FormData();
+    Object.keys(payload).forEach(key => formData.append(key, payload[key]));
+
+    return fetch(RmpFrontend.getApiUrl, {
+      method: "POST",
+      body: formData
+    }).then((response) => response.json())
+      .then((responseBody) => {
+        new LoadResults(this.postID, this.widgetContainer, responseBody, rating);
+        return responseBody;
+      });
   }
 }
 
