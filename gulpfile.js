@@ -90,7 +90,7 @@ function reload() {
 //browser sync
 function browser_sync() {
 	browserSync.init({
-		proxy: 'http://localhost/wordpress'
+		proxy: 'http://localhost:8090'
 	});
 }
 
