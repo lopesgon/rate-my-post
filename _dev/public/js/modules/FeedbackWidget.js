@@ -1,16 +1,16 @@
 import $ from 'jquery';
-import rmp_frontend from 'rmp_frontend';
 import AjaxFeedback from './AjaxFeedback';
+import { RmpFrontend } from './RmpFrontend';
 
 class FeedbackWidget {
   constructor(widgetContainer, postID, rating, token, ratingID) {
+    if(!RmpFrontend.isFeedbackEnabled || !RmpFrontend.isForcedFeedbackEnabled || !RmpFrontend.isNegativeRating(rating)) {
+      return;
+    }
+
     this.widgetContainer = widgetContainer;
     this.postID = postID;
-    this.feedbackEnabled = rmp_frontend.feedback;
-    this.maxRating = rmp_frontend.positiveThreshold;
-    this.emptyFeedbackMsg = rmp_frontend.emptyFeedback;
     this.msgContainer = $(this.widgetContainer + '.js-rmp-feedback-msg');
-    this.rating = rating;
     this.ratingWidget = $(this.widgetContainer + '.js-rmp-rating-widget');
     this.feedbackWidget = $(this.widgetContainer + '.js-rmp-feedback-widget');
     this.inputContainer = $(this.widgetContainer + '.js-rmp-feedback-input');
@@ -19,28 +19,35 @@ class FeedbackWidget {
     this.input = false;
     this.token = token;
     this.ratingID = ratingID;
-    this.events();
   }
 
-  events() {
-    if(this.feedbackEnabled != 2 || this.rating > this.maxRating) {
-      return;
-    }
+  async init() {
     this.feedbackWidget.addClass('rmp-feedback-widget--visible');
     this.ratingWidget.addClass('rmp-rating-widget--hidden');
-    this.submitButton.on('click', (event) => this.submitButtonClicked());
+    
+    let feedbackText = await this.submitButtonHandler();
+
+    if (RmpFrontend.isForcedFeedbackEnabled) {
+      return feedbackText;
+    } else {
+      this.loader.addClass('rmp-feedback-widget__loader--visible')
+      let saveFeedback = new AjaxFeedback(this.widgetContainer, this.postID, feedbackText, this.token, this.ratingID);
+    }
   }
 
-  submitButtonClicked() {
-    this.input = $(this.inputContainer).val();
-    if(this.input.trim().length < 1 ) { // feedback was not inserted
-      this.msgContainer.addClass('rmp-feedback-widget__msg--alert');
-      this.msgContainer.text(this.emptyFeedbackMsg);
-      return;
-    }
-    this.submitButton.off();
-    this.loader.addClass('rmp-feedback-widget__loader--visible')
-    let saveFeedback = new AjaxFeedback(this.widgetContainer, this.postID, this.input, this.token, this.ratingID);
+  async submitButtonHandler() {
+    return new Promise((resolve, reject) => {
+      this.submitButton.on('click', () => {
+        let feedbackText = $(this.inputContainer).val();
+        if(feedbackText.trim().length < 1 ) { // feedback was not inserted
+          this.msgContainer.addClass('rmp-feedback-widget__msg--alert');
+          this.msgContainer.text(RmpFrontend.getEmptyFeedbackText);
+          return;
+        }
+        this.submitButton.off();
+        resolve(feedbackText);
+      });
+    });
   }
 
 }
