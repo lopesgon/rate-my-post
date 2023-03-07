@@ -2,7 +2,9 @@ import AjaxRating from './AjaxRating';
 import FreezeWidget from './FreezeWidget';
 import CookieCheck from './CookieCheck';
 import PrivilegeCheck from './PrivilegeCheck';
-import rmp_frontend from 'rmp_frontend';
+import {RmpFrontend} from './RmpFrontend';
+import FeedbackWidget from './FeedbackWidget';
+import saveRating from './RatingService';
 
 class InitWidget {
   constructor(postID) {
@@ -18,8 +20,6 @@ class InitWidget {
     this.rating = 0;
     this.supportsHover = window.matchMedia('(hover: hover)');
     this.startTime = Math.floor(Date.now() / 1000);
-    this.preventAccidental = rmp_frontend.preventAccidental;
-    this.hoverTexts = rmp_frontend.hoverTexts;
     this.submitBtn = document.querySelector(this.widgetContainer + '.js-submit-rating-btn');
     this.saveRating = false;
     this.events();
@@ -67,7 +67,7 @@ class InitWidget {
         item.classList.remove('rmp-icon--hovered');
       }
       // inject texts
-      if( this.supportsHover && this.hoverTexts == 2 && this.ratingTextContainer ) {
+      if( this.supportsHover && RmpFrontend.isRatingTooltipEnabled && this.ratingTextContainer ) {
         this.ratingTextContainer.textContent = this.ratingText;
       }
     });
@@ -86,7 +86,7 @@ class InitWidget {
     }
   }
 
-  ratingIconClicked(event) {
+  async ratingIconClicked(event) {
     this.rating = parseInt(event.currentTarget.dataset.value, 10);
     this.ratingIcons.forEach((item, index) => {
       item.classList.remove('rmp-icon--processing-rating');
@@ -94,22 +94,30 @@ class InitWidget {
         item.classList.add('rmp-icon--processing-rating');
       }
     });
-    if(this.preventAccidental == 2) { // enabled
-      this.submitButtonHandler();
-      return;
+
+    if(RmpFrontend.isPreventAccidentalEnabled) { // enabled
+      await this.submitButtonHandler();
     }
-    let freezeWidget = new FreezeWidget(this.widgetContainer);
-    // save rating
-    this.saveRating = new AjaxRating(this.postID, this.widgetContainer, this.rating, this.startTime);
+
+    new FreezeWidget(this.widgetContainer);
+    if (RmpFrontend.isForcedFeedbackEnabled) {
+      let feedbackWidget = new FeedbackWidget(this.widgetContainer, this.postID, this.rating, undefined, undefined);
+      let feedbackText = await feedbackWidget.init();
+      saveRating(this.postID, this.widgetContainer, this.rating, this.startTime, feedbackText);
+    } else {
+      // save rating
+      this.saveRating = new AjaxRating(this.postID, this.widgetContainer, this.rating, this.startTime);
+    }
   }
 
   submitButtonHandler() {
     this.submitBtn.classList.add('rmp-rating-widget__submit-btn--visible');
-    this.submitBtn.addEventListener('click', (event) => {
-      if( ! this.saveRating ) {
-        this.saveRating = new AjaxRating(this.postID, this.widgetContainer, this.rating, this.startTime);
-      }
-      let freezeWidget = new FreezeWidget(this.widgetContainer);
+    return new Promise((resolve, reject) => {
+      this.submitBtn.addEventListener('click', () => {
+        if( !this.saveRating ) {
+          resolve();
+        }
+      });
     });
   }
 

@@ -28,7 +28,7 @@ class LoadResults {
   }
 
   events() {
-    if( this.errorMsg.length ) {
+    if( this.errorMsg && this.errorMsg.length > 0) {
       this.msgContainer.innerHTML = this.errorMsg.join('<br />');
       this.msgContainer.classList.add('rmp-rating-widget__msg--alert');
       this.ratingIcons.forEach((item) => {
@@ -58,6 +58,7 @@ class LoadResults {
     let feedbackWidget = new FeedbackWidget(this.widgetContainer, this.postID, this.rating, this.token, this.id );
     let cookiePush = new CookiePush(this.postID);
     let analyticsPush = new AnalyticsPush(this.rating);
+    feedbackWidget.init();
   }
 
   toneDownIcons() {
