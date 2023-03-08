@@ -1,4 +1,5 @@
 import LoadResults from './LoadResults';
+import FeedbackSubmitted from './FeedbackSubmitted';
 import { RmpFrontend, Actions } from './RmpFrontend';
 
 async function getRecapatchaToken() {
@@ -47,7 +48,7 @@ const saveRating = async (postID, widgetContainer, rating, startTime, feedbackTe
     }
   }
 
-  if (feedbackText) {
+  if (RmpFrontend.isForcedFeedbackEnabled && feedbackText) {
     data = {
       ...data,
       feedback: feedbackText
@@ -56,7 +57,11 @@ const saveRating = async (postID, widgetContainer, rating, startTime, feedbackTe
 
   
   const response = await submit(data);
-  new LoadResults(postID, widgetContainer, await response, rating);
+  if (RmpFrontend.isForcedFeedbackEnabled) {
+    new FeedbackSubmitted(widgetContainer, response);
+  } else {
+    new LoadResults(postID, widgetContainer, response, rating);
+  }
 }
 
 export default saveRating;

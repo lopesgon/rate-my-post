@@ -1,5 +1,3 @@
-import rmp_frontend from 'rmp_frontend';
-
 class FeedbackSubmitted {
   constructor(widgetContainer, response) {
     this.widgetContainer = widgetContainer;
