@@ -153,6 +153,10 @@ class Rate_My_Post {
 		$this->loader->add_action( 'wp_ajax_process_rating_amp', $plugin_public, 'process_rating_amp' );
 		//PROCESS AMP RATING NO PRIV
 		$this->loader->add_action( 'wp_ajax_nopriv_process_rating_amp', $plugin_public, 'process_rating_amp' );
+		//PROCESS RATING WITH FEEDBACK PRIV (forced feedback feature)
+		$this->loader->add_action( 'wp_ajax_process_rating_with_feedback', $plugin_public, 'process_rating_with_feedback' );
+		//PROCESS RATING WITH FEEDBACK NO PRIV (forced feedback feature)
+		$this->loader->add_action( 'wp_ajax_nopriv_process_rating_with_feedback', $plugin_public, 'process_rating_with_feedback' );
 		//RATINGS ON ARCHIVE PAGES
 		$this->loader->add_filter( 'the_title', $plugin_public, 'ratings_archive_pages', 10, 2 );
 		// PRELOAD CUSTOM FONT
