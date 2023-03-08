@@ -26,23 +26,26 @@ class FeedbackWidget {
   }
 
   async init() {
-    if( this.alreadySubmitted || 
-        (!RmpFrontend.isFeedbackEnabled || !RmpFrontend.isForcedFeedbackEnabled) && !RmpFrontend.isNegativeRating(this.rating)) {
+    if (this.alreadySubmitted) {
       return;
     }
 
-    this.feedbackWidget.classList.add('rmp-feedback-widget--visible');
-    this.ratingWidget.classList.add('rmp-rating-widget--hidden');
+    if ((RmpFrontend.isFeedbackEnabled || RmpFrontend.isForcedFeedbackEnabled) && RmpFrontend.isNegativeRating(this.rating)) {
+      this.feedbackWidget.classList.add('rmp-feedback-widget--visible');
+      this.ratingWidget.classList.add('rmp-rating-widget--hidden');
 
-    let feedbackText = await this.submitButtonHandler();
+      let feedbackText = await this.submitButtonHandler();
 
-    if (RmpFrontend.isForcedFeedbackEnabled) {
-      this.alreadySubmitted = true;
-      return feedbackText;
+      if (RmpFrontend.isForcedFeedbackEnabled) {
+        this.alreadySubmitted = true;
+        return feedbackText;
+      } else {
+        this.alreadySubmitted = true;
+        this.loader.classList.add('rmp-feedback-widget__loader--visible');
+        let saveFeedback = new AjaxFeedback(this.widgetContainer, this.postID, feedbackText, this.token, this.ratingID);
+      }
     } else {
-      this.alreadySubmitted = true;
-      this.loader.classList.add('rmp-feedback-widget__loader--visible');
-      let saveFeedback = new AjaxFeedback(this.widgetContainer, this.postID, feedbackText, this.token, this.ratingID);
+      return;
     }
   }
 
