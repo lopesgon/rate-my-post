@@ -457,6 +457,122 @@ class Rate_My_Post_Public {
 		die();
 	}
 
+  public function process_rating_with_feedback() {
+    if ( wp_doing_ajax() ) {
+      // mutex
+			$lockName = 'rmp-ajax-rating-with_feedback-' . get_current_user_id() . '-' . intval( $_POST['postID'] );
+			if ( ! Rate_My_Post_Mutex::acquire( $lockName ) ) {
+				return new WP_Error( 'ajax_rating_with_feedback_fail', __( 'Ajax rating fail', 'rate-my-post' ), [ 'status' => 400 ] );
+			}
+
+      $options = get_option( 'rmp_options' );
+			
+      // if feedback disabled, die
+      // this shouldn't append anyway..
+			if( $options['feedback_forced'] !== 2 ) {
+				Rate_My_Post_Mutex::release( $lockName );
+				die();
+			}
+
+			// variables
+			$post_id = intval( $_POST['postID'] );
+			$security_options = get_option( 'rmp_security' );
+			$custom_strings = $this->custom_strings( $post_id );
+			$submitted_rating = intval( $_POST['star_rating'] );
+			$duration = intval( $_POST['duration'] );
+			$recaptcha_token = isset( $_POST['token'] ) ? $_POST['token'] : false;
+			$nonce = isset( $_POST['nonce'] ) ? $_POST['nonce'] : false;
+      $feedback = sanitize_text_field( $_POST['feedback'] );
+
+      // response body
+      $data = array(
+				'successMsg' => $this->custom_strings( $post_id )['feedbackNotice'],
+				'errorMsg' 	=> array(),
+			);
+
+			// security checks
+			$security_passed = true;
+			$recaptcha = $this->is_recaptcha_valid( $recaptcha_token );
+			$privilege = $this->has_privileges( $security_options );
+			$ip_check = $this->is_not_ip_double_vote( $security_options, $custom_strings, $post_id );
+			$required_data = $this->all_rating_data_submitted( $post_id, $submitted_rating );
+			$nonce_check = $this->has_valid_nonce( $nonce );
+			$user_id_check = $this->is_not_user_id_double_vote( $security_options, $custom_strings, $post_id );
+      $feedback_length_check = $this->is_valid_length( $feedback );
+
+			$security_checks = array(
+				$recaptcha,
+				$privilege,
+				$ip_check,
+				$required_data,
+				$nonce_check,
+				$user_id_check,
+        $feedback_length_check
+			);
+
+			foreach ( $security_checks as $security_check ) {
+				if( ! $security_check['valid'] ) {
+					$data['errorMsg'][] = $security_check['error'];
+					$security_passed = false;
+				}
+			}
+
+			if ( ! $security_passed ) {
+				echo json_encode( $data );
+				Rate_My_Post_Mutex::release( $lockName );
+				die();
+			}
+
+			// insert vote count to post meta
+			$new_vote_count = $this->save_vote_count( $post_id );
+			// insert rating sum to post meta
+			$new_rating = $this->save_rating( $post_id, $submitted_rating );
+			// insert avg rating to post meta
+			$post_meta_rating = $this->save_avg_rating( $post_id );
+
+			// get the return data
+			if ( $new_vote_count && $new_rating ) { // already has ratings
+				$avg_rating = Rate_My_Post_Common::calculate_average_rating( $new_rating, $new_vote_count );
+			} else { // rated for the first time
+				$avg_rating = $submitted_rating; // average equals to submitted
+				$new_vote_count = 1; // vote count equals to 1
+			}
+
+			// save details to db for analytics section
+			$analytics = $this->save_for_analytics( $post_id, 1, $duration, $avg_rating, $new_vote_count, $submitted_rating, $options, $security_options, false  );
+
+      // fedback array
+			$feedback_data = array(
+				'feedback' => $feedback,
+				'time'     => date( "d-m-Y H:i:s" ),
+				'id'       => uniqid(),
+				'user'     => $security_options['userTracking'] == 2 ? intval( get_current_user_id() ) : false,
+				'ratingID' => $analytics['id'],
+			);
+
+			//insert feedback to post meta
+			if ( ! add_post_meta( $post_id, 'rmp_feedback_val_new', array( $feedback_data ), true ) ) {
+				// get the current feedback array
+				$existing_feedback = get_post_meta( $post_id, 'rmp_feedback_val_new', true );
+				if ( is_array( $existing_feedback ) ) { // feedback must be an array
+					$existing_feedback[] = $feedback_data;
+					update_post_meta( $post_id, 'rmp_feedback_val_new', $existing_feedback );
+				}
+			}
+
+			//send email if enabled
+			$this->send_email_rating( $post_id, $submitted_rating, $options );
+
+			echo json_encode( $data );
+
+			$this->clear_cache( $post_id, $options );
+			do_action( 'rmp_after_vote', $post_id, $avg_rating, $new_vote_count, $submitted_rating );
+			// $ajax_rating_lock->release();
+			Rate_My_Post_Mutex::release( $lockName );
+		};
+		die();
+  }
+
 	//---------------------------------------------------
 	// PROCESS FEEDBACK - FRONTEND AJAX
 	//---------------------------------------------------
@@ -741,7 +857,7 @@ class Rate_My_Post_Public {
 		$country = 0;
 
 		// token for feedback
-		if( ( $options['feedback'] === 2 ) && ( $rating <= $options['positiveNegative'] ) && ! $amp ) {
+		if( ( $options['feedback'] === 2 && $options['feedback_forced'] !== 2 ) && ( $rating <= $options['positiveNegative'] ) && ! $amp ) {
 			$token = md5( uniqid( rand(), true ) );
 		}
 		//insert data in database
@@ -1186,22 +1302,6 @@ class Rate_My_Post_Public {
 			'valid' => true,
 			'error' => false,
 		);
-		if( ! str_replace( ' ', '', $feedback ) ) {
-			$data['error'] = esc_html__( 'Please insert your feedback in the box above!', 'rate-my-post' );
-			$data['valid'] = false;
-		}
-		return $data;
-	}
-
-  private function has_feedback_when_forced( $valid_length ) {
-		$data = array(
-			'valid' => true,
-			'error' => false,
-		);
-    $options = get_option( 'rmp_options' );
-    if( $options['feedback_forced'] == 2 ) {
-			return;
-		}
 		if( ! str_replace( ' ', '', $feedback ) ) {
 			$data['error'] = esc_html__( 'Please insert your feedback in the box above!', 'rate-my-post' );
 			$data['valid'] = false;
