@@ -34,7 +34,7 @@ async function submit(payload) {
 
 const saveRating = async (postID, widgetContainer, rating, startTime, feedbackText) => {
   let data = {
-    action: Actions.PROCESS_WFEEDBACK,
+    action: Actions.PROCESS_RATING,
     star_rating : rating,
     postID : postID,
     duration: Math.floor(Date.now() / 1000) - startTime,
@@ -51,16 +51,19 @@ const saveRating = async (postID, widgetContainer, rating, startTime, feedbackTe
   if (RmpFrontend.isForcedFeedbackEnabled && feedbackText) {
     data = {
       ...data,
+      action: Actions.PROCESS_WFEEDBACK,
       feedback: feedbackText
     }
   }
 
   
   const response = await submit(data);
-  if (RmpFrontend.isForcedFeedbackEnabled) {
-    new FeedbackSubmitted(widgetContainer, response);
-  } else {
-    new LoadResults(postID, widgetContainer, response, rating);
+  switch ( data.action ) {
+    case Actions.PROCESS_WFEEDBACK:
+      new FeedbackSubmitted(widgetContainer, response);
+      break;
+    default:
+      new LoadResults(postID, widgetContainer, response, rating);
   }
 }
 
