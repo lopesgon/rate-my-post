@@ -486,6 +486,8 @@ class Rate_My_Post_Public {
 
       // response body
       $data = array(
+				'voteCount' => false,
+				'avgRating' => false,
 				'successMsg' => $this->custom_strings( $post_id )['feedbackNotice'],
 				'errorMsg' 	=> array(),
 			);
@@ -540,6 +542,10 @@ class Rate_My_Post_Public {
 
 			// save details to db for analytics section
 			$analytics = $this->save_for_analytics( $post_id, 1, $duration, $avg_rating, $new_vote_count, $submitted_rating, $options, $security_options, false  );
+
+      // new vote count, values are used for live reload in ResultsWidget
+			$data['voteCount'] = $new_vote_count;
+			$data['avgRating'] = $avg_rating;
 
       // fedback array
 			$feedback_data = array(

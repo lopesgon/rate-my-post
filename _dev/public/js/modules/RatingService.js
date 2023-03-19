@@ -1,6 +1,7 @@
 import LoadResults from './LoadResults';
 import FeedbackSubmitted from './FeedbackSubmitted';
 import { RmpFrontend, Actions } from './RmpFrontend';
+import ResultsWidget from './ResultsWidget';
 
 async function getRecapatchaToken() {
   if(!RmpFrontend.isRecaptchaEnabled) {
@@ -60,6 +61,7 @@ const saveRating = async (postID, widgetContainer, rating, startTime, feedbackTe
   const response = await submit(data);
   switch ( data.action ) {
     case Actions.PROCESS_WFEEDBACK:
+      ResultsWidget.update(response);
       new FeedbackSubmitted(widgetContainer, response);
       break;
     default:

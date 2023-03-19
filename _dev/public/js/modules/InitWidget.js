@@ -5,6 +5,7 @@ import PrivilegeCheck from './PrivilegeCheck';
 import {RmpFrontend} from './RmpFrontend';
 import FeedbackWidget from './FeedbackWidget';
 import saveRating from './RatingService';
+import ResultsWidget from './ResultsWidget';
 
 class InitWidget {
   constructor(postID) {
@@ -26,19 +27,19 @@ class InitWidget {
   }
 
   events() {
-    this.doubleWidgetCheck();
+    this.widgetsSanitization();
     this.ratingItems.forEach((item) => {
       item.style.cursor = 'pointer';
       item.addEventListener('mouseover', (event) => this.hoverIcons(event));
       item.addEventListener('mouseout', (event) => this.stopHoverIcons());
       item.addEventListener('click', (event) => this.ratingIconClicked(event));
-    })
+    });
     this.ratingItemsList.addEventListener('mouseleave', (event) => this.removeHoverTexts());
     let cookieCheck = new CookieCheck(this.widgetContainer, this.postID);
     let privilegeCheck = new PrivilegeCheck();
   }
 
-  doubleWidgetCheck() {
+  widgetsSanitization() {
     let ratingWidgets = document.querySelectorAll(this.widgetContainer);
     let resultWidgets = document.querySelectorAll(this.resultsWidget);
     if( ratingWidgets.length > 1 || resultWidgets.length > 1 ) { // duplicates cause issues
@@ -53,6 +54,9 @@ class InitWidget {
         }
       });
     }
+
+    // initialize widget singletons
+    new ResultsWidget(this.postID);
   }
 
   hoverIcons(event) {
