@@ -14,16 +14,18 @@ class ResultsWidget {
   }
 
   static update({ avgRating, voteCount }) {
-    if (!ResultsWidget._instance) {
+    let component = ResultsWidget._instance
+    if (!component) {
       throw new Error("Update method call without instanciated class object!");
     }
+
     
-    if(avgRating && this.averageRatingComponent) {
-      this.averageRatingComponent.textContent = avgRating;
+    if(avgRating && component.averageRatingComponent) {
+      component.averageRatingComponent.textContent = avgRating;
     }
 
-    if(voteCount && this.voteCountComponent) {
-      this.voteCountComponent.textContent = voteCount;
+    if(voteCount && component.voteCountComponent) {
+      component.voteCountComponent.textContent = voteCount;
     }
   }
 

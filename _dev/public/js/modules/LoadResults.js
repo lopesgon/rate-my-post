@@ -4,6 +4,7 @@ import FeedbackWidget from './FeedbackWidget';
 import IconHighlighter from './IconHighlighter';
 import CookiePush from './CookiePush';
 import AnalyticsPush from './AnalyticsPush';
+import ResultsWidget from './ResultsWidget';
 
 class LoadResults {
   constructor(postID, widgetContainer, response, rating) {
@@ -14,8 +15,6 @@ class LoadResults {
     this.errorMsg = response.errorMsg;
     this.token = response.token;
     this.id = response.id;
-    this.avgRatingContainer = document.querySelectorAll(this.widgetContainer + '.js-rmp-avg-rating, .js-rmp-results-widget--' + postID + ' .js-rmp-avg-rating');
-    this.voteCountContainer = document.querySelectorAll(this.widgetContainer + '.js-rmp-vote-count, .js-rmp-results-widget--' + postID + ' .js-rmp-vote-count');
     this.noVotesContainer = document.querySelector(this.widgetContainer + '.js-rmp-not-rated');
     this.resultsTextContainer = document.querySelector(this.widgetContainer + '.js-rmp-results');
     this.ratingIcons = document.querySelectorAll(this.widgetContainer + '.js-rmp-rating-icon');
@@ -37,17 +36,8 @@ class LoadResults {
       return;
     }
 
-    if(this.avgRatingContainer) {
-      this.avgRatingContainer.forEach((item) => {
-        item.textContent = this.avgRating;
-      })
-    }
-
-    if(this.voteCountContainer) {
-      this.voteCountContainer.forEach((item) => {
-        item.textContent = this.voteCount;
-      })
-    }
+    ResultsWidget.update({avgRating: this.avgRating, voteCount: this.voteCount});
+    
     this.toneDownIcons();
     this.highlightIcons();
     this.noVotesContainer?.classList?.add('rmp-rating-widget__not-rated--hidden');
